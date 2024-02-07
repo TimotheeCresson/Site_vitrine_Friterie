@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <title>Site vitrine Friterie</title>
+</head>
+<body>
+    <div id="app">
+        <!-- Entête -->
+        <header>
+            <img class="logo" v-bind:src="'/img/logo.jpg'" alt="image">
+            <div class="nav-toggle" @click="toggleMenu">
+                <div class="nav-toggle-bar">
+                    <i :class="iconClass" class="fa-solid" transition="icon-transition"></i>
+                </div>
+            </div>
+            <nav :class="{ 'menu-open': isMenuOpen }" class="navigation">
+                <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="#">Menu</a></li>
+                <li><a href="#">Horaires</a></li>
+                <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- section polygone image -->
+       
+        <div class="grid-container"> 
+            <div class="rectangle-left">
+            <img src="/img/pizza.jpg" alt="Rectangle Left">
+            </div>
+            <div class="triangle triangle1">
+            <img src="/img/pizza.jpg" alt="Triangle 1">
+            </div>
+            <div class="triangle triangle2">
+            <img src="/img/pizza.jpg" alt="Triangle 2">
+            </div>
+            <div class="triangle triangle3">
+            <img src="/img/pizza.jpg" alt="Triangle 3">
+            </div>
+            <div class="rectangle-right">
+            <img src="/img/pizza.jpg" alt="Rectangle Right">
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+    </div>
+</body>
+</html>
