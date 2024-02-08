@@ -53,6 +53,24 @@ const app = Vue.createApp({
             triangle.image = this.getRandomImage();
           });
         },
+        scrollToSection(sectionId) {
+          // on va récupéré l'id de la section spécifié dans notre html
+          const targetElement = document.getElementById(sectionId);
+          // si on a un id vérifié alors :
+          if (targetElement) {
+            //window.scrollTo pour faire défiler la page jusqu'à une position spécifique
+            window.scrollTo({
+              // on prend la distance de l'élément jusqu'au haut de la page - la hauteur de l'élément header
+              top: targetElement.offsetTop - document.querySelector('header').offsetHeight,
+              // défilement fluide
+              behavior: 'smooth',
+            });
+            document.body.classList.remove('menu-open');
+            // on le met à false pour que Vue considère notre menu fermé pour la réactivité de ce dernier
+            this.isMenuOpen = false;
+          }
+        },
+      
       },
       mounted() {
         // on met un interval de temps pour les changements d'images

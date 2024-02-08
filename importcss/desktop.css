@@ -1,0 +1,28 @@
+
+header {
+    height: 150px;
+}
+.logo {
+    height: 120px;
+    width: 120px;
+}
+/* polygone */
+.grid-container {
+    height: 600px;
+}
+.triangle {
+    height: 600px;
+    width: 35vw;
+}
+
+/* horaires et localisation */
+.horaireEtLocalisation {
+    margin-top: 30px;
+    border-top: 3px solid var(--primary-color);
+}
+.horaires {
+    margin: 20px 70px;
+}
+.imageIframe iframe {
+    margin: 20px 70px;
+}

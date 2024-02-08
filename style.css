@@ -3,5 +3,5 @@
 @import url('./importcss/polygone.css');
 @import url('./importcss/main.css');
 @import url('./importcss/footer.css');
-@import url('./importcss/tablette.css');
-@import url('./importcss/desktop.css');
+@import url('./importcss/tablette.css') screen and (min-width: 700px);
+@import url('./importcss/desktop.css') screen and (min-width: 900px);

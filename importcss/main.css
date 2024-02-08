@@ -1,10 +1,36 @@
 /* Menu */
+.tableSectionMenuContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+.tableMenu {
+    height: 100%;
+}
 .tableMenuContainer {
     background-color: var(--primary-color);
     padding: 10px;
+    height: 100%;
+}
+.table1 {
     border-bottom: 3px solid var(--secondary-color); 
     border-left: 3px solid var(--secondary-color);
 }
+.table2{
+    border-bottom: 3px solid var(--secondary-color); 
+    border-top: 3px solid var(--secondary-color);
+    border-right: 3px solid var(--secondary-color);
+}
+.table3 {
+    border-bottom: 3px solid var(--secondary-color); 
+    border-top: 3px solid var(--secondary-color);
+    border-left: 3px solid var(--secondary-color);
+}
+.table4 { 
+    border-top: 3px solid var(--secondary-color);
+    border-right: 3px solid var(--secondary-color);
+}
+
 table {
     border-collapse: collapse;
     height: 100%;
@@ -25,11 +51,6 @@ td {
     color: rgb(214, 61, 5);
     margin: 30px 0 20px 0;
     text-align: center;
-}
-.tableMenu {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 25%);
 }
 
 /* Horaires */
@@ -52,25 +73,24 @@ td {
 }
 
 /* Localisation */
-
-.localisation h3 {
-    color: rgb(161, 40, 40);
-    margin: 20px 0 10px 0;
-    text-align: center;
-}
 .imageIframe {
     display: flex;
     justify-content: center;
     align-items: center;
+    border-bottom: 3px solid var(--primary-color);
 }
 .imageIframe iframe {
-    margin: 15px 0 30px 0;
+    margin: 20px 30px;
 }
 
 /* Infos */
 .info {
-    display: flex;
-    border-top: 3px solid var(--primary-color);
+    display: grid;
+    grid-template-columns: 50% 50%;
+    min-height: 100px;
+    margin-top: 20px;
+    width: 100%;
+    /* border-top: 3px solid var(--primary-color); */
 }
 
 .paiementCarte,
@@ -79,13 +99,6 @@ td {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    flex: 1; /* Les deux enfants prennent une part égale de l'espace disponible */
-}
-
-.paiementCarte img,
-.reservation img {
-    max-width: 100%;
-    height: auto;
 }
 
 .paiementCarte p,
@@ -98,5 +111,5 @@ td {
     width: 50px;
 }
 .reservation {
-    margin-top: 0px;
+    margin-top: 15px;
 }
