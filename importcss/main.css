@@ -1,0 +1,102 @@
+/* Menu */
+.tableMenuContainer {
+    background-color: var(--primary-color);
+    padding: 10px;
+    border-bottom: 3px solid var(--secondary-color); 
+    border-left: 3px solid var(--secondary-color);
+}
+table {
+    border-collapse: collapse;
+    height: 100%;
+    width: 100%;
+}
+td {
+    border: 1px solid var(--secondary-color);
+    padding: 8px;
+    text-align: center;
+    color: var(--secondary-color);
+}
+.imageMenu img {
+    height: 100%;
+    width: 100%;
+}
+.menuContainer h1 {
+    font-size: var(--title-size);
+    color: rgb(214, 61, 5);
+    margin: 30px 0 20px 0;
+    text-align: center;
+}
+.tableMenu {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 25%);
+}
+
+/* Horaires */
+.horaires {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px solid rgb(161, 40, 40);
+    border-style: double;
+    margin: 20px 30px;
+}
+.horaires h3 {
+    color: rgb(161, 40, 40);
+    margin: 20px 0 10px 0;
+}
+.horaires p {
+    padding: 10px;
+    font-size: 0.8em;
+}
+
+/* Localisation */
+
+.localisation h3 {
+    color: rgb(161, 40, 40);
+    margin: 20px 0 10px 0;
+    text-align: center;
+}
+.imageIframe {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageIframe iframe {
+    margin: 15px 0 30px 0;
+}
+
+/* Infos */
+.info {
+    display: flex;
+    border-top: 3px solid var(--primary-color);
+}
+
+.paiementCarte,
+.reservation {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex: 1; /* Les deux enfants prennent une part égale de l'espace disponible */
+}
+
+.paiementCarte img,
+.reservation img {
+    max-width: 100%;
+    height: auto;
+}
+
+.paiementCarte p,
+.reservation p {
+    text-align: center; 
+    font-size: 0.8em;
+}
+.paiementCarte img, .reservation img  {
+    height: 50px;
+    width: 50px;
+}
+.reservation {
+    margin-top: 0px;
+}

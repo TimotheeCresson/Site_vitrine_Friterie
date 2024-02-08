@@ -5,7 +5,7 @@
     box-sizing: border-box;
 }
 :root {
-    --primary-color: rgb(22, 22, 22);
+    --primary-color: rgb(7, 7, 7);
     --secondary-color: rgb(255, 255, 255);
     --title-size: 2rem;
     --text-size: 1em;

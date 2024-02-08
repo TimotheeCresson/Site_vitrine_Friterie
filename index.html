@@ -12,8 +12,8 @@
 <body>
     <div id="app">
         <!-- Entête -->
-        <header>
-            <img class="logo" v-bind:src="'/img/logo.jpg'" alt="image">
+        <header id="accueil">
+            <img class="logo" v-bind:src="'/img/logo.jpg'" alt="logo">
             <div class="nav-toggle" @click="toggleMenu">
                 <div class="nav-toggle-bar">
                     <i :class="iconClass" class="fa-solid" transition="icon-transition"></i>
@@ -21,43 +21,179 @@
             </div>
             <nav :class="{ 'menu-open': isMenuOpen }" class="navigation">
                 <ul>
-                <li><a href="#">Accueil</a></li>
-                <li><a href="#">Menu</a></li>
-                <li><a href="#">Horaires</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#horaires">Horaires</a></li>
+                <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </header>
 
         <!-- section polygone image -->
-       
-        <div class="grid-container"> 
-            <div class="rectangle-left">
-            <img src="/img/pizza.jpg" alt="Rectangle Left">
-            </div>
-            <div class="triangle triangle1">
-            <img src="/img/pizza.jpg" alt="Triangle 1">
-            </div>
-            <div class="triangle triangle2">
-            <img src="/img/pizza.jpg" alt="Triangle 2">
-            </div>
-            <div class="triangle triangle3">
-            <img src="/img/pizza.jpg" alt="Triangle 3">
-            </div>
-            <div class="rectangle-right">
-            <img src="/img/pizza.jpg" alt="Rectangle Right">
+       <!-- On itère à travers le tableau triangles, pour chaque triangle, on crée une div, on attribue pour chaque élément une clé unique id, une classe triangle et une classe spécifique (traingle1 ...) et on ajoute les images-->
+        <div class="grid-container">
+            <div v-for="triangle in triangles" :key="triangle.id" class="triangle" :class="triangle.class">
+              <img :src="triangle.image" :alt="triangle.alt">
             </div>
         </div>
 
 
+        <!-- Section Menu -->
+        <div class="menuContainer" id="menu">
+            <h1>La carte</h1>
+            <section class="menuSection">
+                <div class="tableMenu">
+                    <div class="imageMenu">
+                        <img src="/img/menu1.jpg" alt="menu1">
+                    </div>
+                    <div class="tableMenuContainer">
+                        <table>
+                            <tr>
+                            <td>Colonne 1, Ligne 1</td>
+                            <td>Colonne 2, Ligne 1</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 2</td>
+                            <td>Colonne 2, Ligne 2</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 3</td>
+                            <td>Colonne 2, Ligne 3</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 4</td>
+                            <td>Colonne 2, Ligne 4</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
+            <section class="menuSection">
+                <div class="tableMenu">
+                    <div class="tableMenuContainer">
+                        <table>
+                            <tr>
+                            <td>Colonne 1, Ligne 1</td>
+                            <td>Colonne 2, Ligne 1</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 2</td>
+                            <td>Colonne 2, Ligne 2</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 3</td>
+                            <td>Colonne 2, Ligne 3</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 4</td>
+                            <td>Colonne 2, Ligne 4</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="imageMenu">
+                        <img src="/img/menu2.jpg" alt="menu2">
+                    </div>
+                </div>
+            </section>
 
+            <section class="menuSection">
+                <div class="tableMenu">
+                    <div class="imageMenu">
+                        <img src="/img/menu3.jpg" alt="menu3">
+                    </div>
+                    <div class="tableMenuContainer">
+                        <table>
+                            <tr>
+                            <td>Colonne 1, Ligne 1</td>
+                            <td>Colonne 2, Ligne 1</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 2</td>
+                            <td>Colonne 2, Ligne 2</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 3</td>
+                            <td>Colonne 2, Ligne 3</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 4</td>
+                            <td>Colonne 2, Ligne 4</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </section>
 
+            <section class="menuSection">
+                <div class="tableMenu">
+                    <div class="tableMenuContainer">
+                        <table>
+                            <tr>
+                            <td>Colonne 1, Ligne 1</td>
+                            <td>Colonne 2, Ligne 1</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 2</td>
+                            <td>Colonne 2, Ligne 2</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 3</td>
+                            <td>Colonne 2, Ligne 3</td>
+                            </tr>
+                            <tr>
+                            <td>Colonne 1, Ligne 4</td>
+                            <td>Colonne 2, Ligne 4</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="imageMenu">
+                        <img src="/img/menu4.jpg" alt="menu4">
+                    </div>
+                </div>
+            </section>
+        </div>
 
+        <div class="horaires" id="horaires">
+            <h3>Horaires d'ouvertures</h3>
+            <p>Lundi: Fermé</p>
+            <p>Mardi:   10h30 – 14h00, 18h00 – 22h00 </p>
+            <p>Mercredi:   10h30 – 14h00, 18h00 – 22h00</p>
+            <p>Jeudi:  10h30 – 14h00 , 18h00 – 22h00</p>
+            <p>Vendredi:  10h30 – 14h00, 18h00 – 22h30</p>
+            <p>Samedi:  10h30 – 14h00, 18h00 – 22h30</p>
+            <p>Dimanche:  18h00 – 22h00</p>
+        </div>
 
+        <div class="localisation">
+            <h3>Localisation</h3>
+            <div class="imageIframe">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.0478628204837!2d3.0533262122832316!3d50.47745267147887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d27494a61433%3A0xf83fe9044341e147!2sBonne%20Bouffe!5e0!3m2!1sfr!2sfr!4v1707386599768!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+        </div>
 
+        <div class="info">
+            <div class="paiementCarte">
+                <img src="/img/carte.jpg" alt="carteBleue">
+                <p>Paiement par carte acceptés</p>
+            </div>
+            <div class="reservation">
+                <img src="/img/reservation.jpg" alt="reservation">
+                <p>Réserver votre menu par téléphone au 03 20 96 03 43</p>
+            </div>
+        </div>
 
-
+        <footer id="contact">
+            <div class="coordonnees">
+                <h3>Coordonnées:</h3>
+                <p>03 20 96 03 43</p>
+            </div>
+            <div class="barreMid"></div>
+            <div class="lieu">
+                <h3>Adresse:</h3>
+                <p>7 Bis Rue Léon Blum, 59239 Thumeries</p>
+            </div>
+        </footer>
     </div>
 </body>
 </html>

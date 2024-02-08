@@ -1,0 +1,29 @@
+footer {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    min-height: 100px;
+    background: var(--primary-color);
+    margin-top: 20px;
+    width: 100%;
+    margin-top: 40px;
+}
+.coordonnees, .lieu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.coordonnees h3, .lieu h3 {
+    color: var(--secondary-color);
+    padding-bottom: 20px;
+}
+.coordonnees p, .lieu p {
+    text-align: center;
+    color: var(--secondary-color);
+}
+.barreMid {
+    background: var(--secondary-color);
+    height: 100%;
+    width: 2px;
+}
+
