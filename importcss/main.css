@@ -1,8 +1,7 @@
 /* Menu */
 .tableSectionMenuContainer {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: repeat(4, 1fr);
+    display: flex;
+    flex-direction: column;
 }
 .tableMenu {
     height: 100%;
@@ -11,6 +10,14 @@
     background-color: var(--primary-color);
     padding: 10px;
     height: 100%;
+}
+table {
+    border-collapse: collapse;
+    height: 90%;
+    width: 100%;
+}
+tbody {
+    border: 5px solid var(--secondary-color);
 }
 .table1 {
     border-bottom: 3px solid var(--secondary-color); 
@@ -30,17 +37,20 @@
     border-top: 3px solid var(--secondary-color);
     border-right: 3px solid var(--secondary-color);
 }
-
-table {
-    border-collapse: collapse;
-    height: 100%;
-    width: 100%;
-}
 td {
     border: 1px solid var(--secondary-color);
     padding: 8px;
     text-align: center;
     color: var(--secondary-color);
+    font-family: var(--police-Raleway-Regular);
+    font-size: 0.8em;
+}
+td ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    list-style-position: inside;
 }
 .imageMenu img {
     height: 100%;
@@ -70,6 +80,7 @@ td {
 .horaires p {
     padding: 10px;
     font-size: 0.8em;
+    font-family: var(--police-Raleway-Regular);
 }
 
 /* Localisation */
@@ -105,10 +116,15 @@ td {
 .reservation p {
     text-align: center; 
     font-size: 0.8em;
+    font-family: var(--police-Raleway-Regular);
 }
-.paiementCarte img, .reservation img  {
+.paiementCarte img{
     height: 50px;
     width: 50px;
+}
+.reservation img {
+    height: 50px;
+    width: 60px;
 }
 .reservation {
     margin-top: 15px;

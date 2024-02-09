@@ -31,6 +31,8 @@ z-index: 3; /* Ensure the nav-toggle-bar is above other elements */
     border-radius: 50%;
     transform: translateX(50%);
 }
+
+/* icone font awesome */
 .fa-solid {
     /* color: var(--secondary-color); */
     transition: color 0.3s ease; /* Add a transition effect for color change */
@@ -62,6 +64,12 @@ z-index: 3; /* Ensure the nav-toggle-bar is above other elements */
 .menu-open .navigation {
     transform: translateX(0);
 }
+/* Pour enlever la barre de scroll 
+bug ios: (l'overflow doit être appliqué sur notre élément body et HTML pour que le scroll disparaisse sur safari)*/
+.menu-open, 
+.menu-open body {
+    overflow: hidden;
+}
 .navigation ul {
     display: flex;
     flex-direction: column;
@@ -76,6 +84,7 @@ z-index: 3; /* Ensure the nav-toggle-bar is above other elements */
     position: relative;
     color: var(--secondary-color);
     text-decoration: none;
+    font-family: var(--police-Raleway-Bold);
 }
 .navigation a::after {
     content: "";

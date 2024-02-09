@@ -20,6 +20,10 @@ footer {
 .coordonnees p, .lieu p {
     text-align: center;
     color: var(--secondary-color);
+    font-family: var(--police-Raleway-Regular);
+}
+.coordonnees p {
+    margin-bottom: 20px;
 }
 .barreMid {
     background: var(--secondary-color);

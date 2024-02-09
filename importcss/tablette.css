@@ -46,6 +46,19 @@ header {
     width: 35vw;
 }
 
+.tableSectionMenuContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: repeat(4, 1fr);
+}
+.imagePlace2 {
+    grid-column: 2;
+    grid-row: 2;
+}
+.imagePlace4 {
+    grid-column: 2;
+    grid-row: 4;
+}
 
 /* horaire et localisation */
 .horaireEtLocalisation {

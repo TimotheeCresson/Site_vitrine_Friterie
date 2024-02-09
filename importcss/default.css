@@ -9,4 +9,34 @@
     --secondary-color: rgb(255, 255, 255);
     --title-size: 2rem;
     --text-size: 1em;
+    --police-Raleway-Bold : "Raleway-Bold";
+    --police-Raleway-Regular : "Raleway-Regular";
+    --police-Raleway-SemiBold : "Raleway-SemiBold";
+}
+
+@font-face {
+    font-family: "Raleway-Bold";
+    src: url("../font/Raleway-Bold.ttf");
+}
+@font-face {
+    font-family: "Raleway-Regular";
+    src: url("../font/Raleway-Regular.ttf");
+}
+@font-face {
+    font-family: "Raleway-SemiBold";
+    src: url("../font/Raleway-SemiBold.ttf");
+}
+
+h1 {
+    font-family: var(--police-Raleway-SemiBold);
+}
+h3 {
+    font-family: var(--police-Raleway-SemiBold);
+}
+h4 {
+    font-family: var(--police-Raleway-SemiBold);
+    color: var(--secondary-color);
+    text-align: center;
+    text-transform: capitalize;
+    margin-bottom: 5px;
 }

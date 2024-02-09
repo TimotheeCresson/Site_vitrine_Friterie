@@ -35,7 +35,8 @@ const app = Vue.createApp({
       methods: {
         toggleMenu() {
           this.isMenuOpen = !this.isMenuOpen;
-          document.body.classList.toggle('menu-open', this.isMenuOpen);
+          /* On cible notre élément html */
+          document.documentElement.classList.toggle('menu-open', this.isMenuOpen);
         },
         getRandomImage() {
           // on filtre nos images dispos avec filter qui crée un nouveau tableau contenant uniquement les images qui ne sont pas encore attribuées à un triangle spécifique, aisni une image sélectionnée alétoirement ne sera pas utilisé par 2 mêmes triangles. (some = vérifie si au moins un élément remplit la condition qui est entre ())
@@ -65,7 +66,7 @@ const app = Vue.createApp({
               // défilement fluide
               behavior: 'smooth',
             });
-            document.body.classList.remove('menu-open');
+            document.documentElement.classList.remove('menu-open');
             // on le met à false pour que Vue considère notre menu fermé pour la réactivité de ce dernier
             this.isMenuOpen = false;
           }
