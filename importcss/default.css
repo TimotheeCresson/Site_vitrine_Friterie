@@ -26,6 +26,9 @@
     font-family: "Raleway-SemiBold";
     src: url("../font/Raleway-SemiBold.ttf");
 }
+body {
+    overflow-x: hidden;
+}
 
 h1 {
     font-family: var(--police-Raleway-SemiBold);
