@@ -140,13 +140,14 @@ const app = Vue.createApp({
         }
     },
     animateDrag() {
-        if (this.isDragging) {
-            this.$forceUpdate(); // Forcer la mise à jour de la vue
-            this.animationFrameId = requestAnimationFrame(this.animateDrag);
+      if (this.isDragging) {
+        this.translateValue += (event.clientX - this.startX) * 0.1; // Ajustez le facteur de vitesse selon vos préférences
+        this.startX = event.clientX;
+        this.$forceUpdate();
+        this.animationFrameId = requestAnimationFrame(this.animateDrag);
         }
-    },
-
       },
+    },
 
       mounted() {
         // on met un interval de temps pour les changements d'images
