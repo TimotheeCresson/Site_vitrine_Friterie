@@ -129,3 +129,7 @@ td ul {
 .reservation {
     margin-top: 15px;
 }
+.reservation a {
+    text-decoration: none;
+    color: var(--secondary-color);
+}

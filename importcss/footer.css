@@ -22,8 +22,10 @@ footer {
     color: var(--secondary-color);
     font-family: var(--police-Raleway-Regular);
 }
-.coordonnees p {
+.coordonnees a {
     margin-bottom: 20px;
+    text-decoration: none;
+    color: var(--secondary-color);
 }
 .barreMid {
     background: var(--secondary-color);
