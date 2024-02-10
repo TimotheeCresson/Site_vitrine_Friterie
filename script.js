@@ -3,14 +3,15 @@
 const app = Vue.createApp({
     data() {
         return {
+          /* Menu */
+          isMenuOpen: false,
+          /* Défilement menu */
           startX: 0,
           isDragging: false,
-          isMenuOpen: false,
-          halfWindowWidth: window.innerWidth / 2,
           animationFrameId: null,
           accumulatedDistance: 0,
-          isInsideDiv: false,
           mouseButtonPressed: false,
+
           /* liste de nos images (pour les changements dans les triangles) */
           images: [
             './img/burger.jpg',
@@ -93,7 +94,7 @@ const app = Vue.createApp({
               this.currentIndex++;
               this.updateSlider();
           } else {
-              // Facultatif : Si vous voulez revenir à la première image lorsque vous êtes à la dernière
+              
               this.currentIndex = 0;
               this.updateSlider();
           }
@@ -107,6 +108,7 @@ const app = Vue.createApp({
       updateSlider() {
           this.translateValue = -this.currentIndex * 80 + '%';
       },
+      
       startDrag(event) {
         this.startX = event.clientX;
         this.isDragging = true;
@@ -141,8 +143,9 @@ const app = Vue.createApp({
     },
     animateDrag() {
       if (this.isDragging) {
-        this.translateValue += (event.clientX - this.startX) * 0.1; // Ajustez le facteur de vitesse selon vos préférences
-        this.startX = event.clientX;
+        this.translateValue += (clientX - this.startX) * 0.1; 
+        // Ajustez le facteur de vitesse selon vos préférences
+        this.startX = clientX;
         this.$forceUpdate();
         this.animationFrameId = requestAnimationFrame(this.animateDrag);
         }
