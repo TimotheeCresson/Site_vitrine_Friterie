@@ -38,10 +38,13 @@
 
 
         <!-- Section Menu -->
-        <div class="slider-container" 
-     @mousedown.prevent="startDrag" 
-     @mousemove="drag" 
-     @mouseup="endDrag">
+        <div class="slider-container"
+            @mousedown.prevent="startDrag"
+            @mousemove="drag"
+            @mouseup="endDrag"
+            @touchstart.prevent="startDrag"
+            @touchmove="drag"
+            @touchend="endDrag">
             <h2>La carte</h2>
             <div class="slider-track" :style="{ transform: 'translateX(' + translateValue + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider, index) in imageSliders" :key="index">
