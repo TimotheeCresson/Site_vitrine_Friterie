@@ -108,27 +108,45 @@ const app = Vue.createApp({
       updateSlider() {
           this.translateValue = -this.currentIndex * 80 + '%';
       },
-      
+
       startDrag(event) {
-        this.startX = event.clientX;
+        // Utilisez event.touches pour les événements tactiles, sinon utilisez event
+        const touch = event.touches ? event.touches[0] : event;
+        this.startX = touch.clientX;
         this.isDragging = true;
         this.accumulatedDistance = 0;
-        this.animationFrameId = requestAnimationFrame(this.animateDrag); // Utiliser requestAnimationFrame
-        window.addEventListener('mousemove', this.drag);
+        this.animationFrameId = requestAnimationFrame(this.animateDrag);
+        
+        // Utilisez 'mousemove' pour la souris, 'touchmove' pour le toucher
+        const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+        const endEvent = event.touches ? 'touchend' : 'mouseup';
+        
+        window.addEventListener(moveEvent, this.drag);
+        window.addEventListener(endEvent, this.endDrag);
     },
+    
     drag(event) {
+        const touch = event.touches ? event.touches[0] : event;
         if (this.isDragging) {
-            const delta = event.clientX - this.startX;
+            const delta = touch.clientX - this.startX;
             this.accumulatedDistance += Math.abs(delta);
             this.translateValue += delta;
-            this.startX = event.clientX;
+            this.startX = touch.clientX;
         }
     },
+    
     endDrag() {
         if (this.isDragging) {
             this.isDragging = false;
-            window.removeEventListener('mousemove', this.drag);
-            cancelAnimationFrame(this.animationFrameId); // Annuler l'animation frame
+            
+            // Utilisez 'mousemove' pour la souris, 'touchmove' pour le toucher
+            const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+            const endEvent = event.touches ? 'touchend' : 'mouseup';
+            
+            window.removeEventListener(moveEvent, this.drag);
+            window.removeEventListener(endEvent, this.endDrag);
+            cancelAnimationFrame(this.animationFrameId);
+            
             const minDistanceToChangeImage = 50;
             if (this.accumulatedDistance > minDistanceToChangeImage) {
                 if (this.translateValue > 0) {
@@ -142,14 +160,14 @@ const app = Vue.createApp({
         }
     },
     animateDrag() {
+      const touch = event.touches ? event.touches[0] : event;
       if (this.isDragging) {
-        this.translateValue += (clientX - this.startX) * 0.1; 
-        // Ajustez le facteur de vitesse selon vos préférences
-        this.startX = clientX;
-        this.$forceUpdate();
-        this.animationFrameId = requestAnimationFrame(this.animateDrag);
-        }
-      },
+          this.translateValue += (touch.clientX - this.startX) * 0.1;
+          this.startX = touch.clientX;
+          this.$forceUpdate();
+          this.animationFrameId = requestAnimationFrame(this.animateDrag);
+      }
+  },
     },
 
       mounted() {
