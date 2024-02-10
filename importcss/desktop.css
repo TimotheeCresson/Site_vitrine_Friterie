@@ -15,6 +15,11 @@ header {
     width: 35vw;
 }
 
+/* Menu */
+.slider-item {
+    flex: 0 0 30%;
+}
+
 /* horaires et localisation */
 .horaireEtLocalisation {
     margin-top: 30px;

@@ -1,67 +1,53 @@
 /* Menu */
-.tableSectionMenuContainer {
-    display: flex;
-    flex-direction: column;
-}
-.tableMenu {
-    height: 100%;
-}
-.tableMenuContainer {
-    background-color: var(--primary-color);
-    padding: 10px;
-    height: 100%;
-}
-table {
-    border-collapse: collapse;
-    height: 90%;
+
+.slider-container {
+    position: relative;
     width: 100%;
+    margin-top: 20px;
+    overflow: hidden;
 }
-tbody {
-    border: 5px solid var(--secondary-color);
-}
-.table1 {
-    border-bottom: 3px solid var(--secondary-color); 
-    border-left: 3px solid var(--secondary-color);
-}
-.table2{
-    border-bottom: 3px solid var(--secondary-color); 
-    border-top: 3px solid var(--secondary-color);
-    border-right: 3px solid var(--secondary-color);
-}
-.table3 {
-    border-bottom: 3px solid var(--secondary-color); 
-    border-top: 3px solid var(--secondary-color);
-    border-left: 3px solid var(--secondary-color);
-}
-.table4 { 
-    border-top: 3px solid var(--secondary-color);
-    border-right: 3px solid var(--secondary-color);
-}
-td {
-    border: 1px solid var(--secondary-color);
-    padding: 8px;
+.slider-container h2 {
+    color: rgb(226, 69, 12);
     text-align: center;
-    color: var(--secondary-color);
-    font-family: var(--police-Raleway-Regular);
-    font-size: 0.8em;
-}
-td ul {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    list-style-position: inside;
-}
-.imageMenu img {
-    height: 100%;
-    width: 100%;
-}
-.menuContainer h1 {
-    font-size: var(--title-size);
-    color: rgb(214, 61, 5);
+    text-transform: capitalize;
     margin: 30px 0 20px 0;
-    text-align: center;
 }
+.slider-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slider-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Aligner l'image à gauche */
+    flex: 0 0 80%;
+    position: relative;
+}
+
+.slider-item img {
+    width: 200px;
+    height: 400px;
+    object-fit: cover;
+}
+
+.caption {
+    margin-top: 10px; /* Ajoutez une marge pour séparer l'image du texte */
+}
+
+.buttonSlider {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    margin: 20px;
+    background-color: transparent;
+}
+.buttonSlider a {
+    font-size: 30px;
+    color: darkgoldenrod;
+    text-decoration: none;
+}
+
 
 /* Horaires */
 .horaires {

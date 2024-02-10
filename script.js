@@ -3,7 +3,14 @@
 const app = Vue.createApp({
     data() {
         return {
+          startX: 0,
+          isDragging: false,
           isMenuOpen: false,
+          halfWindowWidth: window.innerWidth / 2,
+          animationFrameId: null,
+          accumulatedDistance: 0,
+          isInsideDiv: false,
+          mouseButtonPressed: false,
           /* liste de nos images (pour les changements dans les triangles) */
           images: [
             './img/burger.jpg',
@@ -16,7 +23,7 @@ const app = Vue.createApp({
             './img/menu4.jpg',
             './img/panini.jpg',
           ],
-          /* on liste nos triangles avec un id et une class */
+            /* on liste nos triangles avec un id et une class */
           triangles: [
             { id: 1, class: 'triangle1', alt: 'Triangle 1', image: '' },
             { id: 2, class: 'triangle2', alt: 'Triangle 2', image: '' },
@@ -24,6 +31,16 @@ const app = Vue.createApp({
             { id: 4, class: 'triangle4', alt: 'Triangle 4', image: '' },
             { id: 5, class: 'triangle5', alt: 'Triangle 5', image: '' },
           ],
+          currentIndex: 0,
+          translateValue: 0,
+          imageSliders: [ { image: './img/burger.jpg', caption: 'Salade, tomate, oignon' },
+          { image: './img/frite.jpg', caption: 'Salade, tomate, cheddar' },
+          { image: './img/pizza.jpg', caption: 'salade, tomate, steack' },
+          { image: './img/pizza.jpg', caption: 'salade, tomate, steack' },
+          { image: './img/pizza.jpg', caption: 'salade, tomate, steack' },
+          { image: './img/pizza.jpg', caption: 'salade, tomate, steack' },
+          { image: './img/pizza.jpg', caption: 'salade, tomate, steack' },
+        ],
         };
       },
       /* propriété de calcul */
@@ -71,8 +88,66 @@ const app = Vue.createApp({
             this.isMenuOpen = false;
           }
         },
-      
+        nextSlide() {
+          if (this.currentIndex < this.images.length - 1) {
+              this.currentIndex++;
+              this.updateSlider();
+          } else {
+              // Facultatif : Si vous voulez revenir à la première image lorsque vous êtes à la dernière
+              this.currentIndex = 0;
+              this.updateSlider();
+          }
       },
+      prevSlide() {
+          if (this.currentIndex > 0) {
+              this.currentIndex--;
+              this.updateSlider();
+          }
+      },
+      updateSlider() {
+          this.translateValue = -this.currentIndex * 80 + '%';
+      },
+      startDrag(event) {
+        this.startX = event.clientX;
+        this.isDragging = true;
+        this.accumulatedDistance = 0;
+        this.animationFrameId = requestAnimationFrame(this.animateDrag); // Utiliser requestAnimationFrame
+        window.addEventListener('mousemove', this.drag);
+    },
+    drag(event) {
+        if (this.isDragging) {
+            const delta = event.clientX - this.startX;
+            this.accumulatedDistance += Math.abs(delta);
+            this.translateValue += delta;
+            this.startX = event.clientX;
+        }
+    },
+    endDrag() {
+        if (this.isDragging) {
+            this.isDragging = false;
+            window.removeEventListener('mousemove', this.drag);
+            cancelAnimationFrame(this.animationFrameId); // Annuler l'animation frame
+            const minDistanceToChangeImage = 50;
+            if (this.accumulatedDistance > minDistanceToChangeImage) {
+                if (this.translateValue > 0) {
+                    this.currentIndex = Math.max(0, this.currentIndex - 1);
+                } else {
+                    this.currentIndex = Math.min(this.imageSliders.length - 1, this.currentIndex + 1);
+                }
+            } else {
+                this.translateValue = 0;
+            }
+        }
+    },
+    animateDrag() {
+        if (this.isDragging) {
+            this.$forceUpdate(); // Forcer la mise à jour de la vue
+            this.animationFrameId = requestAnimationFrame(this.animateDrag);
+        }
+    },
+
+      },
+
       mounted() {
         // on met un interval de temps pour les changements d'images
         this.updateTriangles();

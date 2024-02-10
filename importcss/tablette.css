@@ -60,6 +60,14 @@ header {
     grid-row: 4;
 }
 
+
+/* Menu */
+.slider-item {
+    flex: 0 0 40%;
+}
+
+
+
 /* horaire et localisation */
 .horaireEtLocalisation {
     display: grid;
