@@ -1,54 +1,136 @@
 /* Menu */
+/* je nomme mes grid-area pour mon grid-template-areas */
+.item1 {
+    grid-area: item1;
+}
+.item2 {
+    grid-area: item2;
+}
+.item3 {
+    grid-area: item3;
+}
+.item4 {
+    grid-area: item4;
+}
+.item5 {
+    grid-area: item5;
+}
+.item6 {
+    grid-area: item6;
+}
+.items7 {
+    grid-area: item7;
+}
+.slider-grid {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.slider-grid h3 {
+    text-align: center;
+}
 
-.slider-container {
+.iconeMenu, 
+.iconeMenu3 {
+    width: 50px;
+    height: 50px;
+}
+.iconeMenu2,
+.iconeMenu4 {
+    width: 100px;
+    height: 100px;
+}
+
+.slider-track1, 
+.slider-track2, 
+.slider-track3, 
+.slider-track4 {
+    cursor: grab;
+    display: grid;
+    place-items: center; /* Centre les éléments dans la grille */
+    /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  */
     position: relative;
     width: 100%;
     margin-top: 20px;
-    overflow: hidden;
+    height: 100%; /* Ajustez la hauteur selon vos besoins */
+    grid-template-areas:
+        "item1 item2 item3 item4 item5 item6";
+    grid-template-columns: repeat(6, 1fr); 
+    transition: transform 0.3s ease;
 }
+.slider-track3 {
+    grid-template-areas:
+    "item1 item2 item3 item4 item5 item6 item7";
+    grid-template-columns: repeat(7, 1fr);
+}
+.slider-track1.dragging,
+.slider-track2.dragging,
+.slider-track3.dragging, 
+.slider-track4.dragging {
+    cursor: grabbing;
+}
+.slider2, 
+.slider3, 
+.slider4 {
+    margin-top: 30px;
+}
+
 .slider-container h2 {
     color: rgb(226, 69, 12);
     text-align: center;
     text-transform: capitalize;
     margin: 30px 0 20px 0;
 }
-.slider-track {
-    display: flex;
-    transition: transform 0.3s ease;
-}
 
 .slider-item {
+    position: relative;
     display: flex;
     flex-direction: column;
-    align-items: flex-start; /* Aligner l'image à gauche */
-    flex: 0 0 80%;
-    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 280px;
+    overflow: hidden;
+    transform: skewX(-10deg); /* Inclinaison en hauteur, ajustez l'angle selon vos préférences */
+    padding: 0 30px;
 }
 
 .slider-item img {
-    width: 200px;
+    width: 100%;
     height: 400px;
+    max-width: 250px;
     object-fit: cover;
+    border: 2px solid red;
 }
 
+.nameDish {
+    text-align: center;
+    color: rgb(161, 40, 40);
+    font-size: 1.2em;
+    font-weight: bold;
+}
 .caption {
     margin-top: 10px; /* Ajoutez une marge pour séparer l'image du texte */
 }
-
-.buttonSlider {
+.price {
+    position: absolute;
+    bottom: 90px;
+    right: 5px;
     display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    margin: 20px;
-    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(226, 69, 12);
+    color: var(--secondary-color);
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
 }
-.buttonSlider a {
-    font-size: 30px;
-    color: darkgoldenrod;
-    text-decoration: none;
+.priceForPizza {
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    font-size: 0.8em;
 }
-
-
 /* Horaires */
 .horaires {
     display: flex;
