@@ -107,12 +107,12 @@
     user-select: none;
 }
 
-.slider-item img {
-    width: 100%;
-    height: 400px;
-    max-width: 250px;
-    object-fit: cover;
-    border: 2px solid red;
+.background-image {
+    width: 100%; /* ou définissez la largeur que vous souhaitez */
+    height: 400px; /* ou définissez la hauteur que vous souhaitez */
+    background-size: cover; /* ou ajustez selon vos besoins */
+    background-position: center; /* ou ajustez selon vos besoins */
+    background-repeat: no-repeat;
 }
 
 .nameDish {
@@ -214,12 +214,132 @@
     color: var(--secondary-color);
 }
 
-/* Sauces */
-.sauceContainer {
+/* Les frites */
+.friteContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+ul {
+    display: block;
+    clear: both;
+    list-style: none;
+    padding: 50px 0;
+    text-align: center;
+}
+li {
+    display: block;
+    margin: 0 0 30px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}
+ul li:first-child img{
+    width: 50px;
+    height: 50px;
+}
+ul li:nth-child(2) img{
+    width: 75px;
+    height: 75px;
+}
+
+ul li:last-child img{
+    width: 100px;
+    height: 100px;
+}
+.priceFrite {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* Les boissons */
+
+.menu-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+
+.headerBoisson {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.headerBoisson img {
+    height: 70px;
+    width: 70px;
+}
+.drink-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    margin: 10px;
+    width: 300px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.drink-card:hover {
+    transform: scale(1.05);
+}
+
+.drink-image {
+    width: 100%;
+    height: 150px;
+    background-size: contain; 
+    background-position: center; 
+    background-repeat: no-repeat;
+}
+
+.drink-details {
+    padding: 15px;
+    text-align: center;
+}
+
+.drink-detail sh3 {
+    margin: 0;
+}
+
+.drink-details p {
+    color: var(--secondary-color);
+}
+
+.priceBoisson {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+}
+
+
+/* Sauces */
+.sauceContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    background: rgb(240, 238, 238);
+    padding: 20px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
 }
 .sauceContainer img {
     width: 80px;
@@ -227,24 +347,21 @@
 }
 .sauceContainer p {
     text-align: center;
+    margin: 5px;
 }
-.sauce ul {
+.cadreSauce {
+    background: lightgoldenrodyellow;
+    padding: 20px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+}
+.sauceList {
+    width: 100%;
+}
+.sauceList ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: rgb(161, 40, 40);
     list-style: none;
-}
-
-.test {
-    background: url("./../img/burger.jpg");
-    height: 200px;
-    width: 200px;
-}
-.background-image {
-    width: 100%; /* ou définissez la largeur que vous souhaitez */
-    height: 400px; /* ou définissez la hauteur que vous souhaitez */
-    background-size: cover; /* ou ajustez selon vos besoins */
-    background-position: center; /* ou ajustez selon vos besoins */
-    background-repeat: no-repeat;
+    flex-wrap: wrap;
 }

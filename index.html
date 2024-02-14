@@ -65,7 +65,7 @@
                     <div class="slider-track2" :style="{ transform: 'translateX(' + translateValue2 + 'px)' }">
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
-                            <img :src="imageSlider2.image" alt="Slider Image">
+                            <div :style="{ backgroundImage: 'url(' + imageSlider2.image + ')' }" class="background-image"></div>
                             <span class="nameDish">{{ imageSlider2.nameDish }}</span>
                             <span class="caption">{{ imageSlider2.caption }}</span>
                         </div>
@@ -83,7 +83,7 @@
             <div class="slider-track3" :style="{ transform: 'translateX(' + translateValue3 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
                     <span class="price priceForPizza">{{ imageSlider3.price }}</span>
-                    <img :src="imageSlider3.image" alt="Slider Image">
+                    <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-image"></div>
                     <span class="nameDish">{{ imageSlider3.nameDish }}</span>
                     <span class="caption">{{ imageSlider3.caption }}</span>
                 </div>
@@ -99,7 +99,7 @@
             <div class="slider-track4" :style="{ transform: 'translateX(' + translateValue4 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
                     <span class="price priceForPizza">{{ imageSlider4.price }}</span>
-                    <img :src="imageSlider4.image" alt="Slider Image">
+                    <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-image"></div>
                     <span class="nameDish">{{ imageSlider4.nameDish }}</span>
                     <span class="caption">{{ imageSlider4.caption }}</span>
                 </div>
@@ -107,23 +107,90 @@
         </div>
     </div>
 
-
-    <div class="sauceContainer">
-        <img src="./img/sauce.jpg" alt="sauce">
-        <h2>Les sauces</h2>
-        <p>Afin d'accompagner vos plats, je vous propose différentes sauces: </p>
-        <div class="sauce">
+    <div class="friteContainer">
+        <h4>Les frites</h4>
+        
             <ul>
-                <li>Américaine <br>Andalouse <br>Algérienne <br>Barbecue <br> Bourgy-Burger <br> Cocktail</li>
-                <li>Hannibal <br> Harissa <br> Ketchup <br> Mayonnaise <br> Oignons <br> Pitta</li>
-                <li>Poivre <br> Provençale <br> Samouraï <br> Picallili <br> Ch'ti <br> Oignons-Poivrons</li>
+                <li><img src="./img/cornetFrite.jpg" alt="petiteFrite">
+                <p class="priceFrite">2,50 €</p></li>
+                <li><img src="./img/cornetFrite.jpg" alt="moyenneFrite">
+                <p class="priceFrite">3,00 €</p></li>
+                <li><img src="./img/cornetFrite.jpg" alt="grandeFrite">
+                <p class="priceFrite">3,50 €</p></li>
             </ul>
-        </div>
+        
     </div>
 
 
 
 
+
+
+
+    <!-- Les boissons -->
+    <div class="headerBoisson">
+        <img src="./img/iconeBoisson.png" alt="iconeBoisson">
+        <h4>Les boissons</h4>
+    </div>
+
+    <div class="menu-container">
+        <div class="drink-card">
+          <div class="drink-image" style="background-image: url('./img/Boissons33cl.jpg');"></div>
+          <div class="drink-details">
+            <h3>Boisson (33cl)</h3>
+            <p>Boisson rafraîchissante</p>
+            <p class="priceBoisson">1,50 € (33cl) <br> 3,00 € (55cl)</p>
+          </div>
+        </div>
+
+        <div class="drink-card">
+            <div class="drink-image" style="background-image: url('./img/leffe33cl.jpg');"></div>
+            <div class="drink-details">
+              <h3>Leffe</h3>
+              <p>Bière rafraîchissante</p>
+              <p class="priceBoisson">2,00 € (33cl) <br> 1,50 € (25cl)</p>
+            </div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image" style="background-image: url('./img/vinRougeRosé.jpg');"></div>
+            <div class="drink-details">
+              <h3>Vin rouge ou rosé (75cl)</h3>
+              <p>Vin rafraîchissant</p>
+              <p class="priceBoisson">6,00 €</p>
+            </div>
+          </div>
+
+          <div class="drink-card">
+            <div class="drink-image" style="background-image: url('./img/eau50cl.jpg');"></div>
+            <div class="drink-details">
+              <h3>Eau 50cl</h3>
+              <p>Boisson rafraîchissante</p>
+              <p class="priceBoisson">1,00 €</p>
+            </div>
+          </div>
+      </div>
+
+
+    <!-- les sauces -->
+    <div class="sauceContainer">
+        <img src="./img/sauce.jpg" alt="sauce">
+        <h4>Les sauces</h4>
+        <div class="cadreSauce">
+            <p>Afin d'accompagner vos plats, je vous propose différentes sauces: </p>
+            <div class="sauceList">
+                <ul>
+                    <li>Américaine <br>Andalouse <br>Algérienne <br>Barbecue <br> Bourgy-Burger <br> Cocktail</li>
+                    <li>Hannibal <br> Harissa <br> Ketchup <br> Mayonnaise <br> Oignons <br> Pitta</li>
+                    <li>Poivre <br> Provençale <br> Samouraï <br> Picallili <br> Ch'ti <br> Oignons-Poivrons</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+    
 
 
 
