@@ -130,8 +130,6 @@ const app = Vue.createApp({
           }
         },
         startDrag(event, sliderNumber) {
-          const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
       
           const sliderTrackSelector = `.slider-track${sliderNumber}`;

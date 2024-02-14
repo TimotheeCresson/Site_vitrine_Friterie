@@ -35,7 +35,9 @@
               <img :src="triangle.image" :alt="triangle.alt">
             </div>
         </div>
-
+        <div class="test">
+            
+        </div>
 
         <!-- Section Menu -->
         <div class="slider-container" id="menu">
@@ -47,7 +49,7 @@
                 <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
                     <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
                         <span class="price">{{ imageSlider1.price }}</span>
-                        <img :src="imageSlider1.image" alt="Slider Image">
+                        <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-image"></div>
                         <span class="nameDish">{{ imageSlider1.nameDish }}</span>
                         <span class="caption">{{ imageSlider1.caption }}</span>
                     </div>

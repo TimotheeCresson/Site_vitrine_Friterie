@@ -104,6 +104,7 @@
     overflow: hidden;
     transform: skewX(-10deg); /* Inclinaison en hauteur, ajustez l'angle selon vos préférences */
     padding: 0 30px;
+    user-select: none;
 }
 
 .slider-item img {
@@ -224,10 +225,26 @@
     width: 80px;
     height: 80px;
 }
+.sauceContainer p {
+    text-align: center;
+}
 .sauce ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
     color: rgb(161, 40, 40);
     list-style: none;
+}
+
+.test {
+    background: url("./../img/burger.jpg");
+    height: 200px;
+    width: 200px;
+}
+.background-image {
+    width: 100%; /* ou définissez la largeur que vous souhaitez */
+    height: 400px; /* ou définissez la hauteur que vous souhaitez */
+    background-size: cover; /* ou ajustez selon vos besoins */
+    background-position: center; /* ou ajustez selon vos besoins */
+    background-repeat: no-repeat;
 }
