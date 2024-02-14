@@ -40,7 +40,7 @@
         <!-- Section Menu -->
         <div class="slider-container" id="menu">
             <h2>La carte</h2>
-            <div class="slider-grid slider1" @mousedown.prevent="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart.prevent="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
+            <div class="slider-grid slider1" @mousedown="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
                 <!-- ... contenu du premier slider -->
                 <img class="iconeMenu" src="./img/sandwich.jpg" alt="iconeSandwich">
                 <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
@@ -59,7 +59,7 @@
                 <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
             </div>
 
-            <div class="slider-grid slider2" @mousedown.prevent="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart.prevent="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
+            <div class="slider-grid slider2" @mousedown="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
                     <div class="slider-track2" :style="{ transform: 'translateX(' + translateValue2 + 'px)' }">
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
@@ -77,7 +77,7 @@
                 <h3>Pizzas</h3>
             </div>
 
-        <div class="slider-grid slider3" @mousedown.prevent="startDrag($event, 3)" @mousemove="drag($event, 3)" @mouseup="endDrag($event, 3)" @touchstart.prevent="startDrag($event,3)" @touchmove="drag($event, 3)" @touchend="endDrag($event, 3)">
+        <div class="slider-grid slider3" @mousedown="startDrag($event, 3)" @mousemove="drag($event, 3)" @mouseup="endDrag($event, 3)" @touchstart="startDrag($event,3)" @touchmove="drag($event, 3)" @touchend="endDrag($event, 3)">
             <div class="slider-track3" :style="{ transform: 'translateX(' + translateValue3 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
                     <span class="price priceForPizza">{{ imageSlider3.price }}</span>
@@ -93,7 +93,7 @@
             <h3>Paninis</h3>
         </div>
 
-        <div class="slider-grid slider4" @mousedown.prevent="startDrag($event, 4)" @mousemove="drag($event, 4)" @mouseup="endDrag($event, 4)" @touchstart.prevent="startDrag($event,4)" @touchmove="drag($event, 4)" @touchend="endDrag($event, 4)">
+        <div class="slider-grid slider4" @mousedown="startDrag($event, 4)" @mousemove="drag($event, 4)" @mouseup="endDrag($event, 4)" @touchstart="startDrag($event,4)" @touchmove="drag($event, 4)" @touchend="endDrag($event, 4)">
             <div class="slider-track4" :style="{ transform: 'translateX(' + translateValue4 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
                     <span class="price priceForPizza">{{ imageSlider4.price }}</span>
@@ -104,6 +104,28 @@
             </div>
         </div>
     </div>
+
+
+    <div class="sauceContainer">
+        <img src="./img/sauce.jpg" alt="sauce">
+        <h2>Les sauces</h2>
+        <p>Afin d'accompagner vos plats, je vous propose différentes sauces: </p>
+        <div class="sauce">
+            <ul>
+                <li>Américaine <br>Andalouse <br>Algérienne <br>Barbecue <br> Bourgy-Burger <br> Cocktail</li>
+                <li>Hannibal <br> Harissa <br> Ketchup <br> Mayonnaise <br> Oignons <br> Pitta</li>
+                <li>Poivre <br> Provençale <br> Samouraï <br> Picallili <br> Ch'ti <br> Oignons-Poivrons</li>
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
         <!-- Horaire et Localisation-->
 
         <div class="horaireEtLocalisation">
