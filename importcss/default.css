@@ -26,6 +26,10 @@
     font-family: "Raleway-SemiBold";
     src: url("../font/Raleway-SemiBold.ttf");
 }
+/* afin que mon menu ne soit pas déjà ouvert et que je ne puisse pas le fermer sur chrome, edge et explorer */
+html {
+    overflow-x: hidden;
+}
 body {
     overflow-x: hidden;
 }

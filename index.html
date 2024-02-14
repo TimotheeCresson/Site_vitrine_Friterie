@@ -39,12 +39,12 @@
 
 
         <!-- Section Menu -->
-        <div class="slider-container">
+        <div class="slider-container" id="menu">
             <h2>La carte</h2>
             <div class="slider-grid slider1" @mousedown.prevent="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart.prevent="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
                 <!-- ... contenu du premier slider -->
                 <img class="iconeMenu" src="./img/sandwich.jpg" alt="iconeSandwich">
-                <h3>Sandwichs Chauds (Sans supplément pour les crudité et sauce gratuite dans le pain)</h3>
+                <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
                 <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
                     <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
                         <span class="price">{{ imageSlider1.price }}</span>
@@ -58,7 +58,7 @@
 
         <div class="slider-grid slider2" @mousedown.prevent="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart.prevent="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
                 <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS">
-                <h3>Américains Sandwichs (Sans supplément pour les crudité et sauce gratuite dans le pain)</h3>
+                <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
                 <div class="slider-track2" :style="{ transform: 'translateX(' + translateValue2 + 'px)' }">
                     <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                         <span class="price">{{ imageSlider2.price }}</span>
