@@ -130,30 +130,45 @@ const app = Vue.createApp({
           }
         },
         startDrag(event, sliderNumber) {
-          event.preventDefault();
-          const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
-          const isDraggingKey = `isDragging${sliderNumber}`;
-      
-          const sliderTrackSelector = `.slider-track${sliderNumber}`;
-          console.log('Slider Track Selector:', sliderTrackSelector);
-          const sliderTrack = document.querySelector(sliderTrackSelector);
-          if (sliderTrack) {
-              sliderTrack.classList.add('dragging');
-          }
-          const touch = event.touches ? event.touches[0] : event;
-          this.startX = touch.clientX;
-          this.$data[isDraggingKey] = true;
-          this.accumulatedDistance = 0;
-          this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-      
-          const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-          const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
-          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
-          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
+    const sliderKey = `translateValue${sliderNumber}`;
+    const currentIndexKey = `currentIndex${sliderNumber}`;
+    const isDraggingKey = `isDragging${sliderNumber}`;
+
+    const sliderTrackSelector = `.slider-track${sliderNumber}`;
+    console.log('Slider Track Selector:', sliderTrackSelector);
+    const sliderTrack = document.querySelector(sliderTrackSelector);
+    if (sliderTrack) {
+      sliderTrack.classList.add('dragging');
+    }
+    const touch = event.touches ? event.touches[0] : event;
+    this.startX = touch.clientX;
+    this.startY = touch.clientY;
+    this.$data[isDraggingKey] = true;
+    this.accumulatedDistance = 0;
+    this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
+
+    const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+    const endEvent = event.touches ? 'touchend' : 'mouseup';
+
+    window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
+    window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
+    window.addEventListener('touchmove', this.handleVerticalScroll, { passive: false });
         },
-      
+        
+        handleVerticalScroll(event) {
+          const touch = event.touches ? event.touches[0] : event;
+          const deltaX = Math.abs(touch.clientX - this.startX);
+          const deltaY = Math.abs(touch.clientY - this.startY);
+        
+          // Autoriser le défilement vertical si le mouvement est principalement vertical
+          if (deltaY > deltaX) {
+            // Empêcher la propagation de l'événement au-delà du slider
+            event.stopPropagation();
+            return;
+          }
+        
+        },
+        
         drag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
@@ -163,9 +178,8 @@ const app = Vue.createApp({
           const deltaX = touch.clientX - this.startX;
           const deltaY = touch.clientY - this.startY;
         
-          // Check if the vertical movement is greater than horizontal movement
+          // Si le mouvement est principalement vertical, laisser le navigateur gérer le défilement
           if (Math.abs(deltaY) > Math.abs(deltaX)) {
-            // Vertical scrolling detected, let the browser handle it
             return;
           }
         
@@ -176,23 +190,24 @@ const app = Vue.createApp({
             this.startY = touch.clientY;
           }
         },
-      
+        
         endDrag(event, sliderNumber) {
           const sliderKey = `translateValue${sliderNumber}`;
           const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+        
           if (this.$data[isDraggingKey]) {
             document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
             this.$data[isDraggingKey] = false;
-      
+        
             const moveEvent = event.touches ? 'touchmove' : 'mousemove';
             const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
+        
             window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
             window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
+            window.removeEventListener('touchmove', this.handleVerticalScroll);
             cancelAnimationFrame(this.animationFrameId);
-      
+        
             // Limitez le déplacement à gauche (vers la première image)
             if (this.$data[sliderKey] > 0) {
               this.$data[currentIndexKey] = 0;
@@ -204,40 +219,29 @@ const app = Vue.createApp({
               this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
               this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
             }
-      
+        
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
             if (this.$data[currentIndexKey] === 0) {
               this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
             }
-      
+        
             if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
               this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
             }
           }
         },
+        
       
         animateDrag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-        
-          const deltaX = touch.clientX - this.startX;
-          const deltaY = touch.clientY - this.startY;
-        
-          // Check if the vertical movement is greater than horizontal movement
-          if (Math.abs(deltaY) > Math.abs(deltaX)) {
-            // Vertical scrolling detected, let the browser handle it
-            return;
-          }
-        
           if (this.$data[isDraggingKey]) {
-            this.$data[sliderKey] += deltaX * 0.9;
-            this.startX = touch.clientX;
-            this.startY = touch.clientY;
-            this.$forceUpdate();
+            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
+          this.startX = touch.clientX;
             this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-          }
-        },
+        }
+      },
     },
 
       mounted() {
