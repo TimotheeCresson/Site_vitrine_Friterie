@@ -129,60 +129,101 @@ const app = Vue.createApp({
             this.isMenuOpen = false;
           }
         },
+
+
         startDrag(event, sliderNumber) {
-          const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
-          const isDraggingKey = `isDragging${sliderNumber}`;
-      
-          const sliderTrackSelector = `.slider-track${sliderNumber}`;
-          console.log('Slider Track Selector:', sliderTrackSelector);
-          const sliderTrack = document.querySelector(sliderTrackSelector);
-          if (sliderTrack) {
-              sliderTrack.classList.add('dragging');
-          }
-          const touch = event.touches ? event.touches[0] : event;
-          this.startX = touch.clientX;
-          this.$data[isDraggingKey] = true;
-          this.accumulatedDistance = 0;
-          this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-      
-          const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-          const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
-          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
-          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
+    const isDraggingKey = `isDragging${sliderNumber}`;
+
+    const sliderTrackSelector = `.slider-track${sliderNumber}`;
+    console.log('Slider Track Selector:', sliderTrackSelector);
+    const sliderTrack = document.querySelector(sliderTrackSelector);
+    if (sliderTrack) {
+      sliderTrack.classList.add('dragging');
+    }
+    // on vérifie si l'événement est un événement tactile et si c'est le cas on récupère le premier point de contact sinon on utilise l'événement event
+    const touch = event.touches ? event.touches[0] : event;
+    // on enregistre les coordonnées du point de contact pour suivre l'avancement dans le slider
+    this.startX = touch.clientX;
+    this.startY = touch.clientY;
+    
+    // on met à jour notre propriété isDragging pour dire que le défilement est en cours
+    this.$data[isDraggingKey] = true;
+    this.accumulatedDistance = 0;
+
+    // planifie l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
+    this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
+
+    // on définie les noms des événements de défilement si on est en tactile ou souris
+    const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+    const endEvent = event.touches ? 'touchend' : 'mouseup';
+
+    // on ajoute des écouteurs d'événements de déplacement, de fin de glissement et de défilement vertical à la fenêtre.
+    // window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
+    // window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
+    // window.addEventListener('touchmove', this.handleVerticalScroll, { passive: false });
         },
-      
+        
+        handleVerticalScroll(event) {
+          // on calcule les distances horizontales et verticales parcourues pendant le défilement
+          const touch = event.touches ? event.touches[0] : event;
+          //Math.abs (mesure la distance entre deux points sur une échelle numérique, indépendamment de la direction pour toujours avoir une distance positive)
+          // on calcule la différence absolue entre  entre la coordonnée horizontale actuelle du point de contact et la coordonnée horizontale initiale pour avoir la distance horizontal parcourue depuis le début
+          const deltaX = Math.abs(touch.clientX - this.startX);
+          const deltaY = Math.abs(touch.clientY - this.startY);
+        
+          // Autoriser le défilement vertical si le mouvement est principalement vertical
+          if (deltaY > deltaX) {
+            // Empêcher la propagation de l'événement au-delà du slider
+            console.log('Vertical scroll detected inside the slider. Stopping event propagation.');
+            event.stopPropagation();
+            return;
+          }
+        
+        },
+        
         drag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+        
+          // on calcule les variations horizontales et verticales pendant le glissement.
+          const deltaX = touch.clientX - this.startX;
+          const deltaY = touch.clientY - this.startY;
+        
+          // Si le mouvement est principalement vertical, laisser le navigateur gérer le défilement
+          if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            console.log('Vertical scroll detected. Allowing browser to handle scrolling.');
+            return;
+          }
+        
+          //Si le glissement est en cours (isDraggingKey est vrai), les propriétés du slider sont mises à jour en fonction du mouvement horizontal.
           if (this.$data[isDraggingKey]) {
-            const delta = touch.clientX - this.startX;
-            this.accumulatedDistance += Math.abs(delta);
-            this.$data[sliderKey] += delta;
+            this.accumulatedDistance += Math.abs(deltaX);
+            this.$data[sliderKey] += deltaX;
             this.startX = touch.clientX;
+            this.startY = touch.clientY;
           }
         },
-      
+        
         endDrag(event, sliderNumber) {
           const sliderKey = `translateValue${sliderNumber}`;
           const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+        
+          // Si le glissement est en cours, la classe 'dragging' est retirée du slider et l'état de glissement est réinitialisé.
           if (this.$data[isDraggingKey]) {
             document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
             this.$data[isDraggingKey] = false;
-      
+        
             const moveEvent = event.touches ? 'touchmove' : 'mousemove';
             const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
+        
+            // on retire les événements
             window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
             window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
+            window.removeEventListener('touchmove', this.handleVerticalScroll);
             cancelAnimationFrame(this.animationFrameId);
-      
+        
             // Limitez le déplacement à gauche (vers la première image)
             if (this.$data[sliderKey] > 0) {
               this.$data[currentIndexKey] = 0;
@@ -194,30 +235,32 @@ const app = Vue.createApp({
               this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
               this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
             }
-      
+        
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
             if (this.$data[currentIndexKey] === 0) {
               this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
             }
-      
+        
             if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
               this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
             }
           }
         },
+        
       
         animateDrag(event, sliderNumber) {
+          // on récupére les coordonnées et les clés nécessaires.
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+
+          //Si le glissement est en cours, la position du slider est ajustée pendant l'animation avec une diminution de vitesse, et rendre l'animation plus fluide.
           if (this.$data[isDraggingKey]) {
             this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
-            this.startX = touch.clientX;
-            this.$forceUpdate();
+          this.startX = touch.clientX;
             this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-          }
-        },
+        }
+      },
     },
 
       mounted() {
