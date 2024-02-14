@@ -7,12 +7,21 @@ const app = Vue.createApp({
           isMenuOpen: false,
           /* Défilement menu */
           startX: 0,
-          isDragging: false,
+  
           animationFrameId: null,
           accumulatedDistance: 0,
-          currentIndex: 0,
-          translateValue: 0,
-          translateValue: 0,
+          translateValue1: 0,
+          translateValue2: 0,
+          translateValue3: 0,
+          translateValue4: 0,
+          currentIndex1: 0,
+          currentIndex2: 0,
+          currentIndex3: 0,
+          currentIndex4: 0,
+          isDragging1: false,
+          isDragging2: false,
+          isDragging3: false,
+          isDragging4: false,
           mouseButtonPressed: false,
 
           /* liste de nos images (pour les changements dans les triangles) */
@@ -36,7 +45,7 @@ const app = Vue.createApp({
             { id: 5, class: 'triangle5', alt: 'Triangle 5', image: '' },
           ],
           
-          imageSliders: [ 
+          imageSliders1: [ 
           { id:1, image: './img/burger.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwichs fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €' },
           { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwichs brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €' },
           { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs crizly', price: '6,00 €' },
@@ -46,12 +55,32 @@ const app = Vue.createApp({
         ],
         
         imageSliders2: [
-          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwichs fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwichs brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs crizly', price: '6,00 €' },
-          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs kebab', price: '6,50 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs savoyard', price: '7,00 €' },
-          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs texan', price: '8,00 €' },
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €' },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/fromage/crabe/cervelas', price: '7,00 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains cervelas/mexicanos/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €' },
+          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €' },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €' },
+          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €' },
+        ],
+
+
+        imageSliders3: [
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Pizza 4 fromages', price: 'petite: 7,00 € grande: 9,00 €' },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Pizza jambon-fromage', price: 'petite: 7,00 € grande: 9,00 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-oignons', price: 'petite: 7,00 € grande: 9,00 €' },
+          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza chorizo', price: 'petite: 7,00 € grande: 9,00 €' },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-champignons', price: 'petite: 7,00 € grande: 9,60 €' },
+          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza fruits de mer`, price: 'petite: 7,00 € grande: 9,60 €' },
+          { id:7,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza jambon-anchois`, price: 'petite: 7,00 € grande: 9,60 €' },
+        ],
+
+        imageSliders4: [
+          { id:1, image: './img/pizza.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €' },
+          { id:2, image: './img/frite.jpg', caption: 'mozzarella + tomates + jambon + emmental', nameDish:'Panini jambon-fromage', price: '5,50 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €' },
+          { id:4,image: './img/burger.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €' },
+          { id:5, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €' },
+          { id:6,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €' },
         ],
         };
       },
@@ -100,73 +129,94 @@ const app = Vue.createApp({
             this.isMenuOpen = false;
           }
         },
-        startDrag(event) {
-          document.querySelector('.slider-track').classList.add('dragging');
+        startDrag(event, sliderNumber) {
+          event.preventDefault();
+          const sliderKey = `translateValue${sliderNumber}`;
+          const currentIndexKey = `currentIndex${sliderNumber}`;
+          const isDraggingKey = `isDragging${sliderNumber}`;
+      
+          const sliderTrackSelector = `.slider-track${sliderNumber}`;
+          console.log('Slider Track Selector:', sliderTrackSelector);
+          const sliderTrack = document.querySelector(sliderTrackSelector);
+          if (sliderTrack) {
+              sliderTrack.classList.add('dragging');
+          }
           const touch = event.touches ? event.touches[0] : event;
           this.startX = touch.clientX;
-          this.isDragging = true;
+          this.$data[isDraggingKey] = true;
           this.accumulatedDistance = 0;
-          this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event));
-    
+          this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
+      
           const moveEvent = event.touches ? 'touchmove' : 'mousemove';
           const endEvent = event.touches ? 'touchend' : 'mouseup';
-    
-          window.addEventListener(moveEvent, this.drag);
-          window.addEventListener(endEvent, this.endDrag);
+      
+          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
+          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
         },
-    
-        drag(event) {
+      
+        drag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
-          if (this.isDragging) {
+          const sliderKey = `translateValue${sliderNumber}`;
+          const currentIndexKey = `currentIndex${sliderNumber}`;
+          const isDraggingKey = `isDragging${sliderNumber}`;
+      
+          if (this.$data[isDraggingKey]) {
             const delta = touch.clientX - this.startX;
             this.accumulatedDistance += Math.abs(delta);
-            this.translateValue += delta;
+            this.$data[sliderKey] += delta;
             this.startX = touch.clientX;
           }
         },
-    
-        endDrag(event) {
-          if (this.isDragging) {
-            document.querySelector('.slider-track').classList.remove('dragging');
-            this.isDragging = false;
-    
+      
+        endDrag(event, sliderNumber) {
+          const sliderKey = `translateValue${sliderNumber}`;
+          const currentIndexKey = `currentIndex${sliderNumber}`;
+          const isDraggingKey = `isDragging${sliderNumber}`;
+      
+          if (this.$data[isDraggingKey]) {
+            document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
+            this.$data[isDraggingKey] = false;
+      
             const moveEvent = event.touches ? 'touchmove' : 'mousemove';
             const endEvent = event.touches ? 'touchend' : 'mouseup';
-    
-            window.removeEventListener(moveEvent, this.drag);
-            window.removeEventListener(endEvent, this.endDrag);
+      
+            window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
+            window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
             cancelAnimationFrame(this.animationFrameId);
-    
+      
             // Limitez le déplacement à gauche (vers la première image)
-            if (this.translateValue > 0) {
-                this.currentIndex = 0; // Force revenir à la première image
-                this.translateValue = 0;
+            if (this.$data[sliderKey] > 0) {
+              this.$data[currentIndexKey] = 0;
+              this.$data[sliderKey] = 0;
             }
             // Limitez le déplacement à droite (vers la dernière image)
-            else if (this.translateValue < 0) {
-                const maxIndex = this.imageSliders.length - 1;
-                this.currentIndex = Math.min(maxIndex, this.currentIndex + 1);
-                this.translateValue = Math.max(-maxIndex * 280, this.translateValue);
+            else if (this.$data[sliderKey] < 0) {
+              const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
+              this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
+              this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
             }
-    
+      
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
-            if (this.currentIndex === 0) {
-                this.translateValue = Math.max(0, this.translateValue);
+            if (this.$data[currentIndexKey] === 0) {
+              this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
             }
-    
-            if (this.currentIndex === this.imageSliders.length - 1) {
-                this.translateValue = Math.min(0, this.translateValue);
+      
+            if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
+              this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
             }
-        }
+          }
         },
-    
-        animateDrag(event) {
+      
+        animateDrag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
-          if (this.isDragging) {
-            this.translateValue += (touch.clientX - this.startX) * 0.9;
+          const sliderKey = `translateValue${sliderNumber}`;
+          const isDraggingKey = `isDragging${sliderNumber}`;
+      
+          if (this.$data[isDraggingKey]) {
+            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
             this.startX = touch.clientX;
             this.$forceUpdate();
-            this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event));
+            this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
           }
         },
     },

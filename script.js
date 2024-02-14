@@ -130,6 +130,7 @@ const app = Vue.createApp({
           }
         },
         startDrag(event, sliderNumber) {
+          event.preventDefault();
           const sliderKey = `translateValue${sliderNumber}`;
           const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
@@ -158,12 +159,21 @@ const app = Vue.createApp({
           const sliderKey = `translateValue${sliderNumber}`;
           const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+        
+          const deltaX = touch.clientX - this.startX;
+          const deltaY = touch.clientY - this.startY;
+        
+          // Check if the vertical movement is greater than horizontal movement
+          if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            // Vertical scrolling detected, let the browser handle it
+            return;
+          }
+        
           if (this.$data[isDraggingKey]) {
-            const delta = touch.clientX - this.startX;
-            this.accumulatedDistance += Math.abs(delta);
-            this.$data[sliderKey] += delta;
+            this.accumulatedDistance += Math.abs(deltaX);
+            this.$data[sliderKey] += deltaX;
             this.startX = touch.clientX;
+            this.startY = touch.clientY;
           }
         },
       
@@ -210,10 +220,20 @@ const app = Vue.createApp({
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+        
+          const deltaX = touch.clientX - this.startX;
+          const deltaY = touch.clientY - this.startY;
+        
+          // Check if the vertical movement is greater than horizontal movement
+          if (Math.abs(deltaY) > Math.abs(deltaX)) {
+            // Vertical scrolling detected, let the browser handle it
+            return;
+          }
+        
           if (this.$data[isDraggingKey]) {
-            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
+            this.$data[sliderKey] += deltaX * 0.9;
             this.startX = touch.clientX;
+            this.startY = touch.clientY;
             this.$forceUpdate();
             this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
           }
