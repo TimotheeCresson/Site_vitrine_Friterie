@@ -12,6 +12,7 @@
     --police-Raleway-Bold : "Raleway-Bold";
     --police-Raleway-Regular : "Raleway-Regular";
     --police-Raleway-SemiBold : "Raleway-SemiBold";
+    --police-Raleway-Medium : "Raleway-Medium";
 }
 
 @font-face {
@@ -25,6 +26,10 @@
 @font-face {
     font-family: "Raleway-SemiBold";
     src: url("../font/Raleway-SemiBold.ttf");
+}
+@font-face {
+    font-family: "Raleway-Medium";
+    src: url("../font/Raleway-Medium.ttf");
 }
 /* afin que mon menu ne soit pas déjà ouvert et que je ne puisse pas le fermer sur chrome, edge et explorer */
 html {
@@ -45,12 +50,8 @@ h4 {
     color: rgb(226, 69, 12);
     text-align: center;
     text-transform: capitalize;
-    margin-bottom: 5px;
     position: relative;
-    display: inline-block;
-    cursor: pointer;
-    overflow: hidden;
-    margin: 30px auto 0;
+    margin: 10px;
     font-size: 1.5em;
 }
 

@@ -63,9 +63,11 @@ header {
 
 /* Menu */
 .slider-item {
-    flex: 0 0 40%;
+    height: 500px;
 }
-
+.background-imageMenu {
+    height: 400px;
+}
 
 /* horaire et localisation */
 .horaireEtLocalisation {
