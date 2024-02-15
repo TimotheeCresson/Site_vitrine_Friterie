@@ -14,15 +14,17 @@ const app = Vue.createApp({
           translateValue2: 0,
           translateValue3: 0,
           translateValue4: 0,
+          translateValue5: 0,
           currentIndex1: 0,
           currentIndex2: 0,
           currentIndex3: 0,
           currentIndex4: 0,
+          currentIndex5: 0,
           isDragging1: false,
           isDragging2: false,
           isDragging3: false,
           isDragging4: false,
-          mouseButtonPressed: false,
+          isDragging5: false,
 
           /* liste de nos images (pour les changements dans les triangles) */
           images: [
@@ -81,6 +83,12 @@ const app = Vue.createApp({
           { id:4,image: './img/burger.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €' },
           { id:5, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €' },
           { id:6,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €' },
+        ],
+
+        imageSliders5: [
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €' },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €' },
         ],
         };
       },

@@ -113,9 +113,25 @@
                 </div>
             </div>
         </div>
+
+        <div class="introBagnatsSandwichs intro">
+            <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs">
+            <h3>Pains bagnats ou Sandwichs</h3>
+        </div>
+
+        <div class="slider-grid slider5" @mousedown="startDrag($event, 5)" @mousemove="drag($event, 5)" @mouseup="endDrag($event, 5)" @touchstart="startDrag($event,5)" @touchmove="drag($event, 5)" @touchend="endDrag($event, 5)">
+            <div class="slider-track5" :style="{ transform: 'translateX(' + translateValue5 + 'px)' }">
+                <div class="slider-item" v-for="(imageSlider5, index) in imageSliders5" :key="index" :class="'item' + imageSlider5.id">
+                    <span class="price">{{ imageSlider5.price }}</span>
+                    <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenu"></div>
+                    <div class="descriptionMenu">
+                        <p class="nameDish">{{ imageSlider5.nameDish }}</p>
+                        <p class="caption">{{ imageSlider5.caption }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    
-</div>
     <!-- Le menu Enfant-->
     <div class="menuEnfantContainer">
         <div class="menuEnfant">

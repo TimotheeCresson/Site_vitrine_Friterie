@@ -70,11 +70,17 @@
     width: 100px;
     height: 100px;
 }
+.iconeMenu5 {
+    height: 50px;
+    width: 80px;
+}
+
 
 .slider-track1, 
 .slider-track2, 
 .slider-track3, 
-.slider-track4 {
+.slider-track4, 
+.slider-track5 {
     cursor: grab;
     display: grid;
     place-items: center; /* Centre les éléments dans la grille */
@@ -96,12 +102,14 @@
 .slider-track1.dragging,
 .slider-track2.dragging,
 .slider-track3.dragging, 
-.slider-track4.dragging {
+.slider-track4.dragging
+.slider-track5.dragging  {
     cursor: grabbing;
 }
 .slider2, 
 .slider3, 
-.slider4 {
+.slider4,
+.slider5 {
     margin-top: 30px;
 }
 
