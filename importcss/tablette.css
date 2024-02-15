@@ -67,7 +67,6 @@ header {
 }
 
 
-
 /* horaire et localisation */
 .horaireEtLocalisation {
     display: grid;
@@ -91,12 +90,3 @@ header {
     width: 100%;
 }
 
-/* Les frites */
-li {
-    display: inline-block;
-    width: calc(33.33% - 4px);
-    margin: 0 0 30px;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-}

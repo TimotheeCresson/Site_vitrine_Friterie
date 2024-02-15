@@ -108,10 +108,10 @@
 }
 
 .background-image {
-    width: 100%; /* ou définissez la largeur que vous souhaitez */
-    height: 400px; /* ou définissez la hauteur que vous souhaitez */
-    background-size: cover; /* ou ajustez selon vos besoins */
-    background-position: center; /* ou ajustez selon vos besoins */
+    width: 100%; 
+    height: 400px; 
+    background-size: cover; 
+    background-position: center; 
     background-repeat: no-repeat;
 }
 
@@ -214,6 +214,43 @@
     color: var(--secondary-color);
 }
 
+/* Menu Enfant */
+.menuEnfantContainer {
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.menuEnfant {
+    position: relative;
+    background: url("./../img/childrenMenu.png");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 500px;
+}
+.carteEnfant {
+    position: absolute;
+    top: 33%; 
+    left: 55%;
+    transform: translateX(-50%);
+    color: var(--primary-color);
+    padding: 5px;
+    border-radius: 0.5em;
+    font-size: 0.7em;
+    font-family: var(--police-Raleway-Regular);
+}
+.carteEnfant ul li {
+    line-height: 1.2em;
+}
+.carteEnfant ol li {
+    padding: 10px;
+    line-height: 0.5em;
+}
+
+
 /* Les frites */
 .friteContainer {
     display: flex;
@@ -221,46 +258,75 @@
     justify-content: center;
     align-items: center;
 }
-ul {
-    display: block;
-    clear: both;
+.friteContainer ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+    align-items: center;
     list-style: none;
-    padding: 50px 0;
-    text-align: center;
-}
-li {
-    display: block;
-    margin: 0 0 30px;
-    padding: 10px;
-    box-sizing: border-box;
-    text-align: center;
-}
-ul li:first-child img{
-    width: 50px;
-    height: 50px;
-}
-ul li:nth-child(2) img{
-    width: 75px;
-    height: 75px;
+    width: 100%;
+    margin: 50px;
 }
 
-ul li:last-child img{
-    width: 100px;
-    height: 100px;
+.petiteFrite{
+    position: relative;
+    background: url("./../img/pancartePetiteFrite.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 300px;
+}
+.moyenneFrite{
+    position: relative;
+    background: url("./../img/pancarteMoyenneFrite.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 300px;
+}
+
+.grandeFrite{
+    position: relative;
+    background: url("./../img/pancarteGrandeFrite.jpg");
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat;
+    width: 200px;
+    height: 300px;
 }
 .priceFrite {
-    position: absolute;
-    top: 0;
-    right: 0;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--primary-color);
+    text-align: center;
+    position: absolute;
+    bottom: 18px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(238, 7, 7, 0.8); 
+    padding: 5px;
     color: var(--secondary-color);
-    width: 50px;
-    height: 50px;
+    width: 75px;
+    height: 75px;
     border-radius: 50%;
+    font-size: 0.8em;
 }
+.friteSize {
+    position: absolute;
+    text-align: center;
+    top: 20px; 
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(238, 234, 7, 0.8); 
+    color: var(--primary-color);
+    padding: 5px;
+    border-radius: 0.5em;
+}
+
+
 
 /* Les boissons */
 
