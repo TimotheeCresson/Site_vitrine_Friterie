@@ -90,6 +90,23 @@ const app = Vue.createApp({
           { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €' },
           { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €' },
         ],
+        platsAvecFrites: [
+          { nom: 'Fricadelle / Merguez / Nuggets / Saucisse (knacki x2)', prix: '6,00 €' },
+          { nom: 'Cervelas / Mexicain / Poulet / Steak', prix: '7,00 €'},
+          { nom: 'Filet américain', prix: '7,00 €' },
+          { nom: 'Kebab', prix: '7,00 €' },
+        ],
+        platsSansFrites: [
+          { nom: 'Croque Monsieur', prix: '3,00 €' },
+          { nom: 'Hamburger (option SFB + 0,50 €) / Cheese-burger / Chicken-burger', prix: '4,50 €' },
+          { nom: 'Texan', prix: '8,00 €' },
+          { nom: 'Saucisse de friterie (x1) / Saucisses de strasbourg (x2)', prix: '2,00 €' },
+          { nom: 'Merguez / Fricadelle', prix: '2,00 €' },
+          { nom: 'Cervelas', prix: '2,90 €' },
+          { nom: 'Mexicanos', prix: '3,00 €' },
+          { nom: 'Barquette de 5 nuggets', prix: '4,00 €' },
+          { nom: 'Galette de pomme de terre', prix: '1,20 €' },
+        ],
         };
       },
       /* propriété de calcul */

@@ -1,4 +1,4 @@
-
+/* @media screen and (min-width: 900px) { */
 header {
     height: 150px;
 }
@@ -20,6 +20,11 @@ header {
     flex: 0 0 30%;
 }
 
+/* Enlever l'effet du slider */
+.slider-track5 {
+    transform: translateX(0) !important; 
+    pointer-events: none;
+  }
 /* horaires et localisation */
 .horaireEtLocalisation {
     margin-top: 30px;

@@ -69,6 +69,11 @@ z-index: 3; /* Ensure the nav-toggle-bar is above other elements */
     -webkit-transition:  all 1s;
     z-index: 1;
 }
+.menu-open {
+    background: url("./../img/menu1.jpg");
+    background-size: cover;
+    background-position: center;
+}
 .menu-open .navigation {
     transform: translateX(0);
 }

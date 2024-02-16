@@ -46,18 +46,22 @@
     text-align: center;
 }
 
-.intro {
+.introMenuSlider {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
     margin: 30px auto;
     background: var(--secondary-color);
     padding: 30px;
     width: 70%;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
 }
-.intro h3 {
-    text-align: center;
+
+.introMenuSlider p {
+    padding: 20px;
+    font-family: var(--police-Raleway-Regular);
 }
 
 .iconeMenu, 
@@ -102,7 +106,7 @@
 .slider-track1.dragging,
 .slider-track2.dragging,
 .slider-track3.dragging, 
-.slider-track4.dragging
+.slider-track4.dragging,
 .slider-track5.dragging  {
     cursor: grabbing;
 }
@@ -169,6 +173,64 @@
 }
 
 
+/* Reste du menu */
+.PlatFriteOuSans {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 30px;
+    background: rgb(240, 238, 238);
+    padding: 20px;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+}
+.PlatFriteOuSans img {
+    width: 70px;
+    height: 70px;
+    margin-top: 30px;
+}
+
+.assietteVide,
+.assietteFrite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    background: var(--secondary-color);
+    padding: 5px;
+    width: 70%;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+.assietteVide p,
+.assietteFrite p {
+    padding: 20px;
+    font-family: var(--police-Raleway-Regular);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid var(--primary-color);
+    padding: 8px;
+    text-align: left;
+    background: var(--secondary-color);
+}
+
+th {
+    font-family: var(--police-Raleway-SemiBold);
+    background-color: rgb(161, 40, 40);  
+    color: var(--secondary-color);
+}
+td {
+    font-family: var(--police-Raleway-Regular);
+    font-size: 0.8em;
+}
+
 /* Menu Enfant */
 .menuEnfantContainer {
     margin: 30px;
@@ -179,7 +241,7 @@
 }
 .menuEnfant {
     position: relative;
-    background: url("./../img/childrenMenu.png");
+    background: url("./../img/menuEnfant.png");
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat;
@@ -188,17 +250,18 @@
 }
 .carteEnfant {
     position: absolute;
-    top: 33%; 
+    top: 44%; 
     left: 55%;
     transform: translateX(-50%);
-    color: var(--primary-color);
+    color: var(--secondary-color);
     padding: 5px;
     border-radius: 0.5em;
-    font-size: 0.7em;
+    font-size: 0.8em;
     font-family: var(--police-Raleway-Regular);
 }
 .carteEnfant ul li {
     line-height: 1.2em;
+    padding: 10px;
 }
 .carteEnfant ol li {
     padding: 10px;
@@ -216,6 +279,22 @@
     background: rgb(240, 238, 238);
     padding: 20px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+}
+.enteteFrite {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 30px auto;
+    background: var(--secondary-color);
+    padding: 5px;
+    width: 70%;
+    box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+.friteContainer img {
+    width: 80px;
+    height: 80px;
 }
 
 .friteContainer ul{
@@ -311,7 +390,7 @@
 }
 .drink-card {
     position: relative;
-    background-color: #fff;
+    background-color: var(--secondary-color);
     border-radius: 10px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
     overflow: hidden;
@@ -384,6 +463,7 @@
 .sauceContainer p {
     text-align: center;
     margin: 5px;
+    padding: 8px;
     color: rgb(161, 40, 40);
     font-family: var(--police-Raleway-SemiBold);
 }

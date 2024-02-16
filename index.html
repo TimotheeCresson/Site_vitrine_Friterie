@@ -40,9 +40,10 @@
         <!-- Section Menu -->
         <div class="slider-container" id="menu">
             <h2>La carte</h2>
-            <div class="intro">
+            <div class="introMenuSlider">
                 <img class="iconeMenu" src="./img/sandwich.png" alt="iconeSandwich">
                 <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
+                <p> Pour les amateurs de chaleur réconfortante et d'associations gourmandes, nos sandwichs chauds sauront vous séduire. </p>
             </div>
             
             <div class="slider-grid slider1" @mousedown="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
@@ -59,9 +60,10 @@
                 </div>
             </div>
         
-            <div class="introAmericainsS intro">
+            <div class="introAmericainsS introMenuSlider">
                 <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS">
                 <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
+                <p>Découvrez le plaisir authentique des saveurs américaines avec nos sandwiches maison, spécialement conçus pour les amateurs de goûts riches et généreux</p>
             </div>
 
             <div class="slider-grid slider2" @mousedown="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
@@ -78,9 +80,10 @@
                 </div>
 
 
-            <div class="introPizzas intro">
+            <div class="introPizzas introMenuSlider">
                 <img class="iconeMenu3" src="./img/iconePizza.png" alt="iconePizza">
-                <h3>Pizzas</h3>
+                <h3>Pizzas Maison</h3>
+                <p>Succombez à l'irrésistible mariage du fromage fondant et des saveurs authentiques de l'Italie avec notre sélection de pizzas artisanales, soigneusement préparées pour éveiller vos papilles </p>
             </div>
 
         <div class="slider-grid slider3" @mousedown="startDrag($event, 3)" @mousemove="drag($event, 3)" @mouseup="endDrag($event, 3)" @touchstart="startDrag($event,3)" @touchmove="drag($event, 3)" @touchend="endDrag($event, 3)">
@@ -96,9 +99,10 @@
             </div>
         </div>
 
-        <div class="introPaninis intro">
+        <div class="introPaninis introMenuSlider">
             <img class="iconeMenu4" src="./img/paniniIcone.png" alt="iconePanini">
             <h3>Paninis</h3>
+            <p>Plaisir grillé à chaque bouchée, mes paninis sont soigneusement préparés par mes soins. Laissez-vous séduire par la combinaison harmonieuse de fromages fondants, de viandes savoureuses et d'accompagnements délicats, créant ainsi une explosion de délices à chaque morceau.</p>
         </div>
 
         <div class="slider-grid slider4" @mousedown="startDrag($event, 4)" @mousemove="drag($event, 4)" @mouseup="endDrag($event, 4)" @touchstart="startDrag($event,4)" @touchmove="drag($event, 4)" @touchend="endDrag($event, 4)">
@@ -114,9 +118,10 @@
             </div>
         </div>
 
-        <div class="introBagnatsSandwichs intro">
+        <div class="introBagnatsSandwichs introMenuSlider">
             <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs">
             <h3>Pains bagnats ou Sandwichs</h3>
+            <p>Plongez dans une expérience méditerranéenne rafraîchissante avec nos pains bagnats artisanaux ou succombez à la diversité de nos sandwiches délicieusement garnis. </p>
         </div>
 
         <div class="slider-grid slider5" @mousedown="startDrag($event, 5)" @mousemove="drag($event, 5)" @mouseup="endDrag($event, 5)" @touchstart="startDrag($event,5)" @touchmove="drag($event, 5)" @touchend="endDrag($event, 5)">
@@ -132,6 +137,56 @@
             </div>
         </div>
     </div>
+
+
+<!-- Plats avec frites et sans frites-->
+    <div class="PlatFriteOuSans">
+        <div class="assietteFrite">
+            <img src="./img/assietteFrite.png" alt="assietteFrite">
+            <h3>Plats avec frites</h3>
+            <p>Laissez vous tenter par ma sélection de plats savoureux accompagnés de frites croustillantes. Des classiques réconfortants tels que le kebab avec frites, nuggets frites </p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Plat</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(plat, index) in platsAvecFrites" :key="index">
+              <td>{{ plat.nom }}</td>
+              <td>{{ plat.prix }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="assietteVide">
+            <img src="./img/assietteVide.png" alt="AssietteVide">
+            <h3>Plats sans frites</h3>
+            <p>Envie d'un plat plus léger, laissez vous tenter par ses différents classiques : burger, croque-monsieur, mexicanos...</p>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Plat</th>
+              <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="(plat, index) in platsSansFrites" :key="index">
+              <td>{{ plat.nom }}</td>
+              <td>{{ plat.prix }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+
+
+
+
+
     <!-- Le menu Enfant-->
     <div class="menuEnfantContainer">
         <div class="menuEnfant">
@@ -160,8 +215,11 @@
 
     <!-- Les Frites-->
     <div class="friteContainer">
-        <h4>Les frites</h4>
-        
+        <div class="enteteFrite">
+            <img src="./img/cornetFrite.png" alt="cornetFrite">
+            <h4>Les frites</h4>
+            <p>Afin d'accompagner vos plats, je vous propose différentes tailles de frites selon votre appétit.</p>
+        </div>
             <ul>
                 <li>
                     <div class="petiteFrite">
@@ -235,7 +293,7 @@
         <img src="./img/sauce.png" alt="sauce">
         <h4>Les sauces</h4>
         <div class="cadreSauce">
-            <p>Afin d'accompagner vos plats, je vous propose différentes sauces: </p>
+            <p>Afin d'accompagner vos plats, je vous propose un large choix de sauces différentes: </p>
             <div class="sauceList">
                 <ul>
                     <li>Américaine <br>Andalouse <br>Algérienne <br>Barbecue <br> Bourgy-Burger <br> Cocktail</li>
