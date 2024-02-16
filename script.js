@@ -156,28 +156,22 @@ const app = Vue.createApp({
         },
         startDrag(event, sliderNumber) {
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
+          
           const sliderTrackSelector = `.slider-track${sliderNumber}`;
-          console.log('Slider Track Selector:', sliderTrackSelector);
           const sliderTrack = document.querySelector(sliderTrackSelector);
           if (sliderTrack) {
-              sliderTrack.classList.add('dragging');
+            sliderTrack.classList.add('dragging');
           }
-           // on vérifie si l'événement est un événement tactile et si c'est le cas on récupère le premier point de contact sinon on utilise l'événement event
+        
           const touch = event.touches ? event.touches[0] : event;
-          // on enregistre les coordonnées du point de contact pour suivre l'avancement dans le slider
           this.startX = touch.clientX;
-           // on met à jour notre propriété isDragging pour dire que le défilement est en cours
           this.$data[isDraggingKey] = true;
           this.accumulatedDistance = 0;
-          // planifie l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
           this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-      
-          const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-          const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
-          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
-          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
+        
+          // Écoutez l'événement touchmove pour ajuster la position du slider en fonction du mouvement du doigt
+          window.addEventListener('touchmove', (e) => this.drag(e, sliderNumber));
+          window.addEventListener('touchend', (e) => this.endDrag(e, sliderNumber));
         },
       
         drag(event, sliderNumber) {
