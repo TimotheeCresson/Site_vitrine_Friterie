@@ -156,9 +156,9 @@ const app = Vue.createApp({
         },
         startDrag(event, sliderNumber) {
           const isDraggingKey = `isDragging${sliderNumber}`;
-          
           const sliderTrackSelector = `.slider-track${sliderNumber}`;
           const sliderTrack = document.querySelector(sliderTrackSelector);
+        
           if (sliderTrack) {
             sliderTrack.classList.add('dragging');
           }
@@ -167,19 +167,22 @@ const app = Vue.createApp({
           this.startX = touch.clientX;
           this.$data[isDraggingKey] = true;
           this.accumulatedDistance = 0;
+        
+          // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
           this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
         
-          // Écoutez l'événement touchmove pour ajuster la position du slider en fonction du mouvement du doigt
-          window.addEventListener('touchmove', (e) => this.drag(e, sliderNumber));
-          window.addEventListener('touchend', (e) => this.endDrag(e, sliderNumber));
+          const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+          const endEvent = event.touches ? 'touchend' : 'mouseup';
+        
+          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
+          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
         },
-      
+        
         drag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
-          //Si le glissement est en cours (isDraggingKey est vrai), les propriétés du slider sont mises à jour en fonction du mouvement horizontal.
+        
           if (this.$data[isDraggingKey]) {
             const delta = touch.clientX - this.startX;
             this.accumulatedDistance += Math.abs(delta);
@@ -187,55 +190,57 @@ const app = Vue.createApp({
             this.startX = touch.clientX;
           }
         },
-      
+        
         endDrag(event, sliderNumber) {
           const sliderKey = `translateValue${sliderNumber}`;
           const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
-           // Si le glissement est en cours, la classe 'dragging' est retirée du slider et l'état de glissement est réinitialisé.
+        
           if (this.$data[isDraggingKey]) {
             document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
             this.$data[isDraggingKey] = false;
-      
+        
             const moveEvent = event.touches ? 'touchmove' : 'mousemove';
             const endEvent = event.touches ? 'touchend' : 'mouseup';
-      
-            // on retire les événements
+        
             window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
             window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
             cancelAnimationFrame(this.animationFrameId);
-      
-            // Limitez le déplacement à gauche (vers la première image)
-            if (this.$data[sliderKey] > 0) {
-              this.$data[currentIndexKey] = 0;
-              this.$data[sliderKey] = 0;
+        
+            // Ajoutez cette condition pour déclencher le défilement seulement si la distance accumulée est suffisante
+            if (this.accumulatedDistance > 20) {
+              // Limitez le déplacement à gauche (vers la première image)
+              if (this.$data[sliderKey] > 0) {
+                this.$data[currentIndexKey] = 0;
+                this.$data[sliderKey] = 0;
+              }
+              // Limitez le déplacement à droite (vers la dernière image)
+              else if (this.$data[sliderKey] < 0) {
+                const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
+                this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
+                this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
+              }
             }
-            // Limitez le déplacement à droite (vers la dernière image)
-            else if (this.$data[sliderKey] < 0) {
-              const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
-              this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-              this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
-            }
-      
+        
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
             if (this.$data[currentIndexKey] === 0) {
               this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
             }
-      
+        
             if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
               this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
             }
+        
+            // Réinitialisez la distance accumulée après la fin du glissement
+            this.accumulatedDistance = 0;
           }
         },
-      
+        
         animateDrag(event, sliderNumber) {
-          // on récupére les coordonnées et les clés nécessaires.
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
-      
-           //Si le glissement est en cours, la position du slider est ajustée pendant l'animation avec une diminution de vitesse, et rendre l'animation plus fluide.
+        
           if (this.$data[isDraggingKey]) {
             this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
             this.startX = touch.clientX;
@@ -243,6 +248,7 @@ const app = Vue.createApp({
             this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
           }
         },
+        
     },
 
       mounted() {
