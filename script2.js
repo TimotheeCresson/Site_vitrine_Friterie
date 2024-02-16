@@ -14,15 +14,17 @@ const app = Vue.createApp({
           translateValue2: 0,
           translateValue3: 0,
           translateValue4: 0,
+          translateValue5: 0,
           currentIndex1: 0,
           currentIndex2: 0,
           currentIndex3: 0,
           currentIndex4: 0,
+          currentIndex5: 0,
           isDragging1: false,
           isDragging2: false,
           isDragging3: false,
           isDragging4: false,
-          mouseButtonPressed: false,
+          isDragging5: false,
 
           /* liste de nos images (pour les changements dans les triangles) */
           images: [
@@ -82,6 +84,29 @@ const app = Vue.createApp({
           { id:5, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €' },
           { id:6,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €' },
         ],
+
+        imageSliders5: [
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €' },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €' },
+        ],
+        platsAvecFrites: [
+          { nom: 'Fricadelle / Merguez / Nuggets / Saucisse (knacki x2)', prix: '6,00 €' },
+          { nom: 'Cervelas / Mexicain / Poulet / Steak', prix: '7,00 €'},
+          { nom: 'Filet américain', prix: '7,00 €' },
+          { nom: 'Kebab', prix: '7,00 €' },
+        ],
+        platsSansFrites: [
+          { nom: 'Croque Monsieur', prix: '3,00 €' },
+          { nom: 'Hamburger (option SFB + 0,50 €) / Cheese-burger / Chicken-burger', prix: '4,50 €' },
+          { nom: 'Texan', prix: '8,00 €' },
+          { nom: 'Saucisse de friterie (x1) / Saucisses de strasbourg (x2)', prix: '2,00 €' },
+          { nom: 'Merguez / Fricadelle', prix: '2,00 €' },
+          { nom: 'Cervelas', prix: '2,90 €' },
+          { nom: 'Mexicanos', prix: '3,00 €' },
+          { nom: 'Barquette de 5 nuggets', prix: '4,00 €' },
+          { nom: 'Galette de pomme de terre', prix: '1,20 €' },
+        ],
         };
       },
       /* propriété de calcul */
@@ -130,9 +155,6 @@ const app = Vue.createApp({
           }
         },
         startDrag(event, sliderNumber) {
-          event.preventDefault();
-          const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
           const isDraggingKey = `isDragging${sliderNumber}`;
       
           const sliderTrackSelector = `.slider-track${sliderNumber}`;
