@@ -36,7 +36,7 @@ header {
 .slider-track5 {
     transform: translateX(0) !important; 
     pointer-events: none;
-    gap: 100px;
+    gap: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
