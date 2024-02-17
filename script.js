@@ -48,12 +48,12 @@ const app = Vue.createApp({
           ],
           
           imageSliders1: [ 
-          { id:1, image: './img/burger.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwichs fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwichs brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs crizly', price: '6,00 €' },
-          { id:4,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs kebab', price: '6,50 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs savoyard', price: '7,00 €' },
-          { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwichs texan', price: '8,00 €' },
+          { id:1, image: './img/burger.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €' },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €' },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich crizly', price: '6,00 €' },
+          { id:4,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €' },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €' },
+          { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €' },
         ],
         
         imageSliders2: [
