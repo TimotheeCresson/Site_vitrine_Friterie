@@ -158,9 +158,9 @@ const app = Vue.createApp({
     const endEvent = event.touches ? 'touchend' : 'mouseup';
 
     // on ajoute des écouteurs d'événements de déplacement, de fin de glissement et de défilement vertical à la fenêtre.
-    // window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
-    // window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
-    // window.addEventListener('touchmove', this.handleVerticalScroll, { passive: false });
+    window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
+    window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
+    window.addEventListener('touchmove', this.handleVerticalScroll, { passive: false });
         },
         
         handleVerticalScroll(event) {
