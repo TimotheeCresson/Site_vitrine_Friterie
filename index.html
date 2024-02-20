@@ -51,7 +51,9 @@
                 <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
                     <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
                         <span class="price">{{ imageSlider1.price }}</span>
-                        <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenu"></div>
+                        <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)">
+                            <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenuZoom"></div>
+                        </div>
                         <div class="descriptionMenu">
                             <p class="nameDish">{{ imageSlider1.nameDish }}</p>
                             <p class="caption">{{ imageSlider1.caption }}</p>
@@ -70,7 +72,9 @@
                     <div class="slider-track2" :style="{ transform: 'translateX(' + translateValue2 + 'px)' }">
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
-                            <div :style="{ backgroundImage: 'url(' + imageSlider2.image + ')' }" class="background-imageMenu"></div>
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders2, index)" @mouseout="resetZoom(imageSliders2, index)">
+                                <div :style="{ backgroundImage: 'url(' + imageSlider2.image + ')' }" class="background-imageMenuZoom"></div>
+                            </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider2.nameDish }}</p>
                                 <p class="caption">{{ imageSlider2.caption }}</p>
@@ -90,7 +94,9 @@
             <div class="slider-track3" :style="{ transform: 'translateX(' + translateValue3 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
                     <span class="price priceForPizza">{{ imageSlider3.price }}</span>
-                    <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-imageMenu"></div>
+                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders3, index)" @mouseout="resetZoom(imageSliders3, index)">
+                        <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-imageMenuZoom"></div>
+                    </div>
                     <div class="descriptionMenu">
                         <p class="nameDish">{{ imageSlider3.nameDish }}</p>
                         <p class="caption">{{ imageSlider3.caption }}</p>
@@ -109,7 +115,9 @@
             <div class="slider-track4" :style="{ transform: 'translateX(' + translateValue4 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
                     <span class="price priceForPizza">{{ imageSlider4.price }}</span>
-                    <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-imageMenu"></div>
+                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders4, index)" @mouseout="resetZoom(imageSliders4, index)">
+                        <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-imageMenuZoom"></div>
+                    </div>
                     <div class="descriptionMenu">
                         <p class="nameDish">{{ imageSlider4.nameDish }}</p>
                         <p class="caption">{{ imageSlider4.caption }}</p>
@@ -128,7 +136,9 @@
             <div class="slider-track5" :style="{ transform: 'translateX(' + translateValue5 + 'px)' }">
                 <div class="slider-item" v-for="(imageSlider5, index) in imageSliders5" :key="index" :class="'item' + imageSlider5.id">
                     <span class="price">{{ imageSlider5.price }}</span>
-                    <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenu"></div>
+                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders5, index)" @mouseout="resetZoom(imageSliders5, index)">
+                        <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenuZoom"></div>
+                    </div>
                     <div class="descriptionMenu">
                         <p class="nameDish">{{ imageSlider5.nameDish }}</p>
                         <p class="caption">{{ imageSlider5.caption }}</p>

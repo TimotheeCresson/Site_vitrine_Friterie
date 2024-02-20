@@ -7,7 +7,6 @@ const app = Vue.createApp({
           isMenuOpen: false,
           /* Défilement menu */
           startX: 0,
-  
           animationFrameId: null,
           accumulatedDistance: 0,
           translateValue1: 0,
@@ -48,47 +47,47 @@ const app = Vue.createApp({
           ],
           
           imageSliders1: [ 
-          { id:1, image: './img/burger.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich crizly', price: '6,00 €' },
-          { id:4,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €' },
-          { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €' },
+          { id:1, image: './img/burger.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/nuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich crizly', price: '6,00 €',  isHovered: false },
+          { id:4,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €',  isHovered: false },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €',  isHovered: false },
+          { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
         ],
         
         imageSliders2: [
-          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/fromage/crabe/cervelas', price: '7,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains cervelas/mexicanos/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €' },
-          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €' },
-          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €' },
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €',  isHovered: false },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/fromage/crabe/cervelas', price: '7,00 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains cervelas/mexicanos/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €',  isHovered: false },
+          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €',  isHovered: false },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €',  isHovered: false },
+          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €',  isHovered: false },
         ],
 
 
         imageSliders3: [
-          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Pizza 4 fromages', price: 'petite: 7,00 € grande: 9,00 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Pizza jambon-fromage', price: 'petite: 7,00 € grande: 9,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-oignons', price: 'petite: 7,00 € grande: 9,00 €' },
-          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza chorizo', price: 'petite: 7,00 € grande: 9,00 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-champignons', price: 'petite: 7,00 € grande: 9,60 €' },
-          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza fruits de mer`, price: 'petite: 7,00 € grande: 9,60 €' },
-          { id:7,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza jambon-anchois`, price: 'petite: 7,00 € grande: 9,60 €' },
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Pizza 4 fromages', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Pizza jambon-fromage', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-oignons', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:4,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza chorizo', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-champignons', price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
+          { id:6,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza fruits de mer`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
+          { id:7,image: './img/burger.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza jambon-anchois`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
         ],
 
         imageSliders4: [
-          { id:1, image: './img/pizza.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €' },
-          { id:2, image: './img/frite.jpg', caption: 'mozzarella + tomates + jambon + emmental', nameDish:'Panini jambon-fromage', price: '5,50 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €' },
-          { id:4,image: './img/burger.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €' },
-          { id:5, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €' },
-          { id:6,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €' },
+          { id:1, image: './img/pizza.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €',  isHovered: false },
+          { id:2, image: './img/frite.jpg', caption: 'mozzarella + tomates + jambon + emmental', nameDish:'Panini jambon-fromage', price: '5,50 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €',  isHovered: false },
+          { id:4,image: './img/burger.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €',  isHovered: false },
+          { id:5, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €',  isHovered: false },
+          { id:6,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €',  isHovered: false },
         ],
 
         imageSliders5: [
-          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €' },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €' },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €' },
+          { id:1, image: './img/pizza.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €',  isHovered: false },
+          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €',  isHovered: false },
         ],
         platsAvecFrites: [
           { nom: 'Fricadelle / Merguez / Nuggets / Saucisse (knacki x2)', prix: '6,00 €' },
@@ -154,6 +153,15 @@ const app = Vue.createApp({
             this.isMenuOpen = false;
           }
         },
+
+        applyZoom(imageSliders, index) {
+          imageSliders[index].isHovered = true;
+        },
+        resetZoom(imageSliders, index) {
+          imageSliders[index].isHovered = false;
+        },
+
+
         startDrag(event, sliderNumber) {
           const isDraggingKey = `isDragging${sliderNumber}`;
           const sliderTrackSelector = `.slider-track${sliderNumber}`;
