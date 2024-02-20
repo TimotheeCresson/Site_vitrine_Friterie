@@ -216,7 +216,7 @@ const app = Vue.createApp({
             cancelAnimationFrame(this.animationFrameId);
         
             // Ajoutez cette condition pour déclencher le défilement seulement si la distance accumulée est suffisante
-            if (this.accumulatedDistance > 20) {
+            if (this.accumulatedDistance > 40) {
               // Limitez le déplacement à gauche (vers la première image)
               if (this.$data[sliderKey] > 0) {
                 this.$data[currentIndexKey] = 0;
