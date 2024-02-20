@@ -226,7 +226,7 @@ const app = Vue.createApp({
               else if (this.$data[sliderKey] < 0) {
                 const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
                 this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-                this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
+                this.$data[sliderKey] = Math.max(-maxIndex * 261, this.$data[sliderKey]);
               }
             }
         

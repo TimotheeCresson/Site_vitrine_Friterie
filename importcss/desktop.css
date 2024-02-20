@@ -33,6 +33,7 @@ header {
 }
 
 /* Enlever l'effet du slider */
+
 .slider-track5 {
     transform: translateX(0) !important; 
     gap: 20px;
