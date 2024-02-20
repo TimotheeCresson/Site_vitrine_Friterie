@@ -35,7 +35,6 @@ header {
 /* Enlever l'effet du slider */
 .slider-track5 {
     transform: translateX(0) !important; 
-    pointer-events: none;
     gap: 20px;
     display: flex;
     justify-content: center;
