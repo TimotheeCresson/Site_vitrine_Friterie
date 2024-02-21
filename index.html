@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,9 +21,9 @@
             </div>
             <nav :class="{ 'menu-open': isMenuOpen }" class="navigation">
                 <ul>
-                <li><a  @click.prevent="scrollToSection('menu')" href="#menu">Menu</a></li>
-                <li><a  @click.prevent="scrollToSection('horaires')" href="#horaires">Horaires</a></li>
-                <li><a @click.prevent="scrollToSection('contact')" href="#contact">Contact</a></li>
+                <li><a  @click="scrollToSection('menu')" href="#menu">Menu</a></li>
+                <li><a  @click="scrollToSection('horaires')" href="#horaires">Horaires</a></li>
+                <li><a @click="scrollToSection('contact')" href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </header>

@@ -111,7 +111,7 @@ const app = Vue.createApp({
       /* propriété de calcul */
       computed: {
         iconClass() {
-          return this.isMenuOpen ? 'fa-xmark' : 'fa-burger';
+          return this.isMenuOpen ? 'fa-xmark show' : 'fa-burger show';
         },
       },
       methods: {
@@ -120,22 +120,7 @@ const app = Vue.createApp({
           /* On cible notre élément html */
           document.documentElement.classList.toggle('menu-open', this.isMenuOpen);
         },
-        getRandomImage() {
-          // on filtre nos images dispos avec filter qui crée un nouveau tableau contenant uniquement les images qui ne sont pas encore attribuées à un triangle spécifique, aisni une image sélectionnée alétoirement ne sera pas utilisé par 2 mêmes triangles. (some = vérifie si au moins un élément remplit la condition qui est entre ())
-          const availableImages = this.images.filter(image => !this.triangles.some(triangle => triangle.image === image));
 
-          // si pas d'image disponible on retourne un string vide
-          if (availableImages.length === 0) return ''; 
-          
-          // sinon on retourne une image aléatoire parmis nos images dispos
-          return availableImages[Math.floor(Math.random() * availableImages.length)];
-        },
-        updateTriangles() {
-          // on met à jour les images des triangles en appelant notre fonction getRandomImage pour chacun
-          this.triangles.forEach(triangle => {
-            triangle.image = this.getRandomImage();
-          });
-        },
         scrollToSection(sectionId) {
           // on va récupéré l'id de la section spécifié dans notre html
           const targetElement = document.getElementById(sectionId);
@@ -152,6 +137,25 @@ const app = Vue.createApp({
             // on le met à false pour que Vue considère notre menu fermé pour la réactivité de ce dernier
             this.isMenuOpen = false;
           }
+        },
+
+
+
+        getRandomImage() {
+          // on filtre nos images dispos avec filter qui crée un nouveau tableau contenant uniquement les images qui ne sont pas encore attribuées à un triangle spécifique, aisni une image sélectionnée alétoirement ne sera pas utilisé par 2 mêmes triangles. (some = vérifie si au moins un élément remplit la condition qui est entre ())
+          const availableImages = this.images.filter(image => !this.triangles.some(triangle => triangle.image === image));
+
+          // si pas d'image disponible on retourne un string vide
+          if (availableImages.length === 0) return ''; 
+          
+          // sinon on retourne une image aléatoire parmis nos images dispos
+          return availableImages[Math.floor(Math.random() * availableImages.length)];
+        },
+        updateTriangles() {
+          // on met à jour les images des triangles en appelant notre fonction getRandomImage pour chacun
+          this.triangles.forEach(triangle => {
+            triangle.image = this.getRandomImage();
+          });
         },
 
         applyZoom(imageSliders, index) {
@@ -226,7 +230,7 @@ const app = Vue.createApp({
               else if (this.$data[sliderKey] < 0) {
                 const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
                 this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-                this.$data[sliderKey] = Math.max(-maxIndex * 261, this.$data[sliderKey]);
+                this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
               }
             }
         
