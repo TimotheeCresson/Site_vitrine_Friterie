@@ -96,7 +96,8 @@
     transition: transform 0.3s ease;
     transform: translateX(0);
 }
-.slider-track3 {
+.slider-track3, 
+.slider-track4 {
     grid-template-areas:
     "item1 item2 item3 item4 item5 item6 item7";
     grid-template-columns: repeat(7, 1fr);
@@ -484,11 +485,27 @@ td {
     font-family: var(--police-Raleway-SemiBold);
 }
 .cadreSauce {
+    position: relative;
     padding: 20px;
     box-shadow: 0 5px 4px rgba(0, 0, 0, 0.3);
     border: 3px solid rgb(161, 40, 40);
     border-style: double;
 }
+
+.prixSauces {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
 .sauceList {
     width: 100%;
 }
