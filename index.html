@@ -31,11 +31,11 @@
         <!-- section polygone image -->
 
        <!-- On itère à travers le tableau triangles, pour chaque triangle, on crée une div, on attribue pour chaque élément une clé unique id, une classe triangle et une classe spécifique (traingle1 ...) et on ajoute les images-->
-        <div class="grid-container">
-            <div v-for="triangle in triangles" :key="triangle.id" class="triangle" :class="triangle.class">
-              <img :src="triangle.image" :alt="triangle.alt">
-            </div>
+       <div class="grid-container">
+        <div v-for="triangle in triangles" :key="triangle.id" class="triangle" :class="triangle.class" :style="{ backgroundImage: 'url(' + triangle.image + ')' }">
         </div>
+      </div>
+      
     
         <!-- Section Menu -->
         <div class="slider-container" id="menu">
