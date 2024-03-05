@@ -153,12 +153,12 @@
 .descriptionMenu {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start;
+    align-items: start;
 }
 
 
 .nameDish {
-    margin: 5px;
+    padding: 5px 0 5px 0;
     color: rgb(161, 40, 40);
     font-family: var(--police-Raleway-SemiBold);
     font-size: 0.8em;
