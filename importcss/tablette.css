@@ -56,6 +56,14 @@ header {
 .background-imageMenu {
     height: 360px;
 }
+
+.nameDish{
+    font-size: 1em;
+}
+.caption {
+    font-size: 0.8em;
+}
+
 /* plat frite ou sans  */
 .PlatFriteOuSans {
     margin: 30px;
