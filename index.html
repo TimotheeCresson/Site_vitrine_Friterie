@@ -56,7 +56,7 @@
                             <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenuZoom"></div>
                         </div>
                         <div class="descriptionMenu">
-                            <p class="nameDish">{{ imageSlider1.nameDish }}</p>
+                            <p class="nameDish">{{ imageSlider1.nameDish.replace('/', '&#47;') }}</p>
                             <p class="caption">{{ imageSlider1.caption }}</p>
                         </div>
                     </div>

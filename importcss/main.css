@@ -119,7 +119,6 @@
 .slider-item {
     position: relative;
     width: 280px;
-    height: 450px;
     transform: skewX(-10deg); /* Inclinaison en hauteur, ajustez l'angle selon vos préférences */
     padding: 0 30px;
     user-select: none;
@@ -129,6 +128,7 @@
     width: 100%;
     height: 250px;
     position: relative;
+    overflow: hidden;
     border: 1px solid var(--primary-color);
   }
   
@@ -160,7 +160,6 @@
     color: rgb(161, 40, 40);
     font-family: var(--police-Raleway-SemiBold);
     font-size: 0.8em;
-    font-weight: bold;
 }
 .caption {
     font-family: var(--police-Raleway-Medium);
