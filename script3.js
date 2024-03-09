@@ -246,8 +246,6 @@ const app = Vue.createApp({
             }
           }
         },
-        
-      
         animateDrag(event, sliderNumber) {
           // on récupére les coordonnées et les clés nécessaires.
           const touch = event.touches ? event.touches[0] : event;

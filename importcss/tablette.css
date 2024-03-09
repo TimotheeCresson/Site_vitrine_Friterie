@@ -63,6 +63,10 @@ header {
 .caption {
     font-size: 0.8em;
 }
+.menuEnfant:hover {
+    transform: scale(1.1);
+}
+
 
 /* plat frite ou sans  */
 .PlatFriteOuSans {
