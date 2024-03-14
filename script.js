@@ -184,11 +184,11 @@ const app = Vue.createApp({
           // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
           this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
         
-          const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-          const endEvent = event.touches ? 'touchend' : 'mouseup';
+          // const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+          // const endEvent = event.touches ? 'touchend' : 'mouseup';
         
-          window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
-          window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
+          // window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
+          // window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
         },
         
         drag(event, sliderNumber) {
@@ -197,6 +197,7 @@ const app = Vue.createApp({
           const isDraggingKey = `isDragging${sliderNumber}`;
         
           if (this.$data[isDraggingKey]) {
+            // console.log(this);
             const delta = touch.clientX - this.startX;
             this.accumulatedDistance += Math.abs(delta);
             this.$data[sliderKey] += delta;
@@ -213,15 +214,16 @@ const app = Vue.createApp({
             document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
             this.$data[isDraggingKey] = false;
         
-            const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-            const endEvent = event.touches ? 'touchend' : 'mouseup';
+            // const moveEvent = event.touches ? 'touchmove' : 'mousemove';
+            // const endEvent = event.touches ? 'touchend' : 'mouseup';
         
-            window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
-            window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
+            // window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
+            // window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
             cancelAnimationFrame(this.animationFrameId);
         
             // Ajoutez cette condition pour déclencher le défilement seulement si la distance accumulée est suffisante
             if (this.accumulatedDistance > 40) {
+              // console.log(this.accumulatedDistance);
               // Limitez le déplacement à gauche (vers la première image)
               if (this.$data[sliderKey] > 0) {
                 this.$data[currentIndexKey] = 0;
@@ -246,6 +248,7 @@ const app = Vue.createApp({
         
             // Réinitialisez la distance accumulée après la fin du glissement
             this.accumulatedDistance = 0;
+            console.log(this.$data, this);
           }
         },
         
