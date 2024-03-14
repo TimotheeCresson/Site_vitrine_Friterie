@@ -39,6 +39,29 @@ header {
     align-items: center;
     width: auto;
 }
+.background-imageMenu {
+    width: 100%;
+    height: 250px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--primary-color);
+  }
+  
+  .background-imageMenuZoom {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+    transition: transform 0.3s ease; 
+  }
+  
+  .background-imageMenu:hover .background-imageMenuZoom {
+    transform: scale(1.2); 
+  }
 
 /* plat frite ou sans  */
 

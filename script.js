@@ -184,11 +184,6 @@ const app = Vue.createApp({
           // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
           this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
         
-          // const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-          // const endEvent = event.touches ? 'touchend' : 'mouseup';
-        
-          // window.addEventListener(moveEvent, (e) => this.drag(e, sliderNumber), { passive: false });
-          // window.addEventListener(endEvent, (e) => this.endDrag(e, sliderNumber), { passive: false });
         },
         
         drag(event, sliderNumber) {
@@ -214,11 +209,6 @@ const app = Vue.createApp({
             document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
             this.$data[isDraggingKey] = false;
         
-            // const moveEvent = event.touches ? 'touchmove' : 'mousemove';
-            // const endEvent = event.touches ? 'touchend' : 'mouseup';
-        
-            // window.removeEventListener(moveEvent, (e) => this.drag(e, sliderNumber));
-            // window.removeEventListener(endEvent, (e) => this.endDrag(e, sliderNumber));
             cancelAnimationFrame(this.animationFrameId);
         
             // Ajoutez cette condition pour déclencher le défilement seulement si la distance accumulée est suffisante
