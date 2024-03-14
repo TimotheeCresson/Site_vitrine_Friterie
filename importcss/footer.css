@@ -25,6 +25,7 @@ footer {
 .coordonnees a {
     margin-bottom: 20px;
     text-decoration: none;
+    font-family: var(--police-Raleway-Regular);
     color: var(--secondary-color);
 }
 .barreMid {
@@ -32,4 +33,7 @@ footer {
     height: 100%;
     width: 2px;
 }
-
+.reservation a {
+    font-family: var(--police-Raleway-Regular);
+    color: var(--primary-color);
+}

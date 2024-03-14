@@ -23,9 +23,6 @@ header {
 }
 
 /* Menu */
-.slider-item {
-    flex: 0 0 30%;
-}
 .iconeMenu, 
 .iconeMenu3 {
     height: 75px;

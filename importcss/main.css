@@ -330,7 +330,6 @@ td {
     width: 100%;
     margin: 50px;
 }
-
 .petiteFrite,
 .moyenneFrite, 
 .grandeFrite {
@@ -348,8 +347,6 @@ td {
 .grandeFrite:hover {
     transform: scale(1.2);
 } 
-
-
 .priceFrite {
     display: flex;
     justify-content: center;
