@@ -60,7 +60,7 @@ const app = Vue.createApp({
           { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €',  isHovered: false },
           { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €',  isHovered: false },
           { id:4,image: './img/americainGrizli.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €',  isHovered: false },
-          { id:5, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €',  isHovered: false },
+          { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €',  isHovered: false },
           { id:6,image: './img/americainTexan.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €',  isHovered: false },
         ],
 
@@ -76,11 +76,11 @@ const app = Vue.createApp({
         ],
 
         imageSliders4: [
-          { id:1, image: './img/pizza.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €',  isHovered: false },
+          { id:1, image: './img/paniniClassique.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €',  isHovered: false },
           { id:2, image: './img/paniniSaucisses.jpg', caption: 'mozzarella + tomates + saucisses', nameDish:'Panini Saucisses', price: '4,50 €',  isHovered: false },
           { id:3, image: './img/paniniJambonFromage.jpg', caption: 'mozzarella + tomates + jambon + emmental', nameDish:'Panini jambon-fromage', price: '5,50 €',  isHovered: false },
           { id:4, image: './img/pizza.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €',  isHovered: false },
-          { id:5,image: './img/panini3fromages.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €',  isHovered: false },
+          { id:5,image: './img/pizza.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €',  isHovered: false },
           { id:6, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €',  isHovered: false },
           { id:7,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €',  isHovered: false },
         ],
@@ -211,8 +211,8 @@ const app = Vue.createApp({
         
             cancelAnimationFrame(this.animationFrameId);
         
-            // Ajoutez cette condition pour déclencher le défilement seulement si la distance accumulée est suffisante
-            if (this.accumulatedDistance > 40) {
+            // condition pour déclencher le défilement seulement si la distance accumulée est suffisante
+            if (this.accumulatedDistance > 20) {
               // console.log(this.accumulatedDistance);
               // Limitez le déplacement à gauche (vers la première image)
               if (this.$data[sliderKey] > 0) {
