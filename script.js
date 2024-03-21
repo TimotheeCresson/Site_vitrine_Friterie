@@ -27,13 +27,13 @@ const app = Vue.createApp({
 
           /* liste des images (pour les changements dans les triangles) */
           images: [
-            './img/chtiBurger.jpg',
-            './img/pizzaChorizo.jpg',
-            './img/sandwichMexicanos.jpg',
-            './img/croqueMonsieur.jpg',
-            './img/paniniSaucisses.jpg',
-            './img/filetamericain.jpg',
-            './img/cheeseBurger.jpg',
+            './img/sandwichFricadelle.jpg',
+            './img/pizzaJambonOignon.jpg',
+            './img/americainGrizli.jpg',
+            './img/paniniJambonFromage.jpg',
+            './img/americainTexan.jpg',
+            './img/pizzaFruitsDeMer.jpg',
+            './img/americainMexicanos.jpg',
             './img/sandwichKebab.jpg',
             './img/sandwichSavoyard.jpg',
           ],
@@ -56,7 +56,7 @@ const app = Vue.createApp({
         ],
         
         imageSliders2: [
-          { id:1, image: './img/americainFricadelle5.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €',  isHovered: false },
+          { id:1, image: './img/americainFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €',  isHovered: false },
           { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €',  isHovered: false },
           { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €',  isHovered: false },
           { id:4,image: './img/americainGrizli.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €',  isHovered: false },
@@ -225,6 +225,7 @@ const app = Vue.createApp({
                 this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
                 this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
               }
+              applyInertia(sliderNumber);
             }
         
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
@@ -242,6 +243,29 @@ const app = Vue.createApp({
           }
         },
         
+        applyInertia(sliderNumber) {
+          const sliderKey = `translateValue${sliderNumber}`;
+          const velocityKey = `velocity${sliderNumber}`;
+          const attenuationFactor = 0.9; // Facteur d'atténuation pour réduire progressivement la vitesse
+          const duration = 300; // Durée de l'inertie en millisecondes
+          const startTime = performance.now();
+          const initialVelocity = this.$data[velocityKey]; // Récupérer la vitesse calculée lors du glissement
+      
+          requestAnimationFrame(function inertiaStep(timestamp) {
+              const elapsed = timestamp - startTime;
+              const attenuation = Math.pow(attenuationFactor, elapsed / duration);
+              const deltaTranslateX = initialVelocity * attenuation * elapsed;
+      
+              // Mettre à jour la position du slider en fonction de l'inertie
+              this.$data[sliderKey] += deltaTranslateX;
+              this.$forceUpdate();
+      
+              if (Math.abs(deltaTranslateX) > 0.1) {
+                  requestAnimationFrame(inertiaStep);
+              }
+          });
+      },
+
         animateDrag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
