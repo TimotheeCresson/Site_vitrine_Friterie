@@ -248,7 +248,7 @@ const app = Vue.createApp({
           const isDraggingKey = `isDragging${sliderNumber}`;
         
           if (this.$data[isDraggingKey]) {
-            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.8;
+            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.5;
             this.startX = touch.clientX;
             this.$forceUpdate();
             this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
