@@ -225,7 +225,6 @@ const app = Vue.createApp({
                 this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
                 this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
               }
-              applyInertia(sliderNumber);
             }
         
             // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
@@ -243,29 +242,6 @@ const app = Vue.createApp({
           }
         },
         
-        applyInertia(sliderNumber) {
-          const sliderKey = `translateValue${sliderNumber}`;
-          const velocityKey = `velocity${sliderNumber}`;
-          const attenuationFactor = 0.9; // Facteur d'atténuation pour réduire progressivement la vitesse
-          const duration = 300; // Durée de l'inertie en millisecondes
-          const startTime = performance.now();
-          const initialVelocity = this.$data[velocityKey]; // Récupérer la vitesse calculée lors du glissement
-      
-          requestAnimationFrame(function inertiaStep(timestamp) {
-              const elapsed = timestamp - startTime;
-              const attenuation = Math.pow(attenuationFactor, elapsed / duration);
-              const deltaTranslateX = initialVelocity * attenuation * elapsed;
-      
-              // Mettre à jour la position du slider en fonction de l'inertie
-              this.$data[sliderKey] += deltaTranslateX;
-              this.$forceUpdate();
-      
-              if (Math.abs(deltaTranslateX) > 0.1) {
-                  requestAnimationFrame(inertiaStep);
-              }
-          });
-      },
-
         animateDrag(event, sliderNumber) {
           const touch = event.touches ? event.touches[0] : event;
           const sliderKey = `translateValue${sliderNumber}`;
@@ -287,6 +263,6 @@ const app = Vue.createApp({
         setInterval(this.updateTriangles, 6000);
       },
     });
-
+Vue.use(VueTouch);
 app.mount("#app");
 

@@ -37,10 +37,11 @@
 }
 
 .slider-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+  overflow-x: auto; /* Permet le défilement horizontal */
+  scroll-snap-type: x mandatory; /* Assure le défilement fluide */
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptabilité des éléments */
+  gap: 10px; /* Espacement entre les éléments */
 }
 .slider-grid h3 {
     text-align: center;
@@ -84,17 +85,8 @@
 .slider-track3, 
 .slider-track4, 
 .slider-track5 {
-    cursor: grab;
-    display: grid;
-    /* grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));  */
-    position: relative;
-    width: 100%;
-    height: 100%; /* Ajustez la hauteur selon vos besoins */
-    grid-template-areas:
-        "item1 item2 item3 item4 item5 item6";
-    grid-template-columns: repeat(6, 1fr); 
-    transition: transform 0.3s ease;
-    transform: translateX(0);
+    display: flex;
+  scroll-snap-align: start; /* Assure le défilement s'aligne correctement */
 }
 .slider-track3, 
 .slider-track4 {
