@@ -38,9 +38,8 @@
 
 .slider-grid {
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    overflow-x: auto; /* Permet le défilement horizontal */
+    scroll-snap-type: x mandatory; /* Assure le défilement fluide */
 }
 .slider-grid h3 {
     text-align: center;
@@ -85,7 +84,7 @@
 .slider-track4, 
 .slider-track5 {
     display: flex;
-  scroll-snap-align: start; /* Assure le défilement s'aligne correctement */
+    gap: 10px; /* Espacement entre les éléments *//* Assure le défilement s'aligne correctement */
 }
 .slider-track3, 
 .slider-track4 {
