@@ -1,6 +1,6 @@
 /* Menu */
 /* je nomme mes grid-area pour mon grid-template-areas */
-.item1 {
+/* .item1 {
     grid-area: item1;
 }
 .item2 {
@@ -20,7 +20,7 @@
 }
 .items7 {
     grid-area: item7;
-}
+} */
 
 .slider-container {
     background: rgb(240, 238, 238);
@@ -38,9 +38,11 @@
 
 .slider-grid {
     display: flex;
-    overflow-x: auto; /* Permet le défilement horizontal */
+    /* overflow-x: auto;  */
     scroll-snap-type: x mandatory; /* Assure le défilement fluide */
+    cursor: grab;
 }
+
 .slider-grid h3 {
     text-align: center;
 }
@@ -86,12 +88,12 @@
     display: flex;
     gap: 10px; /* Espacement entre les éléments *//* Assure le défilement s'aligne correctement */
 }
-.slider-track3, 
+/* .slider-track3, 
 .slider-track4 {
     grid-template-areas:
     "item1 item2 item3 item4 item5 item6 item7";
     grid-template-columns: repeat(7, 1fr);
-}
+} */
 .slider-track1.dragging,
 .slider-track2.dragging,
 .slider-track3.dragging, 

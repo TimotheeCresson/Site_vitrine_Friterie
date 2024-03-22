@@ -167,100 +167,116 @@ const app = Vue.createApp({
         },
 
 
-        startDrag(event, sliderNumber) {
-          const isDraggingKey = `isDragging${sliderNumber}`;
-          const sliderTrackSelector = `.slider-track${sliderNumber}`;
-          const sliderTrack = document.querySelector(sliderTrackSelector);
-        
-          if (sliderTrack) {
-            sliderTrack.classList.add('dragging');
+      // Fonction de throttling pour limiter la fréquence d'appel pendant le déplacement
+    throttle(callback, delay) {
+      let lastTime = 0;
+      return function(event, sliderNumber) {
+          const now = new Date().getTime();
+          if (now - lastTime >= delay) {
+              callback(event, sliderNumber);
+              lastTime = now;
           }
-        
-          const touch = event.touches ? event.touches[0] : event;
-          this.startX = touch.clientX;
-          this.$data[isDraggingKey] = true;
-          this.accumulatedDistance = 0;
-        
-          // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
-          this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-        
-        },
-        
-        drag(event, sliderNumber) {
-          const touch = event.touches ? event.touches[0] : event;
-          const sliderKey = `translateValue${sliderNumber}`;
-          const isDraggingKey = `isDragging${sliderNumber}`;
-        
-          if (this.$data[isDraggingKey]) {
-            // console.log(this);
-            const delta = touch.clientX - this.startX;
-            this.accumulatedDistance += Math.abs(delta);
-            this.$data[sliderKey] += delta;
-            this.startX = touch.clientX;
+      };
+  },
+
+  // Méthode appelée au début du glissement
+  startDragThrottled: function(event, sliderNumber) {
+      const isDraggingKey = `isDragging${sliderNumber}`;
+      const sliderTrackSelector = `.slider-track${sliderNumber}`;
+      const sliderTrack = document.querySelector(sliderTrackSelector);
+    
+      if (sliderTrack) {
+        sliderTrack.classList.add('dragging');
+      }
+    
+      const touch = event.touches ? event.touches[0] : event;
+      this.startX = touch.clientX;
+      this.$data[isDraggingKey] = true;
+      this.accumulatedDistance = 0;
+    
+      // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
+      this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
+  },
+
+  // Méthode appelée pendant le glissement
+  dragThrottled: function(event, sliderNumber) {
+      const touch = event.touches ? event.touches[0] : event;
+      const sliderKey = `translateValue${sliderNumber}`;
+      const isDraggingKey = `isDragging${sliderNumber}`;
+    
+      if (this.$data[isDraggingKey]) {
+        const delta = touch.clientX - this.startX;
+        this.accumulatedDistance += Math.abs(delta);
+        this.$data[sliderKey] += delta;
+        this.startX = touch.clientX;
+      }
+  },
+
+  // Méthode appelée à la fin du glissement
+  endDragThrottled: function(event, sliderNumber) {
+      const sliderKey = `translateValue${sliderNumber}`;
+      const currentIndexKey = `currentIndex${sliderNumber}`;
+      const isDraggingKey = `isDragging${sliderNumber}`;
+    
+      if (this.$data[isDraggingKey]) {
+        document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
+        this.$data[isDraggingKey] = false;
+    
+        cancelAnimationFrame(this.animationFrameId);
+    
+        // condition pour déclencher le défilement seulement si la distance accumulée est suffisante
+        if (this.accumulatedDistance > 20) {
+          // Limitez le déplacement à gauche (vers la première image)
+          if (this.$data[sliderKey] > 0) {
+            this.$data[currentIndexKey] = 0;
+            this.$data[sliderKey] = 0;
           }
-        },
-        
-        endDrag(event, sliderNumber) {
-          const sliderKey = `translateValue${sliderNumber}`;
-          const currentIndexKey = `currentIndex${sliderNumber}`;
-          const isDraggingKey = `isDragging${sliderNumber}`;
-        
-          if (this.$data[isDraggingKey]) {
-            document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
-            this.$data[isDraggingKey] = false;
-        
-            cancelAnimationFrame(this.animationFrameId);
-        
-            // condition pour déclencher le défilement seulement si la distance accumulée est suffisante
-            if (this.accumulatedDistance > 20) {
-              // console.log(this.accumulatedDistance);
-              // Limitez le déplacement à gauche (vers la première image)
-              if (this.$data[sliderKey] > 0) {
-                this.$data[currentIndexKey] = 0;
-                this.$data[sliderKey] = 0;
-              }
-              // Limitez le déplacement à droite (vers la dernière image)
-              else if (this.$data[sliderKey] < 0) {
-                const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
-                this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-                this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
-              }
-            }
-        
-            // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
-            if (this.$data[currentIndexKey] === 0) {
-              this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
-            }
-        
-            if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
-              this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
-            }
-        
-            // Réinitialisez la distance accumulée après la fin du glissement
-            this.accumulatedDistance = 0;
-            console.log(this.$data, this);
+          // Limitez le déplacement à droite (vers la dernière image)
+          else if (this.$data[sliderKey] < 0) {
+            const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
+            this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
+            this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
           }
-        },
-        
-        animateDrag(event, sliderNumber) {
-          const touch = event.touches ? event.touches[0] : event;
-          const sliderKey = `translateValue${sliderNumber}`;
-          const isDraggingKey = `isDragging${sliderNumber}`;
-        
-          if (this.$data[isDraggingKey]) {
-            this.$data[sliderKey] += (touch.clientX - this.startX) * 0.5;
-            this.startX = touch.clientX;
-            this.$forceUpdate();
-            this.animationFrameId = requestAnimationFrame(() => this.animateDrag(event, sliderNumber));
-          }
-        },
-        
-    },
+        }
+    
+        // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
+        if (this.$data[currentIndexKey] === 0) {
+          this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
+        }
+    
+        if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
+          this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
+        }
+    
+        // Réinitialisez la distance accumulée après la fin du glissement
+        this.accumulatedDistance = 0;
+      }
+  },
+
+  // Méthode appelée pour animer le glissement
+  animateDragThrottled: function(event, sliderNumber) {
+      const touch = event.touches ? event.touches[0] : event;
+      const sliderKey = `translateValue${sliderNumber}`;
+      const isDraggingKey = `isDragging${sliderNumber}`;
+    
+      if (this.$data[isDraggingKey]) {
+        this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
+        this.startX = touch.clientX;
+        this.$forceUpdate();
+        this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
+      }
+  },
+},
 
       mounted() {
         // on met un interval de temps pour les changements d'images
         this.updateTriangles();
         setInterval(this.updateTriangles, 6000);
+
+        this.startDrag = this.throttle(this.startDragThrottled, 20); // 100 millisecondes de délai
+    this.drag = this.throttle(this.dragThrottled, 20); // 100 millisecondes de délai
+    this.endDrag = this.throttle(this.endDragThrottled, 20); // 100 millisecondes de délai
+    this.animateDrag = this.throttle(this.animateDragThrottled, 20);
       },
     });
 

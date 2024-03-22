@@ -31,13 +31,18 @@ header {
 
 /* Enlever l'effet du slider */
 
+.slider-track1, 
+.slider-track2, 
+.slider-track3, 
+.slider-track4, 
+.slider-track5 {
+    gap: 50px; /* Espacement entre les éléments *//* Assure le défilement s'aligne correctement */
+}
 .slider-track5 {
     transform: translateX(0) !important; 
-    gap: 20px;
-    display: flex;
+}
+.slider5 {
     justify-content: center;
-    align-items: center;
-    width: auto;
 }
 .background-imageMenu {
     width: 100%;
