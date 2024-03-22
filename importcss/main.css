@@ -37,11 +37,10 @@
 }
 
 .slider-grid {
-    display: grid;
-  overflow-x: auto; /* Permet le défilement horizontal */
-  scroll-snap-type: x mandatory; /* Assure le défilement fluide */
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adaptabilité des éléments */
-  gap: 10px; /* Espacement entre les éléments */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .slider-grid h3 {
     text-align: center;
