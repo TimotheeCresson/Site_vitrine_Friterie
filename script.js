@@ -235,7 +235,7 @@ const app = Vue.createApp({
           else if (this.$data[sliderKey] < 0) {
             const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
             this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-            this.$data[sliderKey] = Math.max(-maxIndex * 280, this.$data[sliderKey]);
+            this.$data[sliderKey] = Math.max(-maxIndex * 290, this.$data[sliderKey]);
           }
         }
     
@@ -273,10 +273,10 @@ const app = Vue.createApp({
         this.updateTriangles();
         setInterval(this.updateTriangles, 6000);
 
-        this.startDrag = this.throttle(this.startDragThrottled, 20); // 100 millisecondes de délai
-    this.drag = this.throttle(this.dragThrottled, 20); // 100 millisecondes de délai
-    this.endDrag = this.throttle(this.endDragThrottled, 20); // 100 millisecondes de délai
-    this.animateDrag = this.throttle(this.animateDragThrottled, 20);
+        this.startDrag = this.throttle(this.startDragThrottled, 100); 
+        this.drag = this.throttle(this.dragThrottled, 25); 
+        this.endDrag = this.throttle(this.endDragThrottled, 150); 
+        this.animateDrag = this.throttle(this.animateDragThrottled, 15);
       },
     });
 
