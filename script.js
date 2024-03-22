@@ -262,7 +262,6 @@ const app = Vue.createApp({
       if (this.$data[isDraggingKey]) {
         this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
         this.startX = touch.clientX;
-        this.$forceUpdate();
         this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
       }
   },
