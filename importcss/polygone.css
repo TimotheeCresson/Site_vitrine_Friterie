@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: repeat(5, 20%); 
   height: 200px;
+  border-bottom: 2px solid var(--primary-color);
   overflow: hidden;
 }
 /* overflow: hidden afin que si nos images sont plus grand que la taille des triangles, celle-ci sera coupé à la forme de notre triangle */

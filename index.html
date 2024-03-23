@@ -37,39 +37,43 @@
         </div>
       
     
-        <!-- Section Menu -->
+        <!-- Section Menu sandwichChauds -->
         <div class="slider-container" id="menu">
-            <h2>La carte</h2>
-            <div class="introMenuSlider">
-                <img class="iconeMenu" src="./img/sandwich.png" alt="iconeSandwich">
-                <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
-                <p> Pour les amateurs de chaleur réconfortante et d'associations gourmandes, nos sandwichs chauds sauront vous séduire. </p>
-            </div>
-            
-            <div class="slider-grid slider1" @mousedown="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
-                <!-- ... contenu du premier slider -->
-                <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
-                    <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
-                        <span class="price">{{ imageSlider1.price }}</span>
-                        <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)" @touchstart="applyZoom(imageSliders1, index)"
-                        @touchend="resetZoom(imageSliders1, index)">
-                            <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenuZoom"></div>
-                        </div>
-                        <div class="descriptionMenu">
-                            <p class="nameDish">{{ imageSlider1.nameDish.replace('/', '&#47;') }}</p>
-                            <p class="caption">{{ imageSlider1.caption }}</p>
+            <div class="sandwichChaudsContainer">
+                <h2>La carte</h2>
+                <div class="introMenuSlider">
+                    <img class="iconeMenu" src="./img/sandwich.png" alt="iconeSandwich">
+                    <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
+                    <p> Pour les amateurs de chaleur réconfortante et d'associations gourmandes, nos sandwichs chauds sauront vous séduire. </p>
+                </div>
+                
+                <div class="slider-grid slider1" @mousedown="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
+                    <!-- ... contenu du premier slider -->
+                    <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
+                        <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
+                            <span class="price">{{ imageSlider1.price }}</span>
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)" @touchstart="applyZoom(imageSliders1, index)"
+                            @touchend="resetZoom(imageSliders1, index)">
+                                <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenuZoom"></div>
+                            </div>
+                            <div class="descriptionMenu">
+                                <p class="nameDish">{{ imageSlider1.nameDish.replace('/', '&#47;') }}</p>
+                                <p class="caption">{{ imageSlider1.caption }}</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        
-            <div class="introAmericainsS introMenuSlider">
-                <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS">
-                <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
-                <p>Découvrez le plaisir authentique des saveurs américaines avec nos sandwiches maison, spécialement conçus pour les amateurs de goûts riches et généreux</p>
-            </div>
 
-            <div class="slider-grid slider2" @mousedown="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
+    <!-- Section Menu Américains sandwichs -->
+            <div class="americainSandwichContainer">
+                <div class="introAmericainsS introMenuSlider">
+                    <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS">
+                    <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
+                    <p>Découvrez le plaisir authentique des saveurs américaines avec nos sandwiches maison, spécialement conçus pour les amateurs de goûts riches et généreux</p>
+                </div>
+
+                <div class="slider-grid slider2" @mousedown="startDrag($event, 2)" @mousemove="drag($event, 2)" @mouseup="endDrag($event, 2)" @touchstart="startDrag($event, 2)" @touchmove="drag($event, 2)" @touchend="endDrag($event, 2)">
                     <div class="slider-track2" :style="{ transform: 'translateX(' + translateValue2 + 'px)' }">
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
@@ -83,71 +87,80 @@
                         </div>
                     </div>
                 </div>
-
-
-            <div class="introPizzas introMenuSlider">
-                <img class="iconeMenu3" src="./img/iconePizza.png" alt="iconePizza">
-                <h3>Pizzas Maison</h3>
-                <p>Succombez à l'irrésistible mariage du fromage fondant et des saveurs authentiques de l'Italie avec notre sélection de pizzas artisanales, soigneusement préparées pour éveiller vos papilles </p>
             </div>
 
-        <div class="slider-grid slider3" @mousedown="startDrag($event, 3)" @mousemove="drag($event, 3)" @mouseup="endDrag($event, 3)" @touchstart="startDrag($event,3)" @touchmove="drag($event, 3)" @touchend="endDrag($event, 3)">
-            <div class="slider-track3" :style="{ transform: 'translateX(' + translateValue3 + 'px)' }">
-                <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
-                    <span class="price priceForPizza">{{ imageSlider3.price }}</span>
-                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders3, index)" @mouseout="resetZoom(imageSliders3, index)">
-                        <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-imageMenuZoom"></div>
+            <!-- Section Menu Pizzas -->
+            <div class="pizzaContainer">
+                <div class="introPizzas introMenuSlider">
+                    <img class="iconeMenu3" src="./img/iconePizza.png" alt="iconePizza">
+                    <h3>Pizzas Maison</h3>
+                    <p>Succombez à l'irrésistible mariage du fromage fondant et des saveurs authentiques de l'Italie avec notre sélection de pizzas artisanales, soigneusement préparées pour éveiller vos papilles </p>
+                </div>
+
+                <div class="slider-grid slider3" @mousedown="startDrag($event, 3)" @mousemove="drag($event, 3)" @mouseup="endDrag($event, 3)" @touchstart="startDrag($event,3)" @touchmove="drag($event, 3)" @touchend="endDrag($event, 3)">
+                    <div class="slider-track3" :style="{ transform: 'translateX(' + translateValue3 + 'px)' }">
+                        <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
+                            <span class="price priceForPizza">{{ imageSlider3.price }}</span>
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders3, index)" @mouseout="resetZoom(imageSliders3, index)">
+                                <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-imageMenuZoom"></div>
+                            </div>
+                            <div class="descriptionMenu">
+                                <p class="nameDish">{{ imageSlider3.nameDish }}</p>
+                                <p class="caption">{{ imageSlider3.caption }}</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="descriptionMenu">
-                        <p class="nameDish">{{ imageSlider3.nameDish }}</p>
-                        <p class="caption">{{ imageSlider3.caption }}</p>
+                </div>
+            </div>
+
+            <!-- Section Menu Paninis -->
+            <div class="paniniContainer">
+                <div class="introPaninis introMenuSlider">
+                    <img class="iconeMenu4" src="./img/paniniIcone.png" alt="iconePanini">
+                    <h3>Paninis</h3>
+                    <p>Plaisir grillé à chaque bouchée, mes paninis sont soigneusement préparés par mes soins. Laissez-vous séduire par la combinaison harmonieuse de fromages fondants, de viandes savoureuses et d'accompagnements délicats, créant ainsi une explosion de délices à chaque morceau.</p>
+                </div>
+
+                <div class="slider-grid slider4" @mousedown="startDrag($event, 4)" @mousemove="drag($event, 4)" @mouseup="endDrag($event, 4)" @touchstart="startDrag($event,4)" @touchmove="drag($event, 4)" @touchend="endDrag($event, 4)">
+                    <div class="slider-track4" :style="{ transform: 'translateX(' + translateValue4 + 'px)' }">
+                        <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
+                            <span class="price priceForPizza">{{ imageSlider4.price }}</span>
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders4, index)" @mouseout="resetZoom(imageSliders4, index)">
+                                <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-imageMenuZoom"></div>
+                            </div>
+                            <div class="descriptionMenu">
+                                <p class="nameDish">{{ imageSlider4.nameDish }}</p>
+                                <p class="caption">{{ imageSlider4.caption }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        <!-- Section Menu bagnats -->
+            <div class="bagnatContainer">
+                <div class="introBagnatsSandwichs introMenuSlider">
+                    <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs">
+                    <h3>Pains bagnats ou Sandwichs</h3>
+                    <p>Plongez dans une expérience méditerranéenne rafraîchissante avec nos pains bagnats artisanaux ou succombez à la diversité de nos sandwiches délicieusement garnis. </p>
+                </div>
+
+                <div class="slider-grid slider5" @mousedown="startDrag($event, 5)" @mousemove="drag($event, 5)" @mouseup="endDrag($event, 5)" @touchstart="startDrag($event,5)" @touchmove="drag($event, 5)" @touchend="endDrag($event, 5)">
+                    <div class="slider-track5" :style="{ transform: 'translateX(' + translateValue5 + 'px)' }">
+                        <div class="slider-item" v-for="(imageSlider5, index) in imageSliders5" :key="index" :class="'item' + imageSlider5.id">
+                            <span class="price">{{ imageSlider5.price }}</span>
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders5, index)" @mouseout="resetZoom(imageSliders5, index)">
+                                <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenuZoom"></div>
+                            </div>
+                            <div class="descriptionMenu">
+                                <p class="nameDish">{{ imageSlider5.nameDish }}</p>
+                                <p class="caption">{{ imageSlider5.caption }}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div class="introPaninis introMenuSlider">
-            <img class="iconeMenu4" src="./img/paniniIcone.png" alt="iconePanini">
-            <h3>Paninis</h3>
-            <p>Plaisir grillé à chaque bouchée, mes paninis sont soigneusement préparés par mes soins. Laissez-vous séduire par la combinaison harmonieuse de fromages fondants, de viandes savoureuses et d'accompagnements délicats, créant ainsi une explosion de délices à chaque morceau.</p>
-        </div>
-
-        <div class="slider-grid slider4" @mousedown="startDrag($event, 4)" @mousemove="drag($event, 4)" @mouseup="endDrag($event, 4)" @touchstart="startDrag($event,4)" @touchmove="drag($event, 4)" @touchend="endDrag($event, 4)">
-            <div class="slider-track4" :style="{ transform: 'translateX(' + translateValue4 + 'px)' }">
-                <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
-                    <span class="price priceForPizza">{{ imageSlider4.price }}</span>
-                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders4, index)" @mouseout="resetZoom(imageSliders4, index)">
-                        <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-imageMenuZoom"></div>
-                    </div>
-                    <div class="descriptionMenu">
-                        <p class="nameDish">{{ imageSlider4.nameDish }}</p>
-                        <p class="caption">{{ imageSlider4.caption }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="introBagnatsSandwichs introMenuSlider">
-            <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs">
-            <h3>Pains bagnats ou Sandwichs</h3>
-            <p>Plongez dans une expérience méditerranéenne rafraîchissante avec nos pains bagnats artisanaux ou succombez à la diversité de nos sandwiches délicieusement garnis. </p>
-        </div>
-
-        <div class="slider-grid slider5" @mousedown="startDrag($event, 5)" @mousemove="drag($event, 5)" @mouseup="endDrag($event, 5)" @touchstart="startDrag($event,5)" @touchmove="drag($event, 5)" @touchend="endDrag($event, 5)">
-            <div class="slider-track5" :style="{ transform: 'translateX(' + translateValue5 + 'px)' }">
-                <div class="slider-item" v-for="(imageSlider5, index) in imageSliders5" :key="index" :class="'item' + imageSlider5.id">
-                    <span class="price">{{ imageSlider5.price }}</span>
-                    <div class="background-imageMenu" @mouseover="applyZoom(imageSliders5, index)" @mouseout="resetZoom(imageSliders5, index)">
-                        <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenuZoom"></div>
-                    </div>
-                    <div class="descriptionMenu">
-                        <p class="nameDish">{{ imageSlider5.nameDish }}</p>
-                        <p class="caption">{{ imageSlider5.caption }}</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 <!-- Plats avec frites et sans frites-->
