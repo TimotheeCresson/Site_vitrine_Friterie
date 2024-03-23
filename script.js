@@ -25,6 +25,7 @@ const app = Vue.createApp({
           isDragging4: false,
           isDragging5: false,
 
+          loaded: false,
           /* liste des images (pour les changements dans les triangles) */
           images: [
             './img/sandwichFricadelle.jpg',
@@ -318,6 +319,8 @@ endDragThrottled: function(event, sliderNumber) {
     }
   },
 
+
+
     mounted() {
       // on met un interval de temps pour les changements d'images
       this.updateTriangles();
@@ -329,6 +332,12 @@ endDragThrottled: function(event, sliderNumber) {
       this.drag = this.throttle(this.dragThrottled, 25); 
       this.endDrag = this.throttle(this.endDragThrottled, 150); 
       this.animateDrag = this.throttle(this.animateDragThrottled, 15);
+
+
+      setTimeout(() => {
+        // Marquer la page comme chargée après 3 secondes
+        this.loaded = true;
+      }, 3000);
     },
   });
 
