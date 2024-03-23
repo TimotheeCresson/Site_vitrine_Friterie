@@ -169,115 +169,168 @@ const app = Vue.createApp({
 
       // Fonction de throttling pour limiter la fréquence d'appel pendant le déplacement
     throttle(callback, delay) {
+      // on initialise la dernière heure à 0
       let lastTime = 0;
+      // Retourne une fonction qui encapsule la logique de throttling
       return function(event, sliderNumber) {
+         // on récupère le temps actuel en millisecondes
           const now = new Date().getTime();
+          // Vérifie si le temps écoulé depuis la dernière exécution est supérieur ou égal au délai
           if (now - lastTime >= delay) {
+            // Appelle la fonction callback avec les paramètres fournis
               callback(event, sliderNumber);
+                // Met à jour le dernier temps d'exécution avec le temps actuel
               lastTime = now;
           }
       };
   },
 
-  // Méthode appelée au début du glissement
-  startDragThrottled: function(event, sliderNumber) {
-      const isDraggingKey = `isDragging${sliderNumber}`;
-      const sliderTrackSelector = `.slider-track${sliderNumber}`;
-      const sliderTrack = document.querySelector(sliderTrackSelector);
-    
-      if (sliderTrack) {
+ // Méthode appelée au début du glissement
+startDragThrottled: function(event, sliderNumber) {
+    // Crée une clé pour indiquer si le glissement est en cours pour ce curseur
+    const isDraggingKey = `isDragging${sliderNumber}`;
+
+    // Sélectionne l'élément du curseur glissable
+    const sliderTrackSelector = `.slider-track${sliderNumber}`;
+    const sliderTrack = document.querySelector(sliderTrackSelector);
+
+    // Ajoute une classe pour indiquer que le curseur est en train d'être déplacé
+    if (sliderTrack) {
         sliderTrack.classList.add('dragging');
-      }
-    
-      const touch = event.touches ? event.touches[0] : event;
-      this.startX = touch.clientX;
-      this.$data[isDraggingKey] = true;
-      this.accumulatedDistance = 0;
-    
-      // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran pour une animation plus fluide
-      this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
-  },
+    }
 
-  // Méthode appelée pendant le glissement
-  dragThrottled: function(event, sliderNumber) {
-      const touch = event.touches ? event.touches[0] : event;
-      const sliderKey = `translateValue${sliderNumber}`;
-      const isDraggingKey = `isDragging${sliderNumber}`;
-    
-      if (this.$data[isDraggingKey]) {
-        const delta = touch.clientX - this.startX;
-        this.accumulatedDistance += Math.abs(delta);
-        this.$data[sliderKey] += delta;
-        this.startX = touch.clientX;
-      }
-  },
+    // Récupère la position de départ du toucher ou de la souris
+    const touch = event.touches ? event.touches[0] : event;
+    this.startX = touch.clientX; // Enregistre la position horizontale du toucher ou de la souris
+    this.$data[isDraggingKey] = true; // Indique que le glissement est en cours
+    this.accumulatedDistance = 0; // Initialise la distance accumulée
 
-  // Méthode appelée à la fin du glissement
-  endDragThrottled: function(event, sliderNumber) {
-      const sliderKey = `translateValue${sliderNumber}`;
-      const currentIndexKey = `currentIndex${sliderNumber}`;
-      const isDraggingKey = `isDragging${sliderNumber}`;
-    
-      if (this.$data[isDraggingKey]) {
-        document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
-        this.$data[isDraggingKey] = false;
-    
-        cancelAnimationFrame(this.animationFrameId);
-    
-        // condition pour déclencher le défilement seulement si la distance accumulée est suffisante
-        if (this.accumulatedDistance > 20) {
-          // Limitez le déplacement à gauche (vers la première image)
-          if (this.$data[sliderKey] > 0) {
-            this.$data[currentIndexKey] = 0;
-            this.$data[sliderKey] = 0;
-          }
-          // Limitez le déplacement à droite (vers la dernière image)
-          else if (this.$data[sliderKey] < 0) {
-            const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
-            this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-            this.$data[sliderKey] = Math.max(-maxIndex * 290, this.$data[sliderKey]);
-          }
-        }
-    
-        // Ajoutez ces conditions pour empêcher le glissement au-delà des limites
-        if (this.$data[currentIndexKey] === 0) {
-          this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
-        }
-    
-        if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
-          this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
-        }
-    
-        // Réinitialisez la distance accumulée après la fin du glissement
-        this.accumulatedDistance = 0;
-      }
-  },
-
-  // Méthode appelée pour animer le glissement
-  animateDragThrottled: function(event, sliderNumber) {
-      const touch = event.touches ? event.touches[0] : event;
-      const sliderKey = `translateValue${sliderNumber}`;
-      const isDraggingKey = `isDragging${sliderNumber}`;
-    
-      if (this.$data[isDraggingKey]) {
-        this.$data[sliderKey] += (touch.clientX - this.startX) * 0.9;
-        this.startX = touch.clientX;
-        this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
-      }
-  },
+    // Démarre l'exécution de la fonction animateDrag lors du prochain rafraîchissement de l'écran
+    // pour obtenir une animation fluide pendant le glissement
+    this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
 },
 
-      mounted() {
-        // on met un interval de temps pour les changements d'images
-        this.updateTriangles();
-        setInterval(this.updateTriangles, 6000);
+ // Méthode appelée pendant le glissement
+dragThrottled: function(event, sliderNumber) {
+  // Récupère la position du toucher du premier doigt toucher ou si pas de toucher de la position de la souris
+  const touch = event.touches ? event.touches[0] : event;
 
-        this.startDrag = this.throttle(this.startDragThrottled, 100); 
-        this.drag = this.throttle(this.dragThrottled, 25); 
-        this.endDrag = this.throttle(this.endDragThrottled, 150); 
-        this.animateDrag = this.throttle(this.animateDragThrottled, 15);
-      },
-    });
+  // Crée des clés dynamiques pour les valeurs du curseur et pour indiquer si le glissement est en cours et associe la valeur du curseur et l'associe au nom de propriété soit si sliderNumber1 alors translateValue1 et isDragging1
+  const sliderKey = `translateValue${sliderNumber}`;
+  const isDraggingKey = `isDragging${sliderNumber}`;
+
+  // Vérifie si le glissement est en cours pour ce curseur
+  if (this.$data[isDraggingKey]) {
+      // Calcule le déplacement depuis la dernière position enregistrée
+      const delta = touch.clientX - this.startX;
+
+      // Ajoute la valeur absolue du déplacement à la distance accumulée
+      this.accumulatedDistance += Math.abs(delta);
+
+      // Met à jour la valeur du curseur en fonction du déplacement
+      this.$data[sliderKey] += delta;
+
+      // Met à jour la position de départ pour le prochain calcul de déplacement
+      this.startX = touch.clientX;
+  }
+},
+
+  // Méthode appelée à la fin du glissement
+endDragThrottled: function(event, sliderNumber) {
+  // Crée des clés dynamiques pour accéder aux valeurs du curseur, de l'index actuel et pour indiquer si le glissement est en cours
+  const sliderKey = `translateValue${sliderNumber}`;
+  const currentIndexKey = `currentIndex${sliderNumber}`;
+  const isDraggingKey = `isDragging${sliderNumber}`;
+
+  // Vérifie si le glissement est en cours pour ce curseur
+  if (this.$data[isDraggingKey]) {
+      // Retire la classe 'dragging' de l'élément du curseur pour indiquer la fin du glissement
+      document.querySelector(`.slider-track${sliderNumber}`).classList.remove('dragging');
+
+      // Indique que le glissement n'est plus en cours
+      this.$data[isDraggingKey] = false;
+
+      // Annule la demande d'animation frame pour arrêter l'animation du glissement
+      cancelAnimationFrame(this.animationFrameId);
+
+      // Condition pour déclencher le défilement seulement si la distance est plus grande que 5
+      if (this.accumulatedDistance > 5) {
+          // Limite le déplacement à gauche (vers la première image)
+          if (this.$data[sliderKey] > 0) {
+            // Si la valeur du curseur est supérieure à 0, cela signifie que nous sommes au-delà de la première image.
+            // Donc, nous ramenons l'index actuel à 0 pour afficher la première image.
+            // Nous ramenons également la valeur du curseur à 0 pour que l'image commence depuis la gauche.
+              this.$data[currentIndexKey] = 0;
+              this.$data[sliderKey] = 0;
+          }
+          // Limite le déplacement à droite (vers la dernière image)
+          else if (this.$data[sliderKey] < 0) {
+            // Si la valeur du curseur est inférieure à 0, cela signifie que nous sommes au-delà de la dernière image.
+            // Nous ajustons l'index actuel pour qu'il ne dépasse pas l'index de la dernière image.
+              const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
+              this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
+              // Nous ajustons également la valeur du curseur pour empêcher le déplacement au-delà de la dernière image.
+              // Nous utilisons -maxIndex * 290 comme limite pour garantir que le curseur ne dépasse pas la dernière image.
+              this.$data[sliderKey] = Math.max(-maxIndex * 290, this.$data[sliderKey]);
+          }
+      }
+
+      // Ajoute des conditions pour empêcher le glissement au-delà des limites
+      if (this.$data[currentIndexKey] === 0) {
+          this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
+      }
+
+      if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
+          this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
+      }
+
+      // Réinitialise la distance accumulée après la fin du glissement
+      this.accumulatedDistance = 0;
+  }
+},
+
+
+  // Méthode appelée pour animer le glissement
+    animateDragThrottled: function(event, sliderNumber) {
+      // Récupère la position du toucher ou de la souris
+      const touch = event.touches ? event.touches[0] : event;
+
+      // Clés dynamiques pour accéder aux valeurs du curseur et pour vérifier si le glissement est en cours
+      const sliderKey = `translateValue${sliderNumber}`;
+      const isDraggingKey = `isDragging${sliderNumber}`;
+
+      // Vérifie si le glissement est en cours pour ce curseur
+      if (this.$data[isDraggingKey]) {
+          // Calcule le déplacement du curseur en fonction du mouvement de la souris/toucher
+          // Multiplie le déplacement par 0.9 pour une animation plus douce
+          const delta = (touch.clientX - this.startX) * 0.9;
+
+          // Met à jour la valeur du curseur en ajoutant le déplacement calculé
+          this.$data[sliderKey] += delta;
+
+          // Met à jour la position de départ pour le prochain calcul de déplacement
+          this.startX = touch.clientX;
+
+          // Planifie l'exécution de cette fonction lors du prochain rafraîchissement de l'écran pour continuer l'animation fluide pendant le glissement
+          // Ceci est réalisé en utilisant la fonction requestAnimationFrame qui synchronise l'animation avec les rafraîchissements de l'écran
+          this.animationFrameId = requestAnimationFrame(() => this.animateDragThrottled(event, sliderNumber));
+      }
+    }
+  },
+
+    mounted() {
+      // on met un interval de temps pour les changements d'images
+      this.updateTriangles();
+      setInterval(this.updateTriangles, 6000);
+
+      // Ces fonctions throttled sont créées en utilisant la méthode throttle pour les différents événements de glissement
+      // Elles garantissent que les événements ne sont déclenchés que selon le délai spécifié permettant de contrôler la fréquence d'exécution de ces événements
+      this.startDrag = this.throttle(this.startDragThrottled, 100); 
+      this.drag = this.throttle(this.dragThrottled, 25); 
+      this.endDrag = this.throttle(this.endDragThrottled, 150); 
+      this.animateDrag = this.throttle(this.animateDragThrottled, 15);
+    },
+  });
 
 app.mount("#app");
 
