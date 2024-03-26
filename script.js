@@ -336,7 +336,7 @@ endDragThrottled: function(event, sliderNumber) {
       setTimeout(() => {
         // Marquer la page comme chargée après 3 secondes
         this.loaded = true;
-      }, 700000);
+      }, 3000);
     },
   });
 
