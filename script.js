@@ -24,7 +24,6 @@ const app = Vue.createApp({
           isDragging3: false,
           isDragging4: false,
           isDragging5: false,
-
           loaded: false,
           /* liste des images (pour les changements dans les triangles) */
           images: [
@@ -337,7 +336,7 @@ endDragThrottled: function(event, sliderNumber) {
       setTimeout(() => {
         // Marquer la page comme chargée après 3 secondes
         this.loaded = true;
-      }, 3000);
+      }, 700000);
     },
   });
 

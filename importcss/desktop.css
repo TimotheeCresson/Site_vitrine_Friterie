@@ -4,8 +4,17 @@ h3 {
     font-size: 1.5em;
 }
 
+/* Loader */
+.wordVideo {
+    color: var(--primary-color);
+    font-size: 40px;
+    letter-spacing: 15px;
+    margin-bottom: 150px;
+    animation: flash 3s linear infinite; /* Augmentez la durée de l'animation principale */
+    text-transform: capitalize;
+}
 
-
+/* header et nav */
 header {
     height: 150px;
 }
@@ -13,6 +22,8 @@ header {
     height: 120px;
     width: 120px;
 }
+
+
 /* polygone */
 .grid-container {
     height: 600px;

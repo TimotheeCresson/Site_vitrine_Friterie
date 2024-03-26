@@ -1,19 +1,85 @@
+/* Loader */
 .loader {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: black;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.loader span {
-    color: white;
+.phrase span {
+    margin: 0 5px; /* Ajoutez une marge entre les mots si nécessaire */
+}  
+.phrase {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    position: absolute;
+    top: 20px;
+    text-align: center;
+}
+.video-background {
+    width: 100%; /* ou toute autre largeur souhaitée */
+    height: 100%; /* ou toute autre hauteur souhaitée */
 }
 .fondu-out {
     opacity: 0;
     transition: opacity 0.4s ease-out;
 }
+
+.wordVideo {
+    color: #FFFF00;
+    font-size: 20px;
+    letter-spacing: 5px;
+    animation: flash 3s linear infinite; /* Augmentez la durée de l'animation principale */
+    text-transform: capitalize;
+}
+
+@keyframes flash {
+    0% {
+        color: #FF0000; 
+        text-shadow: 0 0 5px #FF0000;
+    }
+    90% {
+        color: #FFFF00; 
+        text-shadow: none; 
+    }
+    100% {
+        color: #FF0000;
+        text-shadow: 0 0 5px #FF0000;
+    }
+}
+
+.wordVideo:nth-child(1) {
+    animation-delay: 0.1s;
+}
+.wordVideo:nth-child(2) {
+    animation-delay: 0.3s; 
+}
+.wordVideo:nth-child(3) {
+    animation-delay: 0.5s; 
+}
+.wordVideo:nth-child(4) {
+    animation-delay: 0.7s; 
+}
+.wordVideo:nth-child(5) {
+    animation-delay: 0.9s; 
+}
+.wordVideo:nth-child(6) {
+    animation-delay: 1.1s; 
+}
+.wordVideo:nth-child(7) {
+    animation-delay: 1.3s; 
+}
+.wordVideo:nth-child(8) {
+    animation-delay: 1.5s; 
+}
+
+
+
+
+/* header + nav */
 header {
     position: relative;
     background-color: var(--primary-color);
