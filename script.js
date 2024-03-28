@@ -3,6 +3,7 @@
 const app = Vue.createApp({
     data() {
         return {
+          videoSrc: "./video/video.mp4",
           /* Menu */
           isMenuOpen: false,
           /* Défilement menu */
@@ -319,7 +320,6 @@ endDragThrottled: function(event, sliderNumber) {
   },
 
 
-
     mounted() {
       // on met un interval de temps pour les changements d'images
       this.updateTriangles();
@@ -333,11 +333,12 @@ endDragThrottled: function(event, sliderNumber) {
       this.animateDrag = this.throttle(this.animateDragThrottled, 15);
 
 
-      setTimeout(() => {
-        // Marquer la page comme chargée après 3 secondes
-        this.loaded = true;
-      }, 3000);
-    },
+      
+    setTimeout(() => {
+      // Marquer la page comme chargée après 3 secondes
+      this.loaded = true;
+  }, 10000);
+},
   });
 
 app.mount("#app");

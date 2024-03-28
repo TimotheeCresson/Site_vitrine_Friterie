@@ -13,16 +13,16 @@
     <div id="app">
 
         <div class="loader" :class="{ 'fondu-out': loaded }">
-            <video autoplay muted loop playsinline  class="video-background">
-              <source src="./video/test.mp4" type="video/mp4">
-              Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+            <video autoplay muted playsinline class="video-background">
+                <source :src="videoSrc" type="video/mp4">
+                Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
             </video>
+            
+            
             <div class="phrase">
                 <span class="wordVideo">Bonjour,</span>
                 <span class="wordVideo">Bienvenue</span>
                 <span class="wordVideo">à</span>
-                <span class="wordVideo">la</span>
-                <span class="wordVideo">friterie</span> 
                 <span class="wordVideo">"La</span> 
                 <span class="wordVideo">"Bonne</span> 
                 <span class="wordVideo">Bouffe"</span> 
