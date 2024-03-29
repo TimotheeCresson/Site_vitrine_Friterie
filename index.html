@@ -12,12 +12,13 @@
 <body>
     <div id="app">
 
-        <div class="loader" :class="{ 'fondu-out': loaded }">
-            <video autoplay muted playsinline class="video-background">
+        <div class="loader" :class="{ 'fondu-out': loaded }" v-if="!videoEnded">
+            <video autoplay muted playsinline class="video-background" @ended="onVideoEnded">
                 <source :src="videoSrc" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
             </video>
-
+            
+            
             <div class="phrase">
                 <span class="wordVideo">Bonjour,</span>
                 <span class="wordVideo">Bienvenue</span>
@@ -28,10 +29,10 @@
             </div>
         </div>
 
-        <div v-if="loaded">
+        <div  v-if="videoEnded">
         <!-- Entête -->
         <header id="accueil">
-            <img class="logo" v-bind:src="'./img/logo.jpg'" alt="logo">
+            <img class="logo" v-bind:src="'./img/logo.jpg'" alt="logo" loading="lazy">
             <div class="nav-toggle" @click="toggleMenu">
                 <div class="nav-toggle-bar">
                     <i :class="iconClass" class="fa-solid" transition="icon-transition"></i>
@@ -60,7 +61,7 @@
             <div class="sandwichChaudsContainer">
                 <h2>La carte</h2>
                 <div class="introMenuSlider">
-                    <img class="iconeMenu" src="./img/sandwich.png" alt="iconeSandwich">
+                    <img class="iconeMenu" src="./img/sandwich.png" alt="iconeSandwich" loading="lazy">
                     <h3>Sandwichs Chauds (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
                     <p> Pour les amateurs de chaleur réconfortante et d'associations gourmandes, nos sandwichs chauds sauront vous séduire. </p>
                 </div>
@@ -86,7 +87,7 @@
     <!-- Section Menu Américains sandwichs -->
             <div class="americainSandwichContainer">
                 <div class="introAmericainsS introMenuSlider">
-                    <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS">
+                    <img class="iconeMenu2" src="./img/iconeAmericainS.jpg" alt="iconeAméricainS" loading="lazy">
                     <h3>Américains Sandwichs (Sans supplément pour les crudités et sauce incluse dans le pain)</h3>
                     <p>Découvrez le plaisir authentique des saveurs américaines avec nos sandwiches maison, spécialement conçus pour les amateurs de goûts riches et généreux</p>
                 </div>
@@ -110,7 +111,7 @@
             <!-- Section Menu Pizzas -->
             <div class="pizzaContainer">
                 <div class="introPizzas introMenuSlider">
-                    <img class="iconeMenu3" src="./img/iconePizza.png" alt="iconePizza">
+                    <img class="iconeMenu3" src="./img/iconePizza.png" alt="iconePizza" loading="lazy">
                     <h3>Pizzas Maison</h3>
                     <p>Succombez à l'irrésistible mariage du fromage fondant et des saveurs authentiques de l'Italie avec notre sélection de pizzas artisanales, soigneusement préparées pour éveiller vos papilles </p>
                 </div>
@@ -134,7 +135,7 @@
             <!-- Section Menu Paninis -->
             <div class="paniniContainer">
                 <div class="introPaninis introMenuSlider">
-                    <img class="iconeMenu4" src="./img/paniniIcone.png" alt="iconePanini">
+                    <img class="iconeMenu4" src="./img/paniniIcone.png" alt="iconePanini" loading="lazy">
                     <h3>Paninis</h3>
                     <p>Plaisir grillé à chaque bouchée, mes paninis sont soigneusement préparés par mes soins. Laissez-vous séduire par la combinaison harmonieuse de fromages fondants, de viandes savoureuses et d'accompagnements délicats, créant ainsi une explosion de délices à chaque morceau.</p>
                 </div>
@@ -158,7 +159,7 @@
         <!-- Section Menu bagnats -->
             <div class="bagnatContainer">
                 <div class="introBagnatsSandwichs introMenuSlider">
-                    <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs">
+                    <img class="iconeMenu5" src="./img/bagnat.png" alt="iconeBagnatsSandwichs" loading="lazy">
                     <h3>Pains bagnats ou Sandwichs</h3>
                     <p>Plongez dans une expérience méditerranéenne rafraîchissante avec nos pains bagnats artisanaux ou succombez à la diversité de nos sandwiches délicieusement garnis. </p>
                 </div>
@@ -184,7 +185,7 @@
 <!-- Plats avec frites et sans frites-->
     <div class="PlatFriteOuSans">
         <div class="assietteFrite">
-            <img src="./img/assietteFrite.png" alt="assietteFrite">
+            <img src="./img/assietteFrite.png" alt="assietteFrite" loading="lazy">
             <h3>Plats avec frites</h3>
             <p>Laissez vous tenter par ma sélection de plats savoureux accompagnés de frites croustillantes. Des classiques réconfortants tels que le kebab avec frites, nuggets frites </p>
         </div>
@@ -204,7 +205,7 @@
         </table>
 
         <div class="assietteVide">
-            <img src="./img/assietteVide.png" alt="AssietteVide">
+            <img src="./img/assietteVide.png" alt="AssietteVide" loading="lazy">
             <h3>Plats seuls</h3>
             <p>Envie d'un plat plus léger, laissez vous tenter par ses différents classiques : burger, croque-monsieur, mexicanos...</p>
         </div>
@@ -258,7 +259,7 @@
     <!-- Les Frites-->
     <div class="friteContainer">
         <div class="enteteFrite">
-            <img src="./img/cornetFrite.png" alt="cornetFrite">
+            <img src="./img/cornetFrite.png" alt="cornetFrite" loading="lazy">
             <h4>Les frites</h4>
             <p>Afin d'accompagner vos plats, je vous propose différentes tailles de frites selon votre appétit.</p>
         </div>
@@ -287,7 +288,7 @@
 
     <!-- Les boissons -->
     <div class="headerBoisson">
-        <img src="./img/iconeBoisson.png" alt="iconeBoisson">
+        <img src="./img/iconeBoisson.png" alt="iconeBoisson" loading="lazy">
         <h4>Les boissons</h4>
     </div>
 
@@ -332,7 +333,7 @@
 
     <!-- les sauces -->
     <div class="sauceContainer">
-        <img src="./img/sauce.png" alt="sauce">
+        <img src="./img/sauce.png" alt="sauce" loading="lazy">
         <h4>Les sauces</h4>
         <div class="cadreSauce">
             <div class="prixSauces">0,50 €</div>
@@ -379,11 +380,11 @@
 
         <div class="info">
             <div class="paiementCarte">
-                <img src="./img/carte.jpg" alt="carteBleue">
+                <img src="./img/carte.jpg" alt="carteBleue" loading="lazy">
                 <p>Paiement par carte et ticket-restaurant acceptés</p>
             </div>
             <div class="reservation">
-                <img src="./img/reservation.jpg" alt="reservation">
+                <img src="./img/reservation.jpg" alt="reservation" loading="lazy">
                 <p>Réserver votre menu par téléphone au </p> <br>
                 <a href="tel: 03 20 96 03 43">03 20 96 03 43</a>
             </div>
