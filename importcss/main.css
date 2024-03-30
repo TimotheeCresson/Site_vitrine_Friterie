@@ -435,11 +435,9 @@ td {
 
 .drink-details p {
     color: var(--secondary-color);
+    font-size: 12px;
 }
-.drink-card:hover .priceBoisson {
-    opacity: 1;
-    transform: scale(1);
-}
+
 .priceBoisson {
     position: absolute;
     top: 0;
@@ -449,14 +447,10 @@ td {
     align-items: center;
     background-color: var(--primary-color);
     color: var(--secondary-color);
-    width: 90px;
-    height: 90px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
-    opacity: 0;
-    transform: scale(0.8);
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 }
-
 
 
 /* Sauces */

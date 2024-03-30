@@ -105,3 +105,15 @@ td {
     margin: 20px 70px;
 }
 
+/* boissons */
+
+.priceBoisson {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.drink-card:hover .priceBoisson {
+    opacity: 1;
+    transform: scale(1);
+}
