@@ -32,7 +32,7 @@ const app = Vue.createApp({
          
           /* liste des images (pour les changements dans les triangles) */
           images: [
-            './img/sandwichFricadelle.jpg',
+            './img/americainFricadelle2.jpg',
             './img/pizzaJambonOignon.jpg',
             './img/americainGrizli.jpg',
             './img/paniniJambonFromage.jpg',
@@ -55,7 +55,7 @@ const app = Vue.createApp({
           imageSliders1: [ 
           { id:1, image: './img/sandwichFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
           { id:2, image: './img/sandwichSteakFromage.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/\nnuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich crizly', price: '6,00 €',  isHovered: false },
+          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich grizzly', price: '6,00 €',  isHovered: false },
           { id:4,image: './img/sandwichKebab.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €',  isHovered: false },
           { id:5, image: './img/sandwichSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €',  isHovered: false },
           { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
@@ -65,7 +65,7 @@ const app = Vue.createApp({
           { id:1, image: './img/americainFricadelle2.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €',  isHovered: false },
           { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €',  isHovered: false },
           { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €',  isHovered: false },
-          { id:4,image: './img/americainGrizli.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizli', price: '9,00 €',  isHovered: false },
+          { id:4,image: './img/americainGrizli.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizzly', price: '9,00 €',  isHovered: false },
           { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €',  isHovered: false },
           { id:6,image: './img/americainTexan.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €',  isHovered: false },
         ],
