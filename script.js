@@ -30,7 +30,7 @@ const app = Vue.createApp({
           isDragging4: false,
           isDragging5: false,
          
-          /* liste des images (pour les changements dans les triangles) */
+          /* liste des images (pour les changements aléatoire dans les triangles) */
           images: [
             './img/americainFricadelle2.jpg',
             './img/pizzaJambonOignon.jpg',
@@ -129,7 +129,6 @@ const app = Vue.createApp({
 
       /* Toutes mes méthodes */
       methods: {
-
         /* Mon toggle Burger */
         toggleMenu() {
           this.isMenuOpen = !this.isMenuOpen;
@@ -167,6 +166,7 @@ const app = Vue.createApp({
           // sinon on retourne une image aléatoire parmis nos images dispos
           return availableImages[Math.floor(Math.random() * availableImages.length)];
         },
+
         updateTriangles() {
           // on met à jour les images des triangles en appelant notre fonction getRandomImage pour chacun
           this.triangles.forEach(triangle => {
@@ -284,22 +284,32 @@ const app = Vue.createApp({
             // Limite le déplacement à droite (vers la dernière image)
             else if (this.$data[sliderKey] < 0) {
               // Si la valeur du curseur est inférieure à 0, cela signifie que nous sommes au-delà de la dernière image.
-              // Nous ajustons l'index actuel pour qu'il ne dépasse pas l'index de la dernière image.
-                const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
-                this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
-                // Nous ajustons également la valeur du curseur pour empêcher le déplacement au-delà de la dernière image.
-                // Nous utilisons -maxIndex * 290 comme limite pour garantir que le curseur ne dépasse pas la dernière image.
-                this.$data[sliderKey] = Math.max(-maxIndex * 290, this.$data[sliderKey]);
+
+              // Nous calculons l'index maximal possible en soustrayant 1 du nombre total d'images.
+              const maxIndex = this[`imageSliders${sliderNumber}`].length - 1;
+
+              // Nous mettons à jour l'index actuel en nous assurant qu'il ne dépasse pas l'index de la dernière image.
+              this.$data[currentIndexKey] = Math.min(maxIndex, this.$data[currentIndexKey] + 1);
+
+              // Nous ajustons également la valeur du curseur pour empêcher le déplacement au-delà de la dernière image.
+
+              // Nous utilisons -maxIndex * 290 comme limite pour garantir que le curseur ne dépasse pas la dernière image.
+              // Ici, 290 est la largeur d'une seule image dans le slider, et nous la multiplions par le nombre total d'images.
+              // Cela garantit que la dernière image est toujours visible et que le slider ne peut pas être déplacé trop loin vers la droite.
+              this.$data[sliderKey] = Math.max(-maxIndex * 290, this.$data[sliderKey]);
             }
-        }
+          }
 
-        // Ajoute des conditions pour empêcher le glissement au-delà des limites
+        // Si l'index actuel est égal à 0 (nous sommes sur la première image),
+        // nous assurons que la valeur du curseur est au moins 0 (pour éviter de dépasser la première image).
         if (this.$data[currentIndexKey] === 0) {
-            this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
+          this.$data[sliderKey] = Math.max(0, this.$data[sliderKey]);
         }
 
+        // Si l'index actuel est égal à l'index de la dernière image dans le slider,
+        // nous assurons que la valeur du curseur ne devient pas positive (pour éviter de dépasser la dernière image).
         if (this.$data[currentIndexKey] === this[`imageSliders${sliderNumber}`].length - 1) {
-            this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
+          this.$data[sliderKey] = Math.min(0, this.$data[sliderKey]);
         }
 
         // Réinitialise la distance accumulée après la fin du glissement
@@ -320,7 +330,7 @@ const app = Vue.createApp({
         // Vérifie si le glissement est en cours pour ce curseur
         if (this.$data[isDraggingKey]) {
             // Calcule le déplacement du curseur en fonction du mouvement de la souris/toucher
-            // Multiplie le déplacement par 0.9 pour une animation plus douce
+            // Multiplie le déplacement par 0.9 pour une animation plus rapide
             const delta = (touch.clientX - this.startX) * 0.9;
 
             // Met à jour la valeur du curseur en ajoutant le déplacement calculé
