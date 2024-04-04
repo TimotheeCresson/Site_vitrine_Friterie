@@ -51,7 +51,9 @@ const app = Vue.createApp({
             { id: 5, class: 'triangle5', alt: 'Triangle 5', image: '' },
           ],
           
+
           /* Sliders */
+          /* La partie des sliders est susceptible d'être changé pour y incorporer une fonction de modification de l'image, le prix, le caption et le nom selon l'envie de mon client, cela n'étant pas nécessaire car il n'est pas très alaise avec l'informatique et celui-ci ne changeant jamais de carte, seulement de prix de temps en temps*/
           imageSliders1: [ 
           { id:1, image: './img/sandwichFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
           { id:2, image: './img/sandwichSteakFromage.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/\nnuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
