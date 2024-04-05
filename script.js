@@ -57,17 +57,17 @@ const app = Vue.createApp({
           imageSliders1: [ 
           { id:1, image: './img/sandwichFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
           { id:2, image: './img/sandwichSteakFromage.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/\nnuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich grizzly', price: '6,00 €',  isHovered: false },
+          { id:3, image: './img/sandwichGrizzly.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich grizzly', price: '6,00 €',  isHovered: false },
           { id:4,image: './img/sandwichKebab.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €',  isHovered: false },
           { id:5, image: './img/sandwichSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €',  isHovered: false },
-          { id:6,image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
+          { id:6,image: './img/sandwichTexan.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
         ],
         
         imageSliders2: [
           { id:1, image: './img/americainFricadelle2.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €',  isHovered: false },
           { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €',  isHovered: false },
           { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €',  isHovered: false },
-          { id:4,image: './img/americainGrizli.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizzly', price: '9,00 €',  isHovered: false },
+          { id:4,image: './img/americainGrizzly.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizzly', price: '9,00 €',  isHovered: false },
           { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €',  isHovered: false },
           { id:6,image: './img/americainTexan.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €',  isHovered: false },
         ],
@@ -87,16 +87,16 @@ const app = Vue.createApp({
           { id:1, image: './img/paniniClassique.jpg', caption: 'mozzarella + tomates', nameDish:'Panini classique', price: '4,50 €',  isHovered: false },
           { id:2, image: './img/paniniSaucisses.jpg', caption: 'mozzarella + tomates + saucisses', nameDish:'Panini Saucisses', price: '4,50 €',  isHovered: false },
           { id:3, image: './img/paniniJambonFromage.jpg', caption: 'mozzarella + tomates + jambon + emmental', nameDish:'Panini jambon-fromage', price: '5,50 €',  isHovered: false },
-          { id:4, image: './img/pizza.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €',  isHovered: false },
-          { id:5,image: './img/pizza.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €',  isHovered: false },
-          { id:6, image: './img/pizza.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €',  isHovered: false },
-          { id:7,image: './img/burger.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €',  isHovered: false },
+          { id:4, image: './img/paniniRaclette.jpg', caption: 'mozzarella + tomates + raclette', nameDish:'Panini raclette', price: '5,50 €',  isHovered: false },
+          { id:5,image: './img/panini3fromage.jpg', caption: 'mozzarella + tomates + chèvre + mimolette', nameDish:'Panini 3 fromages', price: '5,50 €',  isHovered: false },
+          { id:6, image: './img/paniniSavoyard.jpg', caption: 'mozzarella + tomates + mimolette + emmental + saucisse', nameDish:'Panini savoyard', price: '5,50 €',  isHovered: false },
+          { id:7,image: './img/paniniMontagnard.jpg', caption: 'mozzarella + tomates + mimolette + emmental + steack', nameDish:`Panini montagnard`, price: '5,50 €',  isHovered: false },
         ],
 
         imageSliders5: [
           { id:1, image: './img/filetamericain.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €',  isHovered: false },
-          { id:2, image: './img/frite.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €',  isHovered: false },
-          { id:3, image: './img/pizza.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €',  isHovered: false },
+          { id:2, image: './img/bagnatSurimi1.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €',  isHovered: false },
+          { id:3, image: './img/bagnatThon.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €',  isHovered: false },
         ],
 
         /* Tableaux */
