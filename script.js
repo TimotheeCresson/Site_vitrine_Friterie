@@ -33,14 +33,14 @@ const app = Vue.createApp({
           /* liste des images (pour les changements aléatoire dans les triangles) */
           images: [
             './img/americainFricadelle2.jpg',
-            './img/pizzaJambonOignon.jpg',
-            './img/americainGrizli.jpg',
+            './img/paniniClassique.jpg',
+            './img/sandwichGrizzly.jpg',
             './img/paniniJambonFromage.jpg',
-            './img/americainTexan.jpg',
-            './img/pizzaFruitsDeMer.jpg',
+            './img/bagnatSurimi2.jpg',
+            './img/sandwichTexan.jpg',
             './img/americainMexicanos.jpg',
             './img/sandwichKebab.jpg',
-            './img/sandwichSavoyard.jpg',
+            './img/bagnatThon.jpg',
           ],
             /* on liste nos triangles avec un id et une class */
           triangles: [

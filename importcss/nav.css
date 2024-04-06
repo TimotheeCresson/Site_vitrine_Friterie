@@ -142,7 +142,7 @@ z-index: 3; /* Ensure the nav-toggle-bar is above other elements */
     z-index: 1;
 }
 .menu-open {
-    background: url("./../img/menu1.jpg");
+    background: url("./../img/sandwichMexicanos.jpg");
     background-size: cover;
     background-position: center;
 }

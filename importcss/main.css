@@ -174,7 +174,7 @@ transform: scale(1.2);
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(226, 69, 12);
+    background-color: rgb(161, 40, 40);
     color: var(--secondary-color);
     width: 70px;
     height: 70px;
