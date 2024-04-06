@@ -6,7 +6,7 @@ const app = Vue.createApp({
           /* video */
           videoSrc: "./video/video.mp4",
           videoEnded: false, 
-          
+          loadedImages: {},
           /* Menu */
           isMenuOpen: false,
 
@@ -180,6 +180,15 @@ const app = Vue.createApp({
         },
         resetZoom(imageSliders, index) {
           imageSliders[index].isHovered = false;
+        },
+
+        getLazyImage(imageUrl) {
+          if (!this.loadedImages[imageUrl]) {
+            let lazyImage = new Image();
+            lazyImage.src = imageUrl;
+            this.loadedImages[imageUrl] = true;
+          }
+          return imageUrl;
         },
 
 

@@ -73,7 +73,7 @@
                             <span class="price">{{ imageSlider1.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)" @touchstart="applyZoom(imageSliders1, index)"
                             @touchend="resetZoom(imageSliders1, index)">
-                                <div :style="{ backgroundImage: 'url(' + imageSlider1.image + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider1.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider1.nameDish.replace('/', '&#47;') }}</p>
@@ -97,7 +97,7 @@
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders2, index)" @mouseout="resetZoom(imageSliders2, index)">
-                                <div :style="{ backgroundImage: 'url(' + imageSlider2.image + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider2.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider2.nameDish }}</p>
@@ -121,7 +121,7 @@
                         <div class="slider-item" v-for="(imageSlider3, index) in imageSliders3" :key="index" :class="'item' + imageSlider3.id">
                             <span class="price priceForPizza">{{ imageSlider3.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders3, index)" @mouseout="resetZoom(imageSliders3, index)">
-                                <div :style="{ backgroundImage: 'url(' + imageSlider3.image + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider3.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider3.nameDish }}</p>
@@ -145,7 +145,7 @@
                         <div class="slider-item" v-for="(imageSlider4, index) in imageSliders4" :key="index" :class="'item' + imageSlider4.id">
                             <span class="price priceForPizza">{{ imageSlider4.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders4, index)" @mouseout="resetZoom(imageSliders4, index)">
-                                <div :style="{ backgroundImage: 'url(' + imageSlider4.image + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider4.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider4.nameDish }}</p>
@@ -169,7 +169,7 @@
                         <div class="slider-item" v-for="(imageSlider5, index) in imageSliders5" :key="index" :class="'item' + imageSlider5.id">
                             <span class="price">{{ imageSlider5.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders5, index)" @mouseout="resetZoom(imageSliders5, index)">
-                                <div :style="{ backgroundImage: 'url(' + imageSlider5.image + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider5.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider5.nameDish }}</p>
