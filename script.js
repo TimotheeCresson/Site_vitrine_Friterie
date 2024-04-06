@@ -36,7 +36,7 @@ const app = Vue.createApp({
             './img/paniniClassique.jpg',
             './img/sandwichGrizzly.jpg',
             './img/paniniJambonFromage.jpg',
-            './img/bagnatSurimi2.jpg',
+            './img/bagnatSurimi1.jpg',
             './img/sandwichTexan.jpg',
             './img/americainMexicanos.jpg',
             './img/sandwichKebab.jpg',
