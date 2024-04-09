@@ -97,7 +97,7 @@
                         <div class="slider-item" v-for="(imageSlider2, index) in imageSliders2" :key="index" :class="'item' + imageSlider2.id">
                             <span class="price">{{ imageSlider2.price }}</span>
                             <div class="background-imageMenu" @mouseover="applyZoom(imageSliders2, index)" @mouseout="resetZoom(imageSliders2, index)">
-                                <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider2.image) + ')' }" class="background-imageMenuZoom"></div>
+                                <div :style="{ backgroundImage: 'url(' + imageSlider2.image + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider2.nameDish }}</p>
