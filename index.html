@@ -13,7 +13,7 @@
     <div id="app">
 
         <div class="loader" :class="{ 'fondu-out': loaded }" v-if="!videoEnded">
-            <video controls playsinline class="video-background" @ended="onVideoEnded" @click="fermerVideoEtRediriger($event)">
+            <video controls playsinline class="video-background" @ended="onVideoEnded">
                 <source :src="videoSrc" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
             </video>

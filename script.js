@@ -136,11 +136,8 @@ const app = Vue.createApp({
         
           // Arrêter la vidéo
           const video = document.querySelector('.video-background');
-          if (video && !video.paused) {
-            video.pause();
-            video.currentTime = 0; // Réinitialiser la vidéo à son début
-            console.log('Vidéo arrêtée.');
-          }
+          video.pause();
+          console.log('Vidéo arrêtée.');
         
           // Mettre videoEnded à true pour afficher le contenu après la vidéo
           this.videoEnded = true;
