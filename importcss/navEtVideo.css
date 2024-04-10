@@ -30,26 +30,25 @@
 }
 
 .wordVideo {
-    color: #2e302f;
+    color: #000000;
     font-size: 20px;
     font-weight: 700;
     letter-spacing: 5px;
     animation: flash 1.2s linear infinite; /* Augmentez la durée de l'animation principale */
     text-transform: capitalize;
 }
-
 @keyframes flash {
     0% {
-        color: #fff900; 
-        text-shadow: 0 0 8px fff900;
+        color: #ff0000; /* Jaune orangé */
+        text-shadow: 0 0 8px #ff0000; /* Ombre jaune orangé */
     }
     90% {
-        color: #2e302f; 
-        text-shadow: none; 
+        color: #000000; /* Noir */
+        text-shadow: none; /* Pas d'ombre */
     }
     100% {
-        color: #fff900;
-        text-shadow: 0 0 8px #fff900;
+        color: #ff0000; /* Jaune orangé */
+        text-shadow: 0 0 8px #ff0000; /* Ombre jaune orangé */
     }
 }
 
@@ -70,6 +69,19 @@
 }
 .wordVideo:nth-child(6) {
     animation-delay: 1.1s; 
+}
+
+.accederSite {
+    position: absolute;
+    bottom: 55px;
+    right: 25px;
+}
+.accederSite a {
+    color: var(--primary-color);
+    font-size: 25px;
+    text-decoration: none;
+    border: 2px solid black;
+    padding: 5px;
 }
 
 

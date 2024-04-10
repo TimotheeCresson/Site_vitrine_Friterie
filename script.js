@@ -7,6 +7,7 @@ const app = Vue.createApp({
           videoSrc: "./video/video.mp4",
           videoEnded: false, 
           loadedImages: {},
+
           /* Menu */
           isMenuOpen: false,
 
@@ -129,6 +130,23 @@ const app = Vue.createApp({
 
       /* Toutes mes méthodes */
       methods: {
+        fermerVideoEtRediriger(event) {
+          // Empêcher le comportement par défaut du clic sur la vidéo
+          event.preventDefault();
+        
+          // Arrêter la vidéo
+          const video = document.querySelector('.video-background');
+          video.pause();
+          console.log('Vidéo arrêtée.');
+        
+          // Mettre videoEnded à true pour afficher le contenu après la vidéo
+          this.videoEnded = true;
+          console.log('Contenu après la vidéo affiché.');
+        },
+        
+        
+
+
         /* Mon toggle Burger */
         toggleMenu() {
           this.isMenuOpen = !this.isMenuOpen;
@@ -182,6 +200,7 @@ const app = Vue.createApp({
           imageSliders[index].isHovered = false;
         },
 
+        /* Ralentir le chargement des images */
         getLazyImage(imageUrl) {
           if (!this.loadedImages[imageUrl]) {
             let lazyImage = new Image();
@@ -190,7 +209,8 @@ const app = Vue.createApp({
           }
           return imageUrl;
         },
-
+        
+        
 
       /* Toute les fonctions pour mes sliders */
 
@@ -372,9 +392,7 @@ const app = Vue.createApp({
         /* Pour la vidéo */
         /* Nous inspectons la vidéo, une fois celle-ci fini, this.videoEnded passe à true pour laisser place au contenu principal  */
         const video = document.querySelector('.video-background');
-      video.addEventListener('ended', () => {
-        this.videoEnded = true;
-      });
+        video.addEventListener('ended', () => { this.videoEnded = true;});
     },
   });
 

@@ -13,12 +13,10 @@
     <div id="app">
 
         <div class="loader" :class="{ 'fondu-out': loaded }" v-if="!videoEnded">
-            <video controls playsinline class="video-background" @ended="onVideoEnded">
+            <video controls playsinline class="video-background" @ended="onVideoEnded" @click="fermerVideoEtRediriger($event)">
                 <source :src="videoSrc" type="video/mp4">
                 Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
             </video>
-            
-            
             <div class="phrase">
                 <span class="wordVideo">Bonjour,</span>
                 <span class="wordVideo">Bienvenue</span>
@@ -27,6 +25,10 @@
                 <span class="wordVideo">"Bonne</span> 
                 <span class="wordVideo">Bouffe"</span> 
             </div>
+            <div class="accederSite">
+                <a href="" @click="fermerVideoEtRediriger">Accéder directement au site</a>
+            </div>
+            
         </div>
 
         <div  v-if="videoEnded">
