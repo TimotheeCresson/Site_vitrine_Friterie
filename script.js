@@ -5,32 +5,15 @@ const app = Vue.createApp({
         return {
           /* video */
           videoSrc: "./video/video.mp4",
-          videoEnded: false, 
+          videoEnded: false,
+          
+          /* get lazy loading */
           loadedImages: {},
 
           /* Menu */
           isMenuOpen: false,
 
-          /* Défilement menu */
-          startX: 0,
-          animationFrameId: null,
-          accumulatedDistance: 0,
-          translateValue1: 0,
-          translateValue2: 0,
-          translateValue3: 0,
-          translateValue4: 0,
-          translateValue5: 0,
-          currentIndex1: 0,
-          currentIndex2: 0,
-          currentIndex3: 0,
-          currentIndex4: 0,
-          currentIndex5: 0,
-          isDragging1: false,
-          isDragging2: false,
-          isDragging3: false,
-          isDragging4: false,
-          isDragging5: false,
-         
+          /* Triangles polygonales */
           /* liste des images (pour les changements aléatoire dans les triangles) */
           images: [
             './img/americainFricadelle2.jpg',
@@ -54,6 +37,27 @@ const app = Vue.createApp({
           
 
           /* Sliders */
+
+            /* Défilement des sliders */
+            startX: 0,
+            animationFrameId: null,
+            accumulatedDistance: 0,
+            translateValue1: 0,
+            translateValue2: 0,
+            translateValue3: 0,
+            translateValue4: 0,
+            translateValue5: 0,
+            currentIndex1: 0,
+            currentIndex2: 0,
+            currentIndex3: 0,
+            currentIndex4: 0,
+            currentIndex5: 0,
+            isDragging1: false,
+            isDragging2: false,
+            isDragging3: false,
+            isDragging4: false,
+            isDragging5: false,
+           
           /* La partie des sliders est susceptible d'être changé pour y incorporer une fonction de modification de l'image, le prix, le caption et le nom selon l'envie de mon client, cela n'étant pas nécessaire car il n'est pas très alaise avec l'informatique et celui-ci ne changeant jamais de carte, seulement de prix de temps en temps*/
           imageSliders1: [ 
           { id:1, image: './img/sandwichFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
@@ -123,6 +127,7 @@ const app = Vue.createApp({
 
       /* propriété de calcul */
       computed: {
+        /* Appliquer l'icône burger ou l'icône croix  notre menu toggle */
         iconClass() {
           return this.isMenuOpen ? 'fa-xmark show' : 'fa-burger show';
         },
@@ -173,9 +178,9 @@ const app = Vue.createApp({
         },
 
 
-        /* Mes images sous format polygonal */
+        /* section triangles polygonales */
         getRandomImage() {
-          // on filtre nos images dispos avec filter qui crée un nouveau tableau contenant uniquement les images qui ne sont pas encore attribuées à un triangle spécifique, aisni une image sélectionnée alétoirement ne sera pas utilisé par 2 mêmes triangles. (some = vérifie si au moins un élément remplit la condition qui est entre ())
+          // on filtre nos images dispos avec filter qui crée un nouveau tableau contenant uniquement les images qui ne sont pas encore attribuées à un triangle spécifique, ainsi une image sélectionnée aléatoirement ne sera pas utilisé par 2 mêmes triangles. (some = vérifie si au moins un élément remplit la condition qui est entre ())
           const availableImages = this.images.filter(image => !this.triangles.some(triangle => triangle.image === image));
 
           // si pas d'image disponible on retourne un string vide
@@ -215,21 +220,21 @@ const app = Vue.createApp({
       /* Toute les fonctions pour mes sliders */
 
       // Fonction de throttling pour limiter la fréquence d'appel pendant le déplacement
-    throttle(callback, delay) {
-      // on initialise la dernière heure à 0
-      let lastTime = 0;
-      // Retourne une fonction qui encapsule la logique de throttling
-      return function(event, sliderNumber) {
-         // on récupère le temps actuel en millisecondes
-          const now = new Date().getTime();
-          // Vérifie si le temps écoulé depuis la dernière exécution est supérieur ou égal au délai
-          if (now - lastTime >= delay) {
-            // Appelle la fonction callback avec les paramètres fournis
-              callback(event, sliderNumber);
-                // Met à jour le dernier temps d'exécution avec le temps actuel
-              lastTime = now;
-          }
-      };
+  throttle(callback, delay) {
+    // on initialise la dernière heure à 0
+    let lastTime = 0;
+    // Retourne une fonction qui encapsule la logique de throttling
+    return function(event, sliderNumber) {
+        // on récupère le temps actuel en millisecondes
+        const now = new Date().getTime();
+        // Vérifie si le temps écoulé depuis la dernière exécution est supérieur ou égal au délai
+        if (now - lastTime >= delay) {
+          // Appelle la fonction callback avec les paramètres fournis
+            callback(event, sliderNumber);
+              // Met à jour le dernier temps d'exécution avec le temps actuel
+            lastTime = now;
+      }
+    };
   },
 
   // Méthode appelée au début du glissement
@@ -268,13 +273,13 @@ const app = Vue.createApp({
 
     // Vérifie si le glissement est en cours pour ce curseur
     if (this.$data[isDraggingKey]) {
-        // Calcule le déplacement depuis la dernière position enregistrée
+        // Calcule le déplacement depuis la dernière position enregistrée soit le déplacement horizontal depuis le début du geste.
         const delta = touch.clientX - this.startX;
 
-        // Ajoute la valeur absolue du déplacement à la distance accumulée
+        // Ajoute la valeur absolue du déplacement à la distance accumulée,  La valeur absolue est utilisée pour s'assurer que la distance est toujours positive, peu importe la direction du mouvement. Cela permet de suivre la distance totale parcourue pendant le geste, 
         this.accumulatedDistance += Math.abs(delta);
 
-        // Met à jour la valeur du curseur en fonction du déplacement
+        // Met à jour la valeur du curseur en fonction du déplacement, sliderKey est utilisé pour générer dynamiquement le nom de la propriété, probablement en fonction du numéro de suivi du curseur ou de l'élément cible, Elle ajoute le déplacement horizontal (delta) à la position actuelle du curseur. Cela permet de mettre à jour la position du curseur en fonction du mouvement effectué par l'utilisateur.
         this.$data[sliderKey] += delta;
 
         // Met à jour la position de départ pour le prochain calcul de déplacement
@@ -392,7 +397,9 @@ const app = Vue.createApp({
         /* Pour la vidéo */
         /* Nous inspectons la vidéo, une fois celle-ci fini, this.videoEnded passe à true pour laisser place au contenu principal  */
         const video = document.querySelector('.video-background');
-        video.addEventListener('ended', () => { this.videoEnded = true;});
+        video.addEventListener('ended', () => {
+            this.videoEnded = true;
+          });
     },
   });
 

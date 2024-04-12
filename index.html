@@ -34,7 +34,7 @@
         <div  v-if="videoEnded">
         <!-- Entête -->
         <header id="accueil">
-            <img class="logo" v-bind:src="'./img/logo.jpg'" alt="logo" loading="lazy">
+            <img class="logo" src="./img/logo.jpg" alt="logo" loading="lazy">
             <div class="nav-toggle" @click="toggleMenu">
                 <div class="nav-toggle-bar">
                     <i :class="iconClass" class="fa-solid" transition="icon-transition"></i>
@@ -51,7 +51,7 @@
 
         <!-- section polygone image -->
 
-       <!-- On itère à travers le tableau triangles, pour chaque triangle, on crée une div, on attribue pour chaque élément une clé unique id, une classe triangle et une classe spécifique (traingle1 ...) et on ajoute les images-->
+       <!-- On itère à travers le tableau triangles, pour chaque triangle, on crée une div, on attribue pour chaque élément une clé unique id, une classe triangle et une classe spécifique (triangle1 ...) et on ajoute les images-->
         <div class="grid-container">
             <div v-for="triangle in triangles" :key="triangle.id" class="triangle" :class="triangle.class" :style="{ backgroundImage: 'url(' + triangle.image + ')' }">
             </div>
