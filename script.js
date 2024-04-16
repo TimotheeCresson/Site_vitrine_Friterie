@@ -73,7 +73,7 @@ const app = Vue.createApp({
           { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €', isHovered: false },
           { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €', isHovered: false },
           { id:4, image: './img/americainGrizzly.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizzly', price: '9,00 €', isHovered: false },
-          { id:5, image: './img/americainSavoyard1.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €', isHovered: false },
+          { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €', isHovered: false },
           { id:6, image: './img/americainTexan.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €', isHovered: false },
         ],
 
