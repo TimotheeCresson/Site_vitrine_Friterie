@@ -129,7 +129,7 @@ const app = Vue.createApp({
       computed: {
         /* Appliquer l'icône burger ou l'icône croix  notre menu toggle */
         iconClass() {
-          return this.isMenuOpen ? 'fa-xmark show' : 'fa-burger show';
+          return this.isMenuOpen ? 'fa-xmark' : 'fa-burger';
         },
       },
 
