@@ -85,6 +85,39 @@
 }
 
 
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh; /* 100% de la hauteur de la vue */
+    overflow: hidden;
+}
+
+
+
+/* Positionner le bouton de lecture au centre */
+.video-container video::-webkit-media-controls-play-button,
+.video-container video::-webkit-media-controls-start-playback-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.5); /* Fond semi-transparent pour le bouton */
+    border: none;
+    border-radius: 50%; /* Pour donner une apparence de bouton rond */
+    padding: 15px; /* Ajustez la taille du bouton selon vos besoins */
+    cursor: pointer;
+    z-index: 1; /* Assurez-vous que le bouton de lecture est au-dessus de la vidéo */
+}
+
+/* Pour les autres navigateurs qui n'utilisent pas le préfixe -webkit- */
+.video-container video::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+
+
+
+
 /* header + nav */
 header {
     position: relative;
