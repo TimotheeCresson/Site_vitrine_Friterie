@@ -60,32 +60,32 @@ const app = Vue.createApp({
            
           /* La partie des sliders est susceptible d'être changé pour y incorporer une fonction de modification de l'image, le prix, le caption et le nom selon l'envie de mon client, cela n'étant pas nécessaire car il n'est pas très alaise avec l'informatique et celui-ci ne changeant jamais de carte, seulement de prix de temps en temps*/
           imageSliders1: [ 
-          { id:1, image: './img/sandwichFricadelle.jpg', caption: 'Salade, tomate, oignon', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
-          { id:2, image: './img/sandwichSteakFromage.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Sandwich brochettes/cervelas/mexicain/\nnuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
-          { id:3, image: './img/sandwichGrizzly.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich grizzly', price: '6,00 €',  isHovered: false },
-          { id:4,image: './img/sandwichKebab.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich kebab', price: '6,50 €',  isHovered: false },
-          { id:5, image: './img/sandwichSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich savoyard', price: '7,00 €',  isHovered: false },
-          { id:6,image: './img/sandwichTexan.jpg', caption: 'salade, tomate, steack', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
+          { id:1, image: './img/sandwichFricadelle.jpg', caption: 'salade, tomate', nameDish:'Sandwich fricadelle/merguez/saucisses (knacki x2)', price: '4,00 €', isHovered: false },
+          { id:2, image: './img/sandwichSteakFromage.jpg', caption: 'salade, tomate', nameDish:'Sandwich brochettes/cervelas/mexicain/\nnuggets/steack + fromage (option SFB + 0,50 €)', price: '5,00 €',  isHovered: false },
+          { id:3, image: './img/sandwichGrizzly.jpg', caption: 'salade, tomate', nameDish:'Sandwich crizly', price: '6,00 €',  isHovered: false },
+          { id:4,image: './img/sandwichKebab.jpg', caption: 'salade, tomate', nameDish:'Sandwich kebab', price: '6,50 €',  isHovered: false },
+          { id:5, image: './img/sandwichSavoyard.jpg', caption: 'salade, tomate', nameDish:'Sandwich savoyard', price: '7,00 €',  isHovered: false },
+          { id:6,image: './img/sandwichTexan.jpg', caption: 'salade, tomate', nameDish:'Sandwich texan', price: '8,00 €',  isHovered: false },
         ],
         
         imageSliders2: [
-          { id:1, image: './img/americainFricadelle2.jpg', caption: 'Salade, tomate, oignon', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €', isHovered: false },
-          { id:2, image: './img/americainNuggets.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €', isHovered: false },
-          { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate, steack', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €', isHovered: false },
-          { id:4, image: './img/americainGrizzly.jpg', caption: 'salade, tomate, steack', nameDish:'Américains grizzly', price: '9,00 €', isHovered: false },
-          { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate, steack', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €', isHovered: false },
-          { id:6, image: './img/americainTexan.jpg', caption: 'salade, tomate, steack', nameDish:`Américains texan/ch'ti`, price: '10,50 €', isHovered: false },
+          { id:1, image: './img/americainFricadelle2.jpg', caption: 'salade, tomate', nameDish:'Américains fricadelle/jambon/saucisses (knacki x2)', price: '6,50 €', isHovered: false },
+          { id:2, image: './img/americainNuggets.jpg', caption: 'salade, tomate', nameDish:'Américains nuggets/poulet/merguez/thon/\nfromage/crabe/cervelas', price: '7,00 €', isHovered: false },
+          { id:3, image: './img/americainMexicanos.jpg', caption: 'salade, tomate', nameDish:'Américains mexicanos/cervelas/brochette/filet américain/steack + fromage (option SFB + 0,50 €)', price: '8,50 €', isHovered: false },
+          { id:4, image: './img/americainGrizzly.jpg', caption: 'salade, tomate', nameDish:'Américains crizly', price: '9,00 €', isHovered: false },
+          { id:5, image: './img/americainSavoyard.jpg', caption: 'salade, tomate', nameDish:'Américains savoyard/montagnard (+ 1,00 €)', price: '7,00 €', isHovered: false },
+          { id:6, image: './img/americainTexan.jpg', caption: 'salade, tomate', nameDish:`Américains texan/ch'ti`, price: '10,50 €', isHovered: false },
         ],
 
 
         imageSliders3: [
-          { id:1, image: './img/Pizza4fromages.jpg', caption: 'Salade, tomate, oignon', nameDish:'Pizza 4 fromages', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
-          { id:2, image: './img/pizzajambonfromage.jpg', caption: 'Salade, tomate, cheddar', nameDish:'Pizza jambon-fromage', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
-          { id:3, image: './img/pizzaJambonOignon.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-oignons', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
-          { id:4,image: './img/pizzaChorizo.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza chorizo', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
-          { id:5, image: './img/pizzaJambonChampi.jpg', caption: 'salade, tomate, steack', nameDish:'Pizza jambon-champignons', price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
-          { id:6,image: './img/pizzaFruitsDeMer.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza fruits de mer`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
-          { id:7,image: './img/pizzaAnchois.jpg', caption: 'salade, tomate, steack', nameDish:`Pizza jambon-anchois`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
+          { id:1, image: './img/Pizza4fromages.jpg', caption: 'salade, tomate', nameDish:'Pizza 4 fromages', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:2, image: './img/pizzajambonfromage.jpg', caption: 'salade, tomate', nameDish:'Pizza jambon-fromage', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:3, image: './img/pizzaJambonOignon.jpg', caption: 'salade, tomate', nameDish:'Pizza jambon-oignons', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:4,image: './img/pizzaChorizo.jpg', caption: 'salade, tomate', nameDish:'Pizza chorizo', price: 'petite: 7,00 € grande: 9,00 €',  isHovered: false },
+          { id:5, image: './img/pizzaJambonChampi.jpg', caption: 'salade, tomate', nameDish:'Pizza jambon-champignons', price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
+          { id:6,image: './img/pizzaFruitsDeMer.jpg', caption: 'salade, tomate', nameDish:`Pizza fruits de mer`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
+          { id:7,image: './img/pizzaAnchois.jpg', caption: 'salade, tomate', nameDish:`Pizza jambon-anchois`, price: 'petite: 7,00 € grande: 9,60 €',  isHovered: false },
         ],
 
         imageSliders4: [
@@ -99,9 +99,9 @@ const app = Vue.createApp({
         ],
 
         imageSliders5: [
-          { id:1, image: './img/filetamericain.jpg', caption: 'Salade, tomate, oignon', nameDish:'Filet américain/jambon/poulet', price: '4,00 €',  isHovered: false },
-          { id:2, image: './img/bagnatSurimi1.jpg', caption: 'Salade, tomate, oignon', nameDish:'Surimi-crabe', price: '4,00 €',  isHovered: false },
-          { id:3, image: './img/bagnatThon.jpg', caption: 'salade, tomate, steack', nameDish:'Thon', price: '4,00 €',  isHovered: false },
+          { id:1, image: './img/filetamericain.jpg', caption: 'salade, tomate', nameDish:'Filet américain/jambon/poulet', price: '4,00 €',  isHovered: false },
+          { id:2, image: './img/bagnatSurimi1.jpg', caption: 'salade, tomate', nameDish:'Surimi-crabe', price: '4,00 €',  isHovered: false },
+          { id:3, image: './img/bagnatThon.jpg', caption: 'salade, tomate', nameDish:'Thon', price: '4,00 €',  isHovered: false },
         ],
 
         /* Tableaux */
