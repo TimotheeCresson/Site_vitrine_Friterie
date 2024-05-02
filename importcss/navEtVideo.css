@@ -32,7 +32,7 @@
 .wordVideo {
     color: #000000;
     font-size: 20px;
-    font-weight: 700;
+    font-weight: bolder;
     letter-spacing: 5px;
     animation: flash 1.2s linear infinite; /* Augmentez la durée de l'animation principale */
     text-transform: capitalize;
@@ -77,10 +77,11 @@
     right: 25px;
 }
 .accederSite a {
-    color: var(--primary-color);
+    color: #ff0000;
     font-size: 25px;
+    font-weight: bold;
     text-decoration: none;
-    border: 2px solid black;
+    border: 2px solid #ff0000;
     padding: 5px;
 }
 
