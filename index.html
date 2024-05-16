@@ -15,26 +15,6 @@
 <body>
     <div id="app">
 
-        <div class="loader" :class="{ 'fondu-out': loaded }" v-if="!videoEnded">
-            <video controls playsinline class="video-background" @ended="onVideoEnded">
-                <source :src="videoSrc" type="video/mp4">
-                Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
-            </video>
-            <div class="phrase">
-                <span class="wordVideo">Bonjour,</span>
-                <span class="wordVideo">Bienvenue</span>
-                <span class="wordVideo">à</span>
-                <span class="wordVideo">"La</span> 
-                <span class="wordVideo">Bonne</span> 
-                <span class="wordVideo">Bouffe"</span> 
-            </div>
-            <div class="accederSite">
-                <a href="" @click="fermerVideoEtRediriger">Accéder directement au site</a>
-            </div>
-            
-        </div>
-
-        <div  v-if="videoEnded">
         <!-- Entête -->
         <header id="accueil">
             <img class="logo" src="./img/logo.jpg" alt="logo" loading="lazy">
@@ -72,20 +52,28 @@
                 </div>
                 
                 <div class="slider-grid slider1" @mousedown="startDrag($event, 1)" @mousemove="drag($event, 1)" @mouseup="endDrag($event, 1)" @touchstart="startDrag($event, 1)" @touchmove="drag($event, 1)" @touchend="endDrag($event, 1)">
-                    <!-- ... contenu du premier slider -->
+                    <!-- Flèche gauche -->
+                  
+                
+                    <!-- Piste du slider -->
                     <div class="slider-track1" :style="{ transform: 'translateX(' + translateValue1 + 'px)' }">
                         <div class="slider-item" v-for="(imageSlider1, index) in imageSliders1" :key="index" :class="'item' + imageSlider1.id">
                             <span class="price">{{ imageSlider1.price }}</span>
-                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)" @touchstart="applyZoom(imageSliders1, index)"
-                            @touchend="resetZoom(imageSliders1, index)">
+                            <div class="background-imageMenu" @mouseover="applyZoom(imageSliders1, index)" @mouseout="resetZoom(imageSliders1, index)" @touchstart="applyZoom(imageSliders1, index)" @touchend="resetZoom(imageSliders1, index)">
                                 <div :style="{ backgroundImage: 'url(' + getLazyImage(imageSlider1.image) + ')' }" class="background-imageMenuZoom"></div>
                             </div>
                             <div class="descriptionMenu">
                                 <p class="nameDish">{{ imageSlider1.nameDish.replace('/', '&#47;') }}</p>
                                 <p class="caption">{{ imageSlider1.caption }}</p>
                             </div>
-                        </div>
+                        </div>  
                     </div>
+                </div>
+                <div class="arrow left-arrow">
+                    <i class="fa-solid fa-arrow-left" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche gauche -->
+                </div>
+                <div class="arrow right-arrow">
+                    <i class="fa-solid fa-arrow-right" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche droite -->
                 </div>
             </div>
 
@@ -111,6 +99,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="arrow left-arrow">
+                    <i class="fa-solid fa-arrow-left" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche gauche -->
+                </div>
+                <div class="arrow right-arrow">
+                    <i class="fa-solid fa-arrow-right" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche droite -->
+                </div>
             </div>
 
             <!-- Section Menu Pizzas -->
@@ -134,6 +128,12 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="arrow left-arrow">
+                    <i class="fa-solid fa-arrow-left" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche gauche -->
+                </div>
+                <div class="arrow right-arrow">
+                    <i class="fa-solid fa-arrow-right" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche droite -->
                 </div>
             </div>
 
@@ -159,6 +159,12 @@
                         </div>
                     </div>
                 </div>
+                <div class="arrow left-arrow">
+                    <i class="fa-solid fa-arrow-left" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche gauche -->
+                </div>
+                <div class="arrow right-arrow">
+                    <i class="fa-solid fa-arrow-right" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche droite -->
+                </div>
             </div>
 
         <!-- Section Menu bagnats -->
@@ -183,7 +189,14 @@
                         </div>
                     </div>
                 </div>
+            <div class="arrow left-arrow">
+                <i class="fa-solid fa-arrow-left" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche gauche -->
             </div>
+            <div class="arrow right-arrow">
+                <i class="fa-solid fa-arrow-right" style="color: rgb(161, 40, 40);"></i> <!-- Code HTML pour une flèche droite -->
+            </div>
+            </div>
+            
         </div>
 
 
@@ -378,8 +391,17 @@
                 <div class="imageIframe">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2539.0478628204837!2d3.0533262122832316!3d50.47745267147887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c2d27494a61433%3A0xf83fe9044341e147!2sBonne%20Bouffe!5e0!3m2!1sfr!2sfr!4v1707386599768!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
-            </div>
+            </div> 
         </div>
+         <div class="loader-container">
+                <div class="loader">
+                    <video controls playsinline class="video-background">
+                        <source :src="videoSrc" type="video/mp4">
+                        Votre navigateur ne prend pas en charge la lecture de vidéos HTML5.
+                    </video>
+                </div>
+            </div>
+        
 
         <!-- Info -->
 
@@ -407,7 +429,6 @@
                 <p>7 Bis Rue Léon Blum, 59239 Thumeries</p>
             </div>
         </footer>
-    </div>
     </div>
 </body>
 </html>

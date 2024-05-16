@@ -1,88 +1,26 @@
 /* Loader */
+/* Le conteneur principal qui occupe toute la hauteur et la largeur de la fenêtre */
+.loader-container {
+    display: flex;
+    justify-content: center; /* Centre horizontalement */
+    align-items: center; /* Centre verticalement */
+}
+
+/* Le conteneur de la vidéo */
 .loader {
-    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 300px;  /* Largeur souhaitée pour la vidéo */
+    height: 200px; /* Hauteur souhaitée pour la vidéo */
+    border: 1px solid #ccc; /* Optionnel : bordure pour la vidéo */
+}
+
+/* La vidéo elle-même */
+.video-background {
     width: 100%;
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.phrase span {
-    margin: 0 5px; /* Ajoutez une marge entre les mots si nécessaire */
-}  
-.phrase {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    position: absolute;
-    top: 20px;
-    text-align: center;
-}
-.video-background {
-    width: 100%; /* ou toute autre largeur souhaitée */
-    height: 100%; /* ou toute autre hauteur souhaitée */
-    object-fit: cover;
-}
-.fondu-out {
-    opacity: 0;
-    transition: opacity 0.4s ease-out;
-}
-
-.wordVideo {
-    color: #000000;
-    font-size: 20px;
-    font-weight: bolder;
-    letter-spacing: 5px;
-    animation: flash 1.2s linear infinite; /* Augmentez la durée de l'animation principale */
-    text-transform: capitalize;
-}
-@keyframes flash {
-    0% {
-        color: #ff0000; /* Jaune orangé */
-        text-shadow: 0 0 8px #ff0000; /* Ombre jaune orangé */
-    }
-    90% {
-        color: #000000; /* Noir */
-        text-shadow: none; /* Pas d'ombre */
-    }
-    100% {
-        color: #ff0000; /* Jaune orangé */
-        text-shadow: 0 0 8px #ff0000; /* Ombre jaune orangé */
-    }
-}
-
-.wordVideo:nth-child(1) {
-    animation-delay: 0.1s;
-}
-.wordVideo:nth-child(2) {
-    animation-delay: 0.3s; 
-}
-.wordVideo:nth-child(3) {
-    animation-delay: 0.5s; 
-}
-.wordVideo:nth-child(4) {
-    animation-delay: 0.7s; 
-}
-.wordVideo:nth-child(5) {
-    animation-delay: 0.9s; 
-}
-.wordVideo:nth-child(6) {
-    animation-delay: 1.1s; 
-}
-
-.accederSite {
-    position: absolute;
-    bottom: 85px;
-    right: 25px;
-}
-.accederSite a {
-    color: #ff0000;
-    font-size: 25px;
-    font-weight: bold;
-    text-decoration: none;
-    border: 2px solid #ff0000;
-    padding: 5px;
+    object-fit: cover; /* Ajuste la vidéo pour remplir le conteneur */
 }
 
 

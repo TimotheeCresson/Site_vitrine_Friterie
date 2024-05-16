@@ -5,7 +5,6 @@ const app = Vue.createApp({
         return {
           /* video */
           videoSrc: "./video/video.mp4",
-          videoEnded: false,
           
           /* get lazy loading */
           loadedImages: {},
@@ -135,19 +134,6 @@ const app = Vue.createApp({
 
       /* Toutes mes méthodes */
       methods: {
-        fermerVideoEtRediriger(event) {
-          // Empêcher le comportement par défaut du clic sur la vidéo
-          event.preventDefault();
-        
-          // Arrêter la vidéo
-          const video = document.querySelector('.video-background');
-          video.pause();
-          console.log('Vidéo arrêtée.');
-        
-          // Mettre videoEnded à true pour afficher le contenu après la vidéo
-          this.videoEnded = true;
-          console.log('Contenu après la vidéo affiché.');
-        },
         
         
 
@@ -384,7 +370,7 @@ const app = Vue.createApp({
     mounted() {
       // on met un interval de temps pour les changements d'images
         this.updateTriangles();
-        setInterval(this.updateTriangles, 6000);
+        setInterval(this.updateTriangles, 1000);
 
         // Ces fonctions throttled sont créées en utilisant la méthode throttle pour les différents événements de glissement
         // Elles garantissent que les événements ne sont déclenchés que selon le délai spécifié permettant de contrôler la fréquence d'exécution de ces événements
@@ -396,10 +382,6 @@ const app = Vue.createApp({
         
         /* Pour la vidéo */
         /* Nous inspectons la vidéo, une fois celle-ci fini, this.videoEnded passe à true pour laisser place au contenu principal  */
-        const video = document.querySelector('.video-background');
-        video.addEventListener('ended', () => {
-            this.videoEnded = true;
-          });
     },
   });
 

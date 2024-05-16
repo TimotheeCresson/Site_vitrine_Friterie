@@ -456,6 +456,38 @@ td {
     border-radius: 50%;
 }
 
+.sandwichChaudsContainer,
+.americainSandwichContainer,
+.pizzaContainer,
+.paniniContainer,
+.bagnatContainer {
+    position: relative;
+}
+.arrow {
+    position: absolute;
+    font-size: 30px;
+    bottom: -15%;
+    transform: translateY(-50%);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.left-arrow {
+    right: 50px;
+}
+
+.right-arrow {
+    right: 10px;
+}
+
+.americainSandwichContainer .arrow,
+.paniniContainer .arrow {
+    bottom: -7%;
+}
+
+
 
 /* Sauces */
 .sauceContainer {
@@ -516,6 +548,9 @@ td {
 }
 
 /* Horaires */
+.horaireEtLocalisation {
+    border-top: 3px solid var(--primary-color);
+}
 .horaires {
     display: flex;
     flex-direction: column;
@@ -540,7 +575,6 @@ td {
     display: flex;
     justify-content: center;
     align-items: center;
-    border-bottom: 3px solid var(--primary-color);
 }
 .imageIframe iframe {
     margin: 20px 30px;
@@ -553,7 +587,7 @@ td {
     min-height: 100px;
     margin-top: 20px;
     width: 100%;
-    /* border-top: 3px solid var(--primary-color); */
+    border-top: 3px solid var(--primary-color);
 }
 
 .paiementCarte,
@@ -585,3 +619,4 @@ td {
     text-decoration: none;
     color: var(--secondary-color);
 }
+

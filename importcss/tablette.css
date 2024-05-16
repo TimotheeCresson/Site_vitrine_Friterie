@@ -72,7 +72,6 @@ header {
 .horaireEtLocalisation {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    border-bottom: 3px solid var(--primary-color);
 }
 .imageIframe {
     border: none;
